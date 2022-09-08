@@ -24,8 +24,19 @@ h1{
     padding: 5px;
     background-color: rgb(255, 255, 255);
     border: 1px black solid;
-    margin-right: 80px;
+    margin-right: 60px;
     margin-top: 20px;
-    height: 450px;
+    height: 550px;
     width: 380px;
+    text-align: center;
+}
+
+#info-digimon{
+    text-align: justify;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 50px;
+    margin-left: 5px;
+    width: 785px;
+    border: 1px black solid;
 }
