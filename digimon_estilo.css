@@ -1,0 +1,31 @@
+body{
+    background-color: rgb(240, 242, 247);
+}
+h1{
+    text-align: left;
+    margin-left: 80px;
+}
+
+#buscador{
+    padding: 10px;
+    margin-left: 200px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#contenedor{
+    height: 800px;
+    padding: 15px;
+    border: 1px black solid;
+}
+
+#mostrar-digimon {
+    float: right;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 1px black solid;
+    margin-right: 80px;
+    margin-top: 20px;
+    height: 450px;
+    width: 380px;
+}

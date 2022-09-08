@@ -1,0 +1,582 @@
+{
+    "id": 289,
+    "name": "Agumon",
+    "xAntibody": false,
+    "images": [
+        {
+            "href": "https://digimon-api.com/images/digimon/w/Agumon.png",
+            "transparent": false
+        }
+    ],
+    "levels": [
+        {
+            "id": 7,
+            "level": "Child"
+        }
+    ],
+    "types": [
+        {
+            "id": 45,
+            "type": "Reptile"
+        }
+    ],
+    "attributes": [
+        {
+            "id": 3,
+            "attribute": "Vaccine"
+        }
+    ],
+    "fields": [
+        {
+            "id": 4,
+            "field": "Unknown"
+        },
+        {
+            "id": 1,
+            "field": "Nature Spirits"
+        },
+        {
+            "id": 2,
+            "field": "Virus Busters"
+        },
+        {
+            "id": 5,
+            "field": "Metal Empire"
+        },
+        {
+            "id": 8,
+            "field": "Nightmare Soldiers"
+        },
+        {
+            "id": 9,
+            "field": "Dragon's Roar"
+        }
+    ],
+    "releaseDate": "1997",
+    "descriptions": [
+        {
+            "origin": "reference_book",
+            "language": "en_us",
+            "description": "A Reptile Digimon with an appearance resembling a small dinosaur, it has grown and become able to walk on two legs. Its strength is weak as it is still in the process of growing, but it has a fearless and rather ferocious personality. Hard, sharp claws grow from both its hands and feet, and their power is displayed in battle. It also foreshadows an evolution into a great and powerful Digimon. Its Special Move is spitting a fiery breath from its mouth to attack the opponent (Baby Flame). "
+        },
+        {
+            "origin": "reference_book",
+            "language": "jap",
+            "description": "成長して二足歩行ができるようになった、小型の恐竜の様な姿をした爬虫類型デジモン。まだ成長途中なので力は弱いが、性格はかなり獰猛で恐いもの知らず。両手足には硬く鋭い爪が生えており、戦闘においても威力を発揮する。力ある偉大なデジモンへの進化を予測させる存在でもある。必殺技は口から火炎の息を吐き敵を攻撃する『ベビーフレイム』。 "
+        }
+    ],
+    "skills": [
+        {
+            "id": 597,
+            "skill": "Surudoi Tsume",
+            "translation": "Sharp Claw",
+            "description": "Uses its claws to rend the opponent. "
+        },
+        {
+            "id": 859,
+            "skill": "Battle Hawk",
+            "translation": "",
+            "description": "Brandishes an axe made of Chrome Digizoid. "
+        },
+        {
+            "id": 858,
+            "skill": "Sharp Nail",
+            "translation": "",
+            "description": "Attacks with its claws. "
+        },
+        {
+            "id": 865,
+            "skill": "Agumon Dive",
+            "translation": "",
+            "description": "Jumps at the enemy and slams its claws down on them. "
+        },
+        {
+            "id": 857,
+            "skill": "Mach Jab Combo",
+            "translation": "",
+            "description": "Rushes the enemy with many rapid slashes with the claws of both hands. "
+        },
+        {
+            "id": 864,
+            "skill": "Final Claw",
+            "translation": "",
+            "description": "Jumps and slashes a falling enemy with the claws of both hands. "
+        },
+        {
+            "id": 860,
+            "skill": "Uppercut",
+            "translation": "",
+            "description": "A flaming uppercut with its claws. "
+        },
+        {
+            "id": 84,
+            "skill": "Baby Flame",
+            "translation": "",
+            "description": "Spews fire from its mouth. "
+        },
+        {
+            "id": 856,
+            "skill": "Triple Baby Flame",
+            "translation": "",
+            "description": "Rapidly fires three different Baby Flames in three different directions. "
+        },
+        {
+            "id": 852,
+            "skill": "Splash Kick",
+            "translation": "",
+            "description": "Flips forward, kicking the enemy. "
+        },
+        {
+            "id": 855,
+            "skill": "Kūchū Baby Flame",
+            "translation": "Aerial Baby Flame",
+            "description": "The Baby Flame unleashed while airborne. "
+        },
+        {
+            "id": 851,
+            "skill": "Dynamite Kick",
+            "translation": "",
+            "description": "A flurry of kicks in midair. "
+        },
+        {
+            "id": 94,
+            "skill": "Mach Jab",
+            "translation": "",
+            "description": " "
+        },
+        {
+            "id": 863,
+            "skill": "Spitfire",
+            "translation": "",
+            "description": "Spits out fireballs. "
+        },
+        {
+            "id": 861,
+            "skill": "Wild Whip",
+            "translation": "",
+            "description": "Hits the enemy with an upward swing of both hands. "
+        },
+        {
+            "id": 854,
+            "skill": "Baby Burner",
+            "translation": "",
+            "description": "Accumulates Baby Flame in its mouth and then spits it out all at once as a much more powerful blast. "
+        },
+        {
+            "id": 862,
+            "skill": "Aerial Mach Jab",
+            "translation": "",
+            "description": "Rapidly jabs the enemy with its claws while both Digimon are in midair. "
+        },
+        {
+            "id": 853,
+            "skill": "Cross Fight",
+            "translation": "",
+            "description": "Viciously bites the enemy. "
+        }
+    ],
+    "priorEvolutions": [
+        {
+            "id": 532,
+            "digimon": "Wanyamon",
+            "condition": ""
+        },
+        {
+            "id": 973,
+            "digimon": "Shoutmon",
+            "condition": "with Starmons"
+        },
+        {
+            "id": 858,
+            "digimon": "Algomon (Baby II)",
+            "condition": ""
+        },
+        {
+            "id": 1154,
+            "digimon": "Nyaromon",
+            "condition": ""
+        },
+        {
+            "id": 1256,
+            "digimon": "Upamon",
+            "condition": ""
+        },
+        {
+            "id": 933,
+            "digimon": "Gigimon",
+            "condition": ""
+        },
+        {
+            "id": null,
+            "digimon": "Digitama",
+            "condition": ""
+        },
+        {
+            "id": 682,
+            "digimon": "Koromon",
+            "condition": ""
+        }
+    ],
+    "nextEvolutions": [
+        {
+            "id": 706,
+            "digimon": "Metal Greymon",
+            "condition": ""
+        },
+        {
+            "id": 320,
+            "digimon": "Salamandamon",
+            "condition": ""
+        },
+        {
+            "id": 1006,
+            "digimon": "Leomon",
+            "condition": ""
+        },
+        {
+            "id": 437,
+            "digimon": "Devimon",
+            "condition": ""
+        },
+        {
+            "id": 1136,
+            "digimon": "Coelamon",
+            "condition": ""
+        },
+        {
+            "id": 310,
+            "digimon": "Boarmon",
+            "condition": ""
+        },
+        {
+            "id": 956,
+            "digimon": "Igamon",
+            "condition": ""
+        },
+        {
+            "id": 346,
+            "digimon": "Tailmon",
+            "condition": ""
+        },
+        {
+            "id": 257,
+            "digimon": "Kyubimon",
+            "condition": ""
+        },
+        {
+            "id": 19,
+            "digimon": "Guardromon",
+            "condition": ""
+        },
+        {
+            "id": 879,
+            "digimon": "Angemon",
+            "condition": ""
+        },
+        {
+            "id": 579,
+            "digimon": "Revolmon",
+            "condition": ""
+        },
+        {
+            "id": 511,
+            "digimon": "Dinohumon",
+            "condition": ""
+        },
+        {
+            "id": 161,
+            "digimon": "Black War Greymon",
+            "condition": "Warp Evolution"
+        },
+        {
+            "id": 778,
+            "digimon": "Raremon",
+            "condition": ""
+        },
+        {
+            "id": 1217,
+            "digimon": "Airdramon",
+            "condition": ""
+        },
+        {
+            "id": 580,
+            "digimon": "Devidramon",
+            "condition": ""
+        },
+        {
+            "id": 1228,
+            "digimon": "Gorimon",
+            "condition": ""
+        },
+        {
+            "id": 1165,
+            "digimon": "Meramon",
+            "condition": ""
+        },
+        {
+            "id": 371,
+            "digimon": "Numemon",
+            "condition": ""
+        },
+        {
+            "id": 413,
+            "digimon": "Tortamon",
+            "condition": ""
+        },
+        {
+            "id": 1087,
+            "digimon": "Agnimon",
+            "condition": "with or without the Human Spirit of Fire with or without Coronamon"
+        },
+        {
+            "id": 707,
+            "digimon": "Raptordramon",
+            "condition": ""
+        },
+        {
+            "id": 475,
+            "digimon": "Birdramon",
+            "condition": ""
+        },
+        {
+            "id": 800,
+            "digimon": "Algomon (Adult)",
+            "condition": ""
+        },
+        {
+            "id": 806,
+            "digimon": "Monochromon",
+            "condition": ""
+        },
+        {
+            "id": 479,
+            "digimon": "Metal Greymon (Virus)",
+            "condition": ""
+        },
+        {
+            "id": 362,
+            "digimon": "Nanimon",
+            "condition": ""
+        },
+        {
+            "id": 631,
+            "digimon": "Bakemon",
+            "condition": "with Death Evolution"
+        },
+        {
+            "id": 1362,
+            "digimon": "Nefertimon",
+            "condition": ""
+        },
+        {
+            "id": 60,
+            "digimon": "Geo Greymon",
+            "condition": ""
+        },
+        {
+            "id": 794,
+            "digimon": "Leomon (X-Antibody)",
+            "condition": ""
+        },
+        {
+            "id": 946,
+            "digimon": "Garurumon",
+            "condition": ""
+        },
+        {
+            "id": 1117,
+            "digimon": "Growmon",
+            "condition": ""
+        },
+        {
+            "id": 1417,
+            "digimon": "War Greymon",
+            "condition": "Warp Evolution with or without Koromon, Greymon and Metal Greymon"
+        },
+        {
+            "id": 799,
+            "digimon": "Coatlmon",
+            "condition": ""
+        },
+        {
+            "id": 97,
+            "digimon": "Ankylomon",
+            "condition": ""
+        },
+        {
+            "id": 269,
+            "digimon": "DORUgamon",
+            "condition": ""
+        },
+        {
+            "id": 1282,
+            "digimon": "Agumon (X-Antibody)",
+            "condition": "with the X-Antibody"
+        },
+        {
+            "id": 1183,
+            "digimon": "Omegamon",
+            "condition": "Warp Evolution with or without Gabumon or Invisible Connection"
+        },
+        {
+            "id": 297,
+            "digimon": "Greymon (Blue)",
+            "condition": ""
+        },
+        {
+            "id": 73,
+            "digimon": "Growmon (Orange)",
+            "condition": ""
+        },
+        {
+            "id": 646,
+            "digimon": "Seadramon",
+            "condition": ""
+        },
+        {
+            "id": 145,
+            "digimon": "Hookmon",
+            "condition": ""
+        },
+        {
+            "id": 237,
+            "digimon": "Greymon (X-Antibody)",
+            "condition": ""
+        },
+        {
+            "id": 666,
+            "digimon": "V-dramon",
+            "condition": ""
+        },
+        {
+            "id": 949,
+            "digimon": "Geremon",
+            "condition": ""
+        },
+        {
+            "id": 172,
+            "digimon": "Death-X-DORUgamon",
+            "condition": ""
+        },
+        {
+            "id": 1246,
+            "digimon": "XV-mon",
+            "condition": ""
+        },
+        {
+            "id": 275,
+            "digimon": "Greymon",
+            "condition": "with or without Gabumon"
+        },
+        {
+            "id": 1309,
+            "digimon": "Omegamon (X-Antibody)",
+            "condition": "with Gabumon, Were Garurumon, and Metal Greymon"
+        },
+        {
+            "id": 1024,
+            "digimon": "Stingmon",
+            "condition": ""
+        },
+        {
+            "id": 86,
+            "digimon": "Agumon -Yuki no Kizuna-",
+            "condition": ""
+        },
+        {
+            "id": 654,
+            "digimon": "Kyubimon (Silver)",
+            "condition": ""
+        },
+        {
+            "id": 943,
+            "digimon": "Vritramon",
+            "condition": ""
+        },
+        {
+            "id": 458,
+            "digimon": "Ebidramon",
+            "condition": ""
+        },
+        {
+            "id": 1209,
+            "digimon": "Gryzmon",
+            "condition": ""
+        },
+        {
+            "id": 1320,
+            "digimon": "Seadramon (X-Antibody)",
+            "condition": ""
+        },
+        {
+            "id": 1008,
+            "digimon": "Golemon",
+            "condition": ""
+        },
+        {
+            "id": 880,
+            "digimon": "Sepikmon",
+            "condition": ""
+        },
+        {
+            "id": 216,
+            "digimon": "Tyranomon",
+            "condition": ""
+        },
+        {
+            "id": 1329,
+            "digimon": "Scumon",
+            "condition": ""
+        },
+        {
+            "id": 166,
+            "digimon": "Eosmon (Adult)",
+            "condition": ""
+        },
+        {
+            "id": 1360,
+            "digimon": "Ice Devimon",
+            "condition": ""
+        },
+        {
+            "id": 455,
+            "digimon": "Flare Lizamon",
+            "condition": ""
+        },
+        {
+            "id": 321,
+            "digimon": "Yuki Agumon",
+            "condition": ""
+        },
+        {
+            "id": 1351,
+            "digimon": "Meicoomon",
+            "condition": ""
+        },
+        {
+            "id": 973,
+            "digimon": "Shoutmon",
+            "condition": "with Coronamon and V-mon"
+        },
+        {
+            "id": 65,
+            "digimon": "Dark Tyranomon",
+            "condition": ""
+        },
+        {
+            "id": 483,
+            "digimon": "Centalmon",
+            "condition": ""
+        },
+        {
+            "id": 352,
+            "digimon": "Orgemon",
+            "condition": ""
+        },
+        {
+            "id": 935,
+            "digimon": "Togemon",
+            "condition": ""
+        }
+    ]
+}
