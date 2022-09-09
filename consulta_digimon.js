@@ -1,12 +1,13 @@
 let buscador = "";
+let parametro = "";
 
+// FUNCION MOSTRAR
 function mostrarDigimon() {
 
     let addDigimon = `
 
-        <div>${digimonData.id}</div>
-        <div>${digimonData.name}</div>
-        <hr>
+        <div><p style="margin:5px">${digimonData.id}<br>${digimonData.name}</p></div>
+        <hr style="margin:2px">
         <img src=${digimonData.images[0].href}>
         <hr>
         <table>
@@ -36,6 +37,73 @@ function mostrarDigimon() {
     `;
 
 }
+
+/* FUNCION MOSTARAR CON SWITCH (NO FUNCIONA)
+function parametroArray(parametro){
+
+    switch (parametro){
+
+        case parametro = "levels":
+            return levels[i].level;
+        break
+        case parametro = "attributes":
+            return attributes[i].attribute
+        break
+        case parametro = "types":
+            return digimonData.types[i].type
+        break
+    }
+    
+}
+function mostrarDigimon() {
+
+    let cabCarta = `
+
+        <div>${digimonData.id}</div>
+        <div>${digimonData.name}</div>
+        <hr>
+        `;
+    document.getElementById("cabecera-carta").innerHTML = cabCarta;
+
+    let imgCarta = `
+    <img src=${digimonData.images[0].href}>
+    <hr>
+    `;
+    document.getElementById("imagen_carta").innerHTML = imgCarta;
+
+    //------------------------------------------------------
+    let digimon_tabla = [];
+    for (let i = 0; i < digimonData.levels[i].length; i++) {
+        
+        digimon_tabla += `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Attribute</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> ${digimonData.levels[i].level}</td>
+                        <td> ${digimonData.attributes[i].attribute}</td>
+                        <td> ${digimonData.types[i].type}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div> ${digimonData.xAntibody}</div>
+            `;
+    }
+    document.getElementById("datos-carta").innerHTML = digimon_tabla;
+
+    document.getElementById("info-digimon").innerHTML = `
+    <p>${digimonData.descriptions[0].description}</p>
+    `;
+
+}
+*/
 
 function digimonSkills(){
     let digimon_skills = [];
