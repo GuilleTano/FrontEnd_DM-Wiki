@@ -48,7 +48,6 @@ function digimonSkills(){
         <hr>
         `;
     }
-    console.log(digimon_skills);
     document.getElementById("skill-digimon").innerHTML = digimon_skills;
 }
 
