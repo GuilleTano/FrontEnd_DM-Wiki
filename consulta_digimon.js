@@ -1,5 +1,14 @@
 let buscador = "";
-//let parametro = "";
+
+function mostrarLevels(){
+    let arrayLevels = [];
+    for (let i=0; i < digimonData.levels.length; i++){
+        
+        arrayLevels += `<p>${digimonData.levels[i].level}</p>`
+        
+    }
+    return arrayLevels;
+}
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
@@ -20,7 +29,7 @@ function mostrarDigimon() {
         </thead>
         <tbody>
         <tr>
-            <td> ${digimonData.levels[0].level}</td>
+            <td>${mostrarLevels()}</td>
             <td> ${digimonData.attributes[0].attribute}</td>
             <td> ${digimonData.types[0].type}</td>
         </tr>
@@ -29,9 +38,10 @@ function mostrarDigimon() {
         <hr>
         <div> ${digimonData.xAntibody}</div>
         `;
-
+    
     document.getElementById("mostrar-digimon").innerHTML = addDigimon;
 
+    //MUESTRA LA DESCRIPCION DEL DIGIMON 
     document.getElementById("info-digimon").innerHTML = `
     <p>${digimonData.descriptions[0].description}</p>
     `;
@@ -130,6 +140,7 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
             console.log(digimonData);
             mostrarDigimon(digimonData);
             digimonSkills(digimonData);
+            mostrarLevels(digimonData);
         }
         else {
             alert("Digi-error");
