@@ -1,12 +1,12 @@
 let buscador = "";
-let parametro = "";
+//let parametro = "";
 
-// FUNCION MOSTRAR
+// FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
 
     let addDigimon = `
 
-        <div><p style="margin:5px">${digimonData.id}<br>${digimonData.name}</p></div>
+        <div><p style="margin:5px">${digimonData.id}<br><strong>${digimonData.name}</strong></p></div>
         <hr style="margin:2px">
         <img src=${digimonData.images[0].href}>
         <hr>
@@ -105,13 +105,14 @@ function mostrarDigimon() {
 }
 */
 
+//FUNCION PARA MOSTRAR LAS SKILLS
 function digimonSkills(){
     let digimon_skills = [];
 
     for (let i=0; i < digimonData.skills.length; i++){
         
         digimon_skills += `
-        <p>${digimonData.skills[i].skill}/ ${digimonData.skills[i].translation} </p>
+        <p><strong>${digimonData.skills[i].skill}/ ${digimonData.skills[i].translation}</strong></p>
         <p>${digimonData.skills[i].description}</p>
         <hr>
         `;
@@ -122,7 +123,6 @@ function digimonSkills(){
 document.getElementById("btnBuscar").addEventListener("click", function () {
 
     buscador = document.getElementById("buscador").value;
-
 
     getJSONData(DIGIMON_URL + buscador).then(resultObj => {
         if (resultObj.status === "ok") {
@@ -135,6 +135,4 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
             alert("Digi-error");
         }
     });
-
-
 });
