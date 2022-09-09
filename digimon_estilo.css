@@ -32,7 +32,7 @@ h1{
     border: 1px black solid;
     margin-top: 15px;
     margin-left: 5px;
-    height: 550px;
+    height: auto;
     width: 380px;
     text-align: center;
 }
@@ -40,6 +40,7 @@ td, th{
     padding: 5px;
     width: 150px;
     text-align: center;
+    border: 1px black solid;
 }
 
 #info-digimon{
