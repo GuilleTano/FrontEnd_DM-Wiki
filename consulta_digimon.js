@@ -50,16 +50,18 @@ function mostrarHabilidades() {
     for (let i = 0; i < digimonData.skills.length; i++) {
         if (digimonData.skills[i].translation == "") {
             habilidades += `
-            <p><strong>${digimonData.skills[i].skill}</strong></p>
-            <p>${digimonData.skills[i].description}</p>
-            <hr>
+                <tr>
+                    <td class="skill-table-td">${digimonData.skills[i].skill}</td>
+                    <td class="skill-table-td">${digimonData.skills[i].description}</td>
+                </tr>
             `;
         }
         else{
             habilidades += `
-            <p><strong>${digimonData.skills[i].skill} / ${digimonData.skills[i].translation}</strong></p>
-            <p>${digimonData.skills[i].description}</p>
-            <hr>
+                <tr>
+                    <td class="skill-table-td">${digimonData.skills[i].skill} / ${digimonData.skills[i].translation}</td>
+                    <td class="skill-table-td">${digimonData.skills[i].description}</td>
+                </tr>
             `;
         }
     }
@@ -69,43 +71,41 @@ function mostrarHabilidades() {
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
-    let addDigimon = `
-        <div><p style="margin:5px"><b><small>${digimonData.id}</small></b><br><strong>${digimonData.name}</strong></p></div>
-        <hr style="margin:2px">
-        <img src=${digimonData.images[0].href}>
-        <hr>
-        <table>
-            <thead>
-                <tr>
-                    <th>Level</th>
-                    <th>Attribute</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>${mostrarLevels()}</td>
-                    <td>${mostrarAtributos()}</td>
-                    <td>${mostrarTipos()}</td>
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-        <div><p style="margin:5px"><strong>Fields</strong></p></div>
-        <table>
-            <tbody>
-                <tr>
-                    ${mostrarFields()}
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-        <div><p>xAntibody: ${digimonData.xAntibody}</p></div>
-        `;
-    document.getElementById("mostrar-digimon").innerHTML = addDigimon;
+    let addHeadCard = `
+    <div><p style="margin:5px"><b><small>${digimonData.id}</small></b><br><strong>${digimonData.name}</strong></p></div>`;
+    document.getElementById("head-card").innerHTML = addHeadCard;
+
+    document.getElementById("image-card").innerHTML = `<img src=${digimonData.images[0].href}>`;
+
+    let attTable = `
+    <thead>
+        <tr>
+            <th>Level</th>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>${mostrarLevels()}</td>
+            <td>${mostrarAtributos()}</td>
+            <td>${mostrarTipos()}</td>
+        </tr>
+    </tbody>`;
+    document.getElementById("att-table").innerHTML = attTable;
+
+    let fieldsTable =`
+    <tbody>
+        <tr>
+            ${mostrarFields()}
+        </tr>
+    </tbody>`;
+    document.getElementById("fields-table").innerHTML = fieldsTable;
+
+    document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${digimonData.xAntibody}</p>`;
 
     //MUESTRA LA DESCRIPCION DEL DIGIMON 
-    document.getElementById("info-digimon").innerHTML = `<div>${mostrarDescripcion()}</div>`;
+    document.getElementById("info-digimon").innerHTML = `${mostrarDescripcion()}`;
 }
 
 document.getElementById("btnBuscar").addEventListener("click", function () {

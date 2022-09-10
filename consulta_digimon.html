@@ -20,14 +20,37 @@
         <hr>
         <main id="contenedor">
             <input type="search" id="buscador" size="40px"> <button id="btnBuscar">Buscar</button>
-<!-- MUESTRA LA IMAGEN Y LOS DATOS BASICOS -->
+<!-- MUESTRA LA CARTA DEL DIGIMON -->
             <div id="mostrar-digimon">
+                <div id="head-card"></div>
+                <hr style="margin:2px">
+                <div id="image-card"></div>
+                <hr>
+                <table id="att-table" class="other-table">
+                </table>
+                <hr>
+                <div><p style="margin:5px"><strong>Fields</strong></p></div>
+                <table id="fields-table" class="other-table">
+                </table>
+                <hr>
+                <div id="xAntibody"></div>
             </div>
 <!-- MUESTRA LA DESCRIPCION -->
             <div id="info-digimon">
             </div>
 <!-- MUESTRA LAS HABILIDADES -->
-            <div id="skill-digimon">
+            <div>
+                <table id="skill-table-style">
+                    <thead>
+                        <tr>
+                            <th class="skill-table-th">Skill</th>
+                            <th class="skill-table-th">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="skill-digimon">
+
+                    </tbody>
+                </table>
             </div>
         </main>
 

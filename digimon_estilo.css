@@ -43,10 +43,10 @@ body{
     width: 380px;
     text-align: center;
 }
-td, th{
-    width: 150px;
+
+.other-table{
+    width: 380px;
     text-align: center;
-    border: 1px black solid;
 }
 
 #info-digimon{
@@ -54,6 +54,27 @@ td, th{
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 30px;
-    width: 760px;
+    width: 750px;
     border: 1px black solid;
+}
+
+
+#skill-table-style{
+    border-collapse: collapse;
+    margin-top:10px;
+    width: 780px;
+}
+
+.skill-table-td{
+    border: 1px black solid;
+    padding: 3px;
+    padding-left: 15px;
+    text-align: left; 
+}
+.skill-table-th{
+    background-color: rgb(7, 7, 7);
+    color:snow;
+    border: 1px black solid;
+    padding: 2px;
+    text-align: center; 
 }
