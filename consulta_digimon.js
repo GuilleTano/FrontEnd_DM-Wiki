@@ -28,7 +28,7 @@ function mostrarTipos() {
 function mostrarFields() {
     let arrayFields = [];
     for (let i = 0; i < digimonData.fields.length; i++) {
-        arrayFields += `<td>${digimonData.fields[i].field}</td>`;
+        arrayFields += `<td class="tdFields">${digimonData.fields[i].field}</td>`;
     }
     return arrayFields;
 }
@@ -44,6 +44,7 @@ function mostrarDescripcion() {
     return descripcion;
 }
 
+//FUNCION PARA MOSTRAR LAS SKILLS
 function mostrarHabilidades() {
     let habilidades = [];
     for (let i = 0; i < digimonData.skills.length; i++) {
@@ -69,7 +70,7 @@ function mostrarHabilidades() {
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
     let addDigimon = `
-        <div><p style="margin:5px">${digimonData.id}<br><strong>${digimonData.name}</strong></p></div>
+        <div><p style="margin:5px"><b><small>${digimonData.id}</small></b><br><strong>${digimonData.name}</strong></p></div>
         <hr style="margin:2px">
         <img src=${digimonData.images[0].href}>
         <hr>
@@ -90,14 +91,8 @@ function mostrarDigimon() {
             </tbody>
         </table>
         <hr>
+        <div><p style="margin:5px"><strong>Fields</strong></p></div>
         <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Fields</th>
-                    <th></th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
                     ${mostrarFields()}
@@ -112,22 +107,6 @@ function mostrarDigimon() {
     //MUESTRA LA DESCRIPCION DEL DIGIMON 
     document.getElementById("info-digimon").innerHTML = `<div>${mostrarDescripcion()}</div>`;
 }
-
-//FUNCION PARA MOSTRAR LAS SKILLS
-/*
-function digimonSkills() {
-    let digimon_skills = [];
-    for (let i = 0; i < digimonData.skills.length; i++) {
-
-        digimon_skills += `
-        <p><strong>${digimonData.skills[i].skill}/ ${digimonData.skills[i].translation}</strong></p>
-        <p>${digimonData.skills[i].description}</p>
-        <hr>
-        `;
-    }
-    document.getElementById("skill-digimon").innerHTML = digimon_skills;
-}
-*/
 
 document.getElementById("btnBuscar").addEventListener("click", function () {
 
@@ -148,4 +127,60 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
             alert("Digi-error");
         }
     });
+});
+
+
+
+
+//**************************** BOTONES DE PRUEBAS ****************************
+document.getElementById("btnPruebas").addEventListener("click", function(){
+    getJSONData(DIGIMON_URL + "guilmon").then(resultObj => {
+        if (resultObj.status === "ok") {
+            digimonData = resultObj.data;
+            console.log(digimonData);
+            mostrarDigimon(digimonData);
+            mostrarLevels(digimonData);
+            mostrarAtributos(digimonData);
+            mostrarTipos(digimonData);
+            mostrarDescripcion(digimonData);
+            mostrarHabilidades(digimonData);
+        }
+        else {
+            alert("Digi-error");
+        }
+    });       
+});
+document.getElementById("btnPruebas2").addEventListener("click", function(){
+    getJSONData(DIGIMON_URL + "tailmon").then(resultObj => {
+        if (resultObj.status === "ok") {
+            digimonData = resultObj.data;
+            console.log(digimonData);
+            mostrarDigimon(digimonData);
+            mostrarLevels(digimonData);
+            mostrarAtributos(digimonData);
+            mostrarTipos(digimonData);
+            mostrarDescripcion(digimonData);
+            mostrarHabilidades(digimonData);
+        }
+        else {
+            alert("Digi-error");
+        }
+    });       
+});
+document.getElementById("btnPruebas3").addEventListener("click", function(){
+    getJSONData(DIGIMON_URL + "agumon").then(resultObj => {
+        if (resultObj.status === "ok") {
+            digimonData = resultObj.data;
+            console.log(digimonData);
+            mostrarDigimon(digimonData);
+            mostrarLevels(digimonData);
+            mostrarAtributos(digimonData);
+            mostrarTipos(digimonData);
+            mostrarDescripcion(digimonData);
+            mostrarHabilidades(digimonData);
+        }
+        else {
+            alert("Digi-error");
+        }
+    });       
 });

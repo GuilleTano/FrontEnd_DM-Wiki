@@ -5,9 +5,16 @@
 body{
     background-color: rgb(240, 242, 247);
 }
-h1{
+
+#header{
     text-align: left;
     margin-left: 80px;
+}
+#botonesPruebas{
+    position: absolute;
+    top: 30px;
+    right: 100px;
+
 }
 
 #buscador{
@@ -37,7 +44,6 @@ h1{
     text-align: center;
 }
 td, th{
-    padding: 5px;
     width: 150px;
     text-align: center;
     border: 1px black solid;
