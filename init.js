@@ -1,6 +1,10 @@
-const corsAnywhere = "https://cors-anywhere.herokuapp.com/"; //URL de un API para redireccionar la URL original y asi no tener problemas de CORS
-//Parece que el acceso al servidor de corsAnywhere es temporal, hay que buscar otra solucion
 const DIGIMON_URL = "https://www.digi-api.com/api/v1/digimon/";
+const FIELDS_URL = "https://www.digi-api.com/api/v1/field";
+
+//URL de un API para redireccionar la URL original y asi no tener problemas de CORS
+const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+//Parece que el acceso al servidor de corsAnywhere es temporal, hay que buscar otra solucion
+
 
 let getJSONData = function(url){
     let result = {};
@@ -23,18 +27,3 @@ let getJSONData = function(url){
         return result;
     });
 }
-
-
-/*
-function getJSONData(url){
-    let resultado = {};
-    return fetch(url)
-    .then(respuesta => respuesta.json())
-    .then(function(respuesta) {
-        resultado.status = 'ok';
-        resultado.data = respuesta;
-        return resultado;
-    })
-    .catch(error => alert("Sucedió un Digi-error" + error));
-}
-*/

@@ -1,8 +1,6 @@
-* {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
     background-color: rgb(240, 242, 247);
 }
 
@@ -51,8 +49,8 @@ body{
 #contenedor{
     height: auto;
     padding-top: 20px;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
     border: 1px black solid;
 }
 
@@ -74,15 +72,16 @@ body{
 }
 
 .titulo-info{
-    background-color: rgb(7, 7, 7);
+    background-color: #6495ed;
     color:snow;
-    border: 1px black solid;
     padding: 2px;
     padding-left: 15px;
     margin-top: 20px;
     width: 220px;
+    font-weight: bold;
 }
 .contenido-info{
+    font-size: 16.5px;
     text-align:justify;
     padding: 0px 10px 0px 10px;
     margin-right: 410px;
@@ -94,19 +93,19 @@ body{
 #skill-table-style{
     border-collapse: collapse;
     margin-top:10px;
-    width: 800px;
+    width: 820px;
 
 }
 .skill-table-td{
+    font-size: 15px;
     border: 1px black solid;
     padding: 3px;
     padding-left: 15px;
     text-align: left;
 }
 .skill-table-th{
-    background-color: rgb(7, 7, 7);
+    background-color: #6495ed;
     color:snow;
-    border: 1px black solid;
     padding: 2px;
     text-align: center; 
 }

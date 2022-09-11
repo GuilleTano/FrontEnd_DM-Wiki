@@ -26,11 +26,34 @@ function mostrarTipos() {
 }
 
 function mostrarFields() {
-    let arrayFields = [];
+    let fieldsID = [];
     for (let i = 0; i < digimonData.fields.length; i++) {
-        arrayFields += `<td class="tdFields">${digimonData.fields[i].field}</td>`;
+        let fieldID = 0;
+        switch(digimonData.fields[i].id){
+            case 1: fieldID ="images/NatureSpirits.png";
+                break;
+            case 2: fieldID ="images/VirusBusters.png";
+                break;
+            case 3: fieldID ="images/WindGuardians.png";
+                break;
+            case 4: fieldID ="images/Unknown.png";
+                break;
+            case 5: fieldID ="images/MetalEmpire.png";
+                break;
+            case 6: fieldID ="images/DeepSavers.png";
+                break;
+            case 7: fieldID ="images/DarkArea.png";
+                break;
+            case 8: fieldID ="images/NightmareSoldiers.png";
+                break;
+            case 9: fieldID ="images/DragonsRoar.png";
+                break;
+            case 10: fieldID ="images/JungleTroopers.png";
+                break;
+        }
+        fieldsID += `<td><img src="${fieldID}" alt="${digimonData.fields[i].field}"></td>`;
     }
-    return arrayFields;
+    return fieldsID;
 }
 
 //FILTRA LAS DESCRIPCIONES PARA MOSTRAR LA QUE ESTA EN INGLES
@@ -71,12 +94,15 @@ function mostrarHabilidades() {
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
+    //Cabecera carta
     let addHeadCard = `
     <div><p style="margin:5px"><b><small>${digimonData.id}</small></b><br><strong>${digimonData.name}</strong></p></div>`;
     document.getElementById("head-card").innerHTML = addHeadCard;
 
+    //Imagen carta
     document.getElementById("image-card").innerHTML = `<img src=${digimonData.images[0].href}>`;
 
+    //Tabla 1
     let attTable = `
     <thead>
         <tr>
@@ -94,6 +120,7 @@ function mostrarDigimon() {
     </tbody>`;
     document.getElementById("att-table").innerHTML = attTable;
 
+    //Tabla 2
     let fieldsTable =`
     <tbody>
         <tr>
@@ -102,6 +129,7 @@ function mostrarDigimon() {
     </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
 
+    //xAntibody
     document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${digimonData.xAntibody}</p>`;
 
     //MUESTRA LA DESCRIPCION DEL DIGIMON 
@@ -127,6 +155,7 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
             alert("Digi-error");
         }
     });
+
 });
 
 
