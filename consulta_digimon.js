@@ -155,7 +155,6 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
             alert("Digi-error");
         }
     });
-
 });
 
 
