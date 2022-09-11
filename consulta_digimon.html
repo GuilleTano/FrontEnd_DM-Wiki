@@ -11,7 +11,7 @@
             <h1>BUSCA UN DIGIMON</h1>
 <!--********************************** BOTONES TEMPORALES PARA PRUEBAS **********************************-->
         <div id="botonesPruebas">
-            <button type="button" id="btnPruebas">guilmon</button>
+            <button type="button" id="btnPruebas">beelzebumon</button>
             <button type="button" id="btnPruebas2">tailmon</button>
             <button type="button" id="btnPruebas3">agumon</button>
         </div>
@@ -19,32 +19,36 @@
         </header>
         <hr>
         <main id="contenedor">
-            <input type="search" id="buscador" size="40px"> <button id="btnBuscar">Buscar</button>
+            <input type="search" id="buscador" size="40px"> <button id="btnBuscar" class="btnBuscar">Buscar</button>
 <!-- MUESTRA LA CARTA DEL DIGIMON -->
             <div id="mostrar-digimon">
                 <div id="head-card"></div>
-                <hr style="margin:2px">
+                <hr style="margin:2px 0px 2px">
                 <div id="image-card"></div>
                 <hr>
                 <table id="att-table" class="other-table">
                 </table>
                 <hr>
-                <div><p style="margin:5px"><strong>Fields</strong></p></div>
+                <div><p style="margin:5px 0px 5px"><strong>Fields</strong></p></div>
                 <table id="fields-table" class="other-table">
                 </table>
                 <hr>
                 <div id="xAntibody"></div>
             </div>
 <!-- MUESTRA LA DESCRIPCION -->
-            <div id="info-digimon">
+            <div>
+                <div class="titulo-info">Description</div>
+                <div id="info-digimon" class="contenido-info">
+                </div>
             </div>
+            <hr>
 <!-- MUESTRA LAS HABILIDADES -->
             <div>
                 <table id="skill-table-style">
                     <thead>
                         <tr>
                             <th class="skill-table-th">Skill</th>
-                            <th class="skill-table-th">Description</th>
+                            <th class="skill-table-th">Effect</th>
                         </tr>
                     </thead>
                     <tbody id="skill-digimon">

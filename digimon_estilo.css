@@ -20,28 +20,52 @@ body{
 #buscador{
     padding: 10px;
     margin-left: 200px;
-    margin-top: 20px;
     text-align: center;
+}
+.btnBuscar{
+    padding: 5px;
+    font-size: 18px;
+    width: 80px;
+    margin-left: 10px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    color: #fff;
+    background-color: #6495ed;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 6px #999;
+    /*
+    background-color:cornflowerblue;
+    */
+}
+.btnBuscar:hover{
+    background-color: #5078bf
+}
+.btnBuscar:active{
+    background-color: #5078bf;
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 #contenedor{
     height: auto;
+    padding-top: 20px;
     padding-left: 60px;
     padding-right: 60px;
     border: 1px black solid;
 }
 
 #mostrar-digimon {
-    float: right;
+    float:right;
     padding-left: 5px;
     padding-right: 5px;
     background-color: rgb(255, 255, 255);
     border: 1px black solid;
-    margin-top: 15px;
-    margin-left: 5px;
     height: auto;
     width: 380px;
     text-align: center;
+    margin-left: 15px;
 }
 
 .other-table{
@@ -49,27 +73,35 @@ body{
     text-align: center;
 }
 
-#info-digimon{
-    text-align: justify;
+.titulo-info{
+    background-color: rgb(7, 7, 7);
+    color:snow;
+    border: 1px black solid;
+    padding: 2px;
     padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 30px;
-    width: 750px;
+    margin-top: 20px;
+    width: 220px;
+}
+.contenido-info{
+    text-align:justify;
+    padding: 0px 10px 0px 10px;
+    margin-right: 410px;
+    width: auto;
+    height: auto;
     border: 1px black solid;
 }
-
 
 #skill-table-style{
     border-collapse: collapse;
     margin-top:10px;
-    width: 780px;
-}
+    width: 800px;
 
+}
 .skill-table-td{
     border: 1px black solid;
     padding: 3px;
     padding-left: 15px;
-    text-align: left; 
+    text-align: left;
 }
 .skill-table-th{
     background-color: rgb(7, 7, 7);

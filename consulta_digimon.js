@@ -105,7 +105,7 @@ function mostrarDigimon() {
     document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${digimonData.xAntibody}</p>`;
 
     //MUESTRA LA DESCRIPCION DEL DIGIMON 
-    document.getElementById("info-digimon").innerHTML = `${mostrarDescripcion()}`;
+    document.getElementById("info-digimon").innerHTML = `<p>${mostrarDescripcion()}</p>`;
 }
 
 document.getElementById("btnBuscar").addEventListener("click", function () {
@@ -134,7 +134,7 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
 
 //**************************** BOTONES DE PRUEBAS ****************************
 document.getElementById("btnPruebas").addEventListener("click", function(){
-    getJSONData(DIGIMON_URL + "guilmon").then(resultObj => {
+    getJSONData(DIGIMON_URL + "beelzebumon").then(resultObj => {
         if (resultObj.status === "ok") {
             digimonData = resultObj.data;
             console.log(digimonData);
