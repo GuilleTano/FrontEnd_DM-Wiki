@@ -5,9 +5,20 @@ body{
 }
 
 #header{
+    background-color: #6495ed;
+    color: snow;
+    padding-top: 5px;
+}
+h1{
     text-align: left;
     margin-left: 80px;
 }
+
+#footer{
+    background-color: #6495ed;
+    color: snow;
+}
+
 #botonesPruebas{
     position: absolute;
     top: 30px;
