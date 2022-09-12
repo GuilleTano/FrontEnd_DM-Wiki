@@ -92,22 +92,22 @@ function mostrarHabilidades() {
 
 }
 
-//FUNCION PARA LINEA EVOLUTIVA
+//FUNCIONES PARA MOSTRAR LA LINEA EVOLUTIVA
 function mostrarPreEvoluciones() {
     let arrayPreEvos = [];
     for (let i = 0; i < digimonData.priorEvolutions.length; i++) {
-        arrayPreEvos += `<td>${digimonData.priorEvolutions[i].digimon}</td>`;
+        arrayPreEvos += `<li>${digimonData.priorEvolutions[i].digimon}</li>`;
     }
     return arrayPreEvos;
 }
-
 function mostrarEvoluciones() {
     let arrayEvos = [];
     for (let i = 0; i < digimonData.nextEvolutions.length; i++) {
-        arrayEvos += `<td>${digimonData.nextEvolutions[i].digimon}</td>`;
+        arrayEvos += `<li>${digimonData.nextEvolutions[i].digimon}</li>`;
     }
     return arrayEvos;
 }
+
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
@@ -152,25 +152,12 @@ function mostrarDigimon() {
     //MUESTRA LA DESCRIPCION DEL DIGIMON 
     document.getElementById("info-digimon").innerHTML = `<p>${mostrarDescripcion()}</p>`;
 
-    //PreEvo
-    let preEvoTable =`
-    <tbody>
-        <tr>
-            ${mostrarPreEvoluciones()}
-        </tr>
-    </tbody>
-    `;
-    document.getElementById("pre-evoluciones").innerHTML = preEvoTable;
+
+    //Pre Evo
+    document.getElementById("pre-evoluciones").innerHTML = mostrarPreEvoluciones();
 
     //Evo
-    let evoTable =`
-    <tbody>
-        <tr>
-            ${mostrarEvoluciones()}
-        </tr>
-    </tbody>
-    `;
-    document.getElementById("evoluciones").innerHTML = evoTable;
+    document.getElementById("evoluciones").innerHTML = mostrarEvoluciones();
 
 }
 
@@ -183,18 +170,15 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
             digimonData = resultObj.data;
             console.log(digimonData);
             mostrarDigimon(digimonData);
-            mostrarLevels(digimonData);
-            mostrarAtributos(digimonData);
-            mostrarTipos(digimonData);
-            mostrarDescripcion(digimonData);
             mostrarHabilidades(digimonData);
-            mostrarPreEvoluciones(digimonData);
         }
         else {
             alert("Digi-error");
         }
     });
 });
+
+
 
 
 
@@ -206,10 +190,6 @@ document.getElementById("btnPruebas").addEventListener("click", function(){
             digimonData = resultObj.data;
             console.log(digimonData);
             mostrarDigimon(digimonData);
-            mostrarLevels(digimonData);
-            mostrarAtributos(digimonData);
-            mostrarTipos(digimonData);
-            mostrarDescripcion(digimonData);
             mostrarHabilidades(digimonData);
         }
         else {
@@ -223,10 +203,6 @@ document.getElementById("btnPruebas2").addEventListener("click", function(){
             digimonData = resultObj.data;
             console.log(digimonData);
             mostrarDigimon(digimonData);
-            mostrarLevels(digimonData);
-            mostrarAtributos(digimonData);
-            mostrarTipos(digimonData);
-            mostrarDescripcion(digimonData);
             mostrarHabilidades(digimonData);
         }
         else {
@@ -240,14 +216,11 @@ document.getElementById("btnPruebas3").addEventListener("click", function(){
             digimonData = resultObj.data;
             console.log(digimonData);
             mostrarDigimon(digimonData);
-            mostrarLevels(digimonData);
-            mostrarAtributos(digimonData);
-            mostrarTipos(digimonData);
-            mostrarDescripcion(digimonData);
             mostrarHabilidades(digimonData);
         }
         else {
             alert("Digi-error");
         }
-    });       
+    });
+
 });
