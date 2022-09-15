@@ -5,7 +5,6 @@ const FIELDS_URL = "https://www.digi-api.com/api/v1/field";
 const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 //Parece que el acceso al servidor de corsAnywhere es temporal, hay que buscar otra solucion
 
-
 let getJSONData = function(url){
     let result = {};
     return fetch(corsAnywhere + url)
@@ -27,3 +26,5 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+/*fetch(corsAnywhere + url)*/
