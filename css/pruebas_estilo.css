@@ -1,0 +1,10 @@
+body{
+    text-align: center;
+}
+
+.col{
+    border: 1px black solid;
+}
+.row{
+    background-color: cadetblue;
+}
