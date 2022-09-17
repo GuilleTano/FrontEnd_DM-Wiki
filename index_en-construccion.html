@@ -36,7 +36,7 @@
               <div class="col">espacio vacio</div>
             </div>
             <div class="row">
-              <div class="col">
+              <div class="col"> <!-- DESCRIPCION -->
                 <p style="text-align:left">Description</p>
                 <div id="info-digimon">
                 </div>
@@ -45,12 +45,72 @@
             <div class="row">
               <div class="col">espacio vacio</div>
             </div>
+            <div class="row">
+                <div class="container"> <!-- TABLA SKILLS-->
+                    <div class="row">
+                        <div class="col"><th class="skill-table-th">Skill</th></div>
+                        <div class="col"><th class="skill-table-th">Effect</th></div>
+                    </div>
+                    <div>
+                        <tbody id="skill-digimon">
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">espacio vacio</div>
+            </div>
+            <div class="row">
+                <div class="container"> <!-- PRE-EVOLUCIONES-->
+                    <div class="row">
+                        <div class="col"> <h3>Evolves From</h3></div>
+                    </div>
+                    <div class="row">
+                        <ul id="pre-evoluciones">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div class="row">
+                <div class="container"> <!-- EVOLUCIONES-->
+                    <div class="row">
+                        <div class="col"> <h3>Evolves To</h3></div>
+                    </div>
+                    <div class="row">
+                        <ul id="evoluciones">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
 
             <!-- ----------- -->
           </div>
         </div>
         <!-- Contenedor original 2/2 -->
-        <div class="col-4">card</div> <!-- CARTA -->
+        <div class="col-4">
+            <div class="container"> <!-- CARTA -->
+                <div class="col">
+                    <div class="row" id="head-card"></div>
+                    <hr style="margin:2px 0px 2px">
+                    <div id="image-card"></div>
+                    <hr>
+                    <div class="row">
+                        <table id="att-table">
+                        </table>
+                    </div>
+                    <div class="row">
+                        <p style="margin:5px 0px 5px"><strong>Fields</strong></p>
+                    </div>
+                    <table id="fields-table" class="other-table">
+                    </table>
+                    <hr>
+                    <div class="row" id="xAntibody"></div>
+                </div>
+            </div>
+        </div>
       </div>
 
     </div>
