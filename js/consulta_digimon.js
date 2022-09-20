@@ -96,7 +96,7 @@ function mostrarHabilidades() {
 function mostrarPreEvoluciones() {
     let arrayPreEvos = [];
     for (let i = 0; i < digimonData.priorEvolutions.length; i++) {
-        arrayPreEvos += `<li>${digimonData.priorEvolutions[i].digimon}</li>`;
+        arrayPreEvos += `<li onclick="redirecEvo()">${digimonData.priorEvolutions[i].digimon}</li>`;
     }
     return arrayPreEvos;
 }
@@ -106,6 +106,23 @@ function mostrarEvoluciones() {
         arrayEvos += `<li>${digimonData.nextEvolutions[i].digimon}</li>`;
     }
     return arrayEvos;
+}
+
+//REDIRECCION DE EVOLUCIONES
+function redirecEvo(){
+    document.getElementById("btnPruebas").addEventListener("click", function(){
+        getJSONData(DIGIMON_URL + redireccion).then(resultObj => {
+            if (resultObj.status === "ok") {
+                digimonData = resultObj.data;
+                console.log(digimonData);
+                mostrarDigimon(digimonData);
+                mostrarHabilidades(digimonData);
+            }
+            else {
+                alert("Digi-error");
+            }
+        });       
+    });
 }
 
 
