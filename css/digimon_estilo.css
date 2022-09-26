@@ -105,7 +105,6 @@ h1{
     border-collapse: collapse;
     margin-top:10px;
     width: 820px;
-
 }
 .skill-table-td{
     font-size: 15px;
@@ -122,6 +121,11 @@ h1{
 }
 
 .evo-list{
+<<<<<<< HEAD
+=======
+width: 820px;
+columns: 3;
+>>>>>>> 4e9b221f38d74c36f9203b255b15fa491092700d
 list-style-type: none;
 margin: 0;
 padding: 0;
