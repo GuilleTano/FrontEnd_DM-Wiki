@@ -39,9 +39,9 @@
 
                 <!-- BOTONES DE PRUEBA -->
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-outline-primary text-white">Prueba1</button>
-                    <button type="button" class="btn btn-outline-primary text-white">Prueba2</button>
-                    <button type="button" class="btn btn-outline-primary text-white">Prueba3</button>
+                    <button type="button" class="btn btn-outline-primary text-white" id="btnPruebas3">Agumon</button>
+                    <button type="button" class="btn btn-outline-primary text-white" id="btnPruebas2">Tailmon</button>
+                    <button type="button" class="btn btn-outline-primary text-white" id="btnPruebas">Beelzebumon</button>
                 </div>
             </div>
         </div>
@@ -65,29 +65,21 @@
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link link-light bg-dark active" id="home-tab" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                                data-bs-target="#english-info" type="button" role="tab" aria-controls="english-info"
                                 aria-selected="true">English</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link link-light bg-dark" id="profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                aria-controls="profile-tab-pane" aria-selected="false">Japanese</button>
+                                data-bs-target="#japanese-info" type="button" role="tab"
+                                aria-controls="japanese-info" aria-selected="false">Japanese</button>
                         </li>
                     </ul>
                     <div class="tab-content p-3 bg-dark" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                        <div class="tab-pane fade show active" id="english-info" role="tabpanel"
                             aria-labelledby="home-tab" tabindex="0">
-                            "A Reptile Digimon with an appearance resembling a small dinosaur, it has grown and become
-                            able
-                            to walk on two legs. Its strength is weak as it is still in the process of growing, but it
-                            has a
-                            fearless and rather ferocious personality. Hard, sharp claws grow from both its hands and
-                            feet,
-                            and their power is displayed in battle. It also foreshadows an evolution into a great and
-                            powerful Digimon. Its Special Move is spitting a fiery breath from its mouth to attack the
-                            opponent (Baby Flame). "
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut rerum assumenda adipisci quod? Fugit a nemo doloremque dignissimos, repellendus voluptatem corporis quasi itaque ad mollitia iure doloribus, tempore labore nobis.
                         </div>
-                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                        <div class="tab-pane fade" id="japanese-info" role="tabpanel" aria-labelledby="profile-tab"
                             tabindex="0">
                             "成長して二足歩行ができるようになった、小型の恐竜の様な姿をした爬虫類型デジモン。まだ成長途中なので力は弱いが、性格はかなり獰猛で恐いもの知らず。両手足には硬く鋭い爪が生えており、戦闘においても威力を発揮する。力ある偉大なデジモンへの進化を予測させる存在でもある。必殺技は口から火炎の息を吐き敵を攻撃する『ベビーフレイム』。
                             "
@@ -96,7 +88,7 @@
                 </div>
 
                 <!-- HABILIDADES -->
-                <div class="mt-4">
+                <div class="mt-4 overflow-auto" style="max-height: 20rem;">
                     <table class="table table-sm table-dark">
                         <thead class="text-center">
                             <tr>
@@ -116,17 +108,18 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
 
             <!-- CARTA -->
             <div class="col-4 text-black">
                 <div class="card text-white bg-dark mb-3 border-light" style="width: 22rem;">
-                    <div class="card-title text-center">
-                        <div id="head-card" class="text-center card-body py-0">ID</div>
+                    <!-- Cabecera de la carta -->
+                    <div class="card-title text-center" id="head-card">
+                        <div class="text-center card-body py-0">ID</div>
                         <h5 class="card-title my-0 py-0">Card title</h5>
                     </div>
-                    <div class="px-3">
+                    <!-- Imagen de la carta -->
+                    <div class="px-3" id="image-card">
                         <img src="images/example-card.jpg" class="card-img-top" alt="example-card">
                     </div>
                     <!-- TABLA DE DATOS -->
@@ -139,7 +132,7 @@
                                     <th scope="col">Type</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="att-table">
                                 <tr>
                                     <td>Mark</td>
                                     <td>Otto</td>
@@ -157,8 +150,8 @@
                     <!-- FIELDS -->
                     <div class="text-center card-body pb-0 pt-2">
                         <h5>Fields</h5>
-                        <table id="fields-table" class="table table-borderless table-sm table-dark">
-                            <tbody>
+                        <table class="table table-borderless table-sm table-dark">
+                            <tbody id="fields-table">
                                 <tr>
                                     <td>Field 1</td>
                                     <td>Field 2</td>
@@ -170,64 +163,136 @@
                     <hr class="my-0">
                     <!-- XANTIBODY -->
                     <div class="card-body text-center pb-0">
-                        <p>xAntibody:</p>
+                        <p id="xAntibody">xAntibody:</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row mt-5">
+
+        <!-- PRE-EVOLUCIONES -->
+        <div class="mt-5">
             <div>
                 <h4>Evolves from</h4>
             </div>
 
-            <div class="card-group text-center">
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+            <div class="row row-cols-1 row-cols-md-6 g-4 text-center" id="pre-evoluciones">
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="max-width: 10rem;">
-                    <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
                     </div>
                 </div>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 10rem;">
+                        <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
+                            <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
+                            <p class="card-text fs-6 lh-1">Descripcion</p>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
 
+
+
+        <div class="row mt-5">
+
+
+
+
+
+        </div>
+
+
+        <!-- EVOLUCIONES -->
         <div class="row my-5">
             <div>
                 <h4>Evolves to</h4>
@@ -304,7 +369,7 @@
 
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/consulta_digimon.js"></script>
+    <script src="js/nuevo_consulta_digimon.js"></script>
 </body>
 
 </html>
