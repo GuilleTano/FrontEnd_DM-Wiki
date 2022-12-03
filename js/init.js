@@ -1,5 +1,5 @@
 const DIGIMON_URL = "https://www.digi-api.com/api/v1/digimon/";
-const FIELDS_URL = "https://www.digi-api.com/api/v1/field";
+//const FIELDS_URL = "https://www.digi-api.com/api/v1/field";
 
 //URL de un API para redireccionar la URL original y asi no tener problemas de CORS
 const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
@@ -26,5 +26,3 @@ let getJSONData = function(url){
         return result;
     });
 }
-
-/*fetch(corsAnywhere + url)*/
