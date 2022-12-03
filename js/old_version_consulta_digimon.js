@@ -56,20 +56,15 @@ function mostrarFields() {
     return fieldsID;
 }
 
-//FILTRA LAS DESCRIPCIONES Y LAS MUESTRA SEGUN EL IDIOMA
+//FILTRA LAS DESCRIPCIONES PARA MOSTRAR LA QUE ESTA EN INGLES
 function mostrarDescripcion() {
-    let descriptionEn = "";
-    let descriptionJp = "";
+    let descripcion = [];
     for (let i = 0; i < digimonData.descriptions.length; i++) {
         if (digimonData.descriptions[i].language == "en_us") {
-            descriptionEn = `<p>${digimonData.descriptions[i].description}</p>`;
-        }
-        else{
-            descriptionJp = `<p>${digimonData.descriptions[i].description}</p>`;
+            descripcion += `<p>${digimonData.descriptions[i].description}</p>`;
         }
     }
-    document.getElementById("english-info").innerHTML = descriptionEn;
-    document.getElementById("japanese-info").innerHTML = descriptionJp;
+    return descripcion;
 }
 
 //FUNCION PARA MOSTRAR LAS SKILLS
@@ -79,163 +74,127 @@ function mostrarHabilidades() {
         if (digimonData.skills[i].translation == "") {
             habilidades += `
                 <tr>
-                    <td>${digimonData.skills[i].skill}</td>
-                    <td>${digimonData.skills[i].description}</td>
+                    <td class="skill-table-td">${digimonData.skills[i].skill}</td>
+                    <td class="skill-table-td">${digimonData.skills[i].description}</td>
                 </tr>
             `;
         }
         else{
             habilidades += `
                 <tr>
-                    <td>${digimonData.skills[i].skill} / ${digimonData.skills[i].translation}</td>
-                    <td>${digimonData.skills[i].description}</td>
+                    <td class="skill-table-td">${digimonData.skills[i].skill} / ${digimonData.skills[i].translation}</td>
+                    <td class="skill-table-td">${digimonData.skills[i].description}</td>
                 </tr>
             `;
         }
     }
     document.getElementById("skill-digimon").innerHTML = habilidades;
+
 }
 
 //FUNCIONES PARA MOSTRAR LA LINEA EVOLUTIVA
 function mostrarPreEvoluciones() {
     let arrayPreEvos = [];
     for (let i = 0; i < digimonData.priorEvolutions.length; i++) {
-
-        if(digimonData.priorEvolutions[i].id != null){
-
-            //console.log(digimonData.priorEvolutions[i].id)
-            //console.log( priorEvoImages(digimonData.priorEvolutions[i].id) );
-
-            arrayPreEvos += `
-            <div class="col">
-                <div class="card" style="width: 10rem; height: 16rem;">
-                    <div id=${digimonData.priorEvolutions[i].id}>
-                        <img src="images/logo-tamers.png" class="card-img-top" alt=${digimonData.priorEvolutions[i].digimon}>
-                    </div>
-                    <div class="card-body overflow-auto">
-                        <p class="card-title lh-1 fs-5 fw-bold">${digimonData.priorEvolutions[i].digimon}</p>
-                        <p class="card-text fs-6 lh-1">${digimonData.priorEvolutions[i].condition}</p>
-                    </div>
-                </div>
-            </div>`;
-            priorEvoImages(digimonData.priorEvolutions[i].id);
-        }
+        arrayPreEvos += `<li onclick="redirecEvo()">${digimonData.priorEvolutions[i].digimon}</li>`;
     }
     return arrayPreEvos;
 }
 function mostrarEvoluciones() {
     let arrayEvos = [];
     for (let i = 0; i < digimonData.nextEvolutions.length; i++) {
-
-        if(digimonData.nextEvolutions[i].id != null){
-
-            arrayEvos += `
-            <div class="col">
-                <div class="card" style="width: 10rem; height: 16rem;">
-                    <div id=${digimonData.nextEvolutions[i].id}>
-                        <img src="images/logo-tamers.png" class="card-img-top" alt=${digimonData.nextEvolutions[i].digimon}>
-                    </div>
-                    <div class="card-body overflow-auto">
-                        <p class="card-title lh-1 fs-5 fw-bold">${digimonData.nextEvolutions[i].digimon}</p>
-                        <p class="card-text fs-6 lh-1">${digimonData.nextEvolutions[i].condition}</p>
-                    </div>
-                </div>
-            </div>`;
-            evoImages(digimonData.nextEvolutions[i].id);
-        }
+        arrayEvos += `<li>${digimonData.nextEvolutions[i].digimon}</li>`;
     }
     return arrayEvos;
 }
 
-//Imagenes pre-evos
-function priorEvoImages(prioID){
-    let prioImg = "";
-    const digimonID = prioID;
-
-    return fetch(DIGIMON_URL + digimonID)
-    .then(respuesta => respuesta.json())
-    .then(digimon =>{
-
-        prioImg = digimon.images[0].href;
-
-        document.getElementById(prioID).innerHTML = `<img src=${prioImg} class="card-img-top" alt="...">`;
-    })
-    .catch(error => alert("Hubo un error en las fotos: " + error));
+//REDIRECCION DE EVOLUCIONES
+function redirecEvo(){
+    document.getElementById("btnPruebas").addEventListener("click", function(){
+        getJSONData(DIGIMON_URL + redireccion).then(resultObj => {
+            if (resultObj.status === "ok") {
+                digimonData = resultObj.data;
+                console.log(digimonData);
+                mostrarDigimon(digimonData);
+                mostrarHabilidades(digimonData);
+            }
+            else {
+                alert("Digi-error");
+            }
+        });       
+    });
 }
-
-//Imagenes evos
-function evoImages(evoID){
-    let evoImg = "";
-    const digimonID = evoID;
-
-    return fetch(DIGIMON_URL + digimonID)
-    .then(respuesta => respuesta.json())
-    .then(digimon =>{
-
-        evoImg = digimon.images[0].href;
-
-        document.getElementById(evoID).innerHTML = `<img src=${evoImg} class="card-img-top" alt="...">`;
-    })
-    .catch(error => alert("Hubo un error en las fotos: " + error));
-}
-
 
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
     //Cabecera carta
     let addHeadCard = `
-    <div class="text-center card-body py-0"><small>${digimonData.id}</small></div>
-    <h5 class="card-title my-0 py-0">${digimonData.name}</h5>`;
+    <div><p style="margin:5px"><b><small>${digimonData.id}</small></b><br><strong>${digimonData.name}</strong></p></div>`;
     document.getElementById("head-card").innerHTML = addHeadCard;
 
     //Imagen carta
-    document.getElementById("image-card").innerHTML = `<img src=${digimonData.images[0].href} class="card-img-top" alt="example-card">`;
+    document.getElementById("image-card").innerHTML = `<img src=${digimonData.images[0].href}>`;
 
     //Tabla 1
-    let attTable = `<tbody>
-                        <tr>
-                            <td>${mostrarLevels()}</td>
-                            <td>${mostrarAtributos()}</td>
-                            <td>${mostrarTipos()}</td>
-                        </tr>
-                    </tbody>`;
+    let attTable = `
+    <thead>
+        <tr>
+            <th>Level</th>
+            <th>Attribute</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>${mostrarLevels()}</td>
+            <td>${mostrarAtributos()}</td>
+            <td>${mostrarTipos()}</td>
+        </tr>
+    </tbody>`;
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
-    let fieldsTable =`<tbody>
-                        <tr>${mostrarFields()}</tr>
-                    </tbody>`;
+    let fieldsTable =`
+    <tbody>
+        <tr>
+            ${mostrarFields()}
+        </tr>
+    </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
 
     //xAntibody
     document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${digimonData.xAntibody}</p>`;
 
-    mostrarDescripcion();
-    mostrarHabilidades();
+    //MUESTRA LA DESCRIPCION DEL DIGIMON 
+    document.getElementById("info-digimon").innerHTML = `<p>${mostrarDescripcion()}</p>`;
+
+
     //Pre Evo
     document.getElementById("pre-evoluciones").innerHTML = mostrarPreEvoluciones();
 
     //Evo
     document.getElementById("evoluciones").innerHTML = mostrarEvoluciones();
-}
 
+}
 
 document.getElementById("btnBuscar").addEventListener("click", function () {
 
     buscador = document.getElementById("buscador").value;
+
     getJSONData(DIGIMON_URL + buscador).then(resultObj => {
         if (resultObj.status === "ok") {
             digimonData = resultObj.data;
             console.log(digimonData);
             mostrarDigimon(digimonData);
-            //mostrarHabilidades(digimonData);
+            mostrarHabilidades(digimonData);
         }
         else {
             alert("Digi-error");
         }
     });
 });
+
 
 
 
