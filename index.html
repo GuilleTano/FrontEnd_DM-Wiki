@@ -7,6 +7,20 @@
     <title>Busca un Digimon!</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4999f9f3a4.js" crossorigin="anonymous"></script>
+    <style>
+        /* Agregar estilos personalizados para el modo oscuro */
+        body {
+          background-color: #222;
+        }
+        .nav-tabs .nav-link.active, .nav-tabs .nav-link:hover {
+          background-color: #555;
+          border-color: transparent;
+        }
+        .tab-pane {
+          background-color: #333;
+          color: #fff;
+        }
+    </style>
 </head>
 
 <body class="bg-primary">
@@ -60,32 +74,32 @@
                         <button class="btn btn btn-dark" type="button" id="btnBuscar">Button</button>
                     </div>
                 </div>
-                <!-- DESCRPICION -->
-                <div class="text-white mt-4">
+                <!-- DESCRPICION 2.0 -->
+                <div class="mt-4">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link link-light bg-dark active" id="home-tab" data-bs-toggle="tab"
-                                data-bs-target="#english-info" type="button" role="tab" aria-controls="english-info"
-                                aria-selected="true">English</button>
+                        <li class="nav-item bg-dark rounded-top" role="presentation">
+                            <button class="nav-link active text-white" id="home-tab" data-bs-toggle="tab" data-bs-target="#english-info"
+                                type="button" role="tab" aria-controls="english-info" aria-selected="true">
+                                English</button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link link-light bg-dark" id="profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#japanese-info" type="button" role="tab"
-                                aria-controls="japanese-info" aria-selected="false">Japanese</button>
+                        <li class="nav-item bg-dark rounded-top" role="presentation">
+                            <button class="nav-link text-white" id="profile-tab" data-bs-toggle="tab" data-bs-target="#japanese-info"
+                                type="button" role="tab" aria-controls="japanese-info" aria-selected="false">
+                                Japanese</button>
                         </li>
                     </ul>
-                    <div class="tab-content p-3 bg-dark" id="myTabContent">
-                        <div class="tab-pane fade show active" id="english-info" role="tabpanel"
-                            aria-labelledby="home-tab" tabindex="0">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut rerum assumenda adipisci quod? Fugit a nemo doloremque dignissimos, repellendus voluptatem corporis quasi itaque ad mollitia iure doloribus, tempore labore nobis.
+                    <div class="tab-content bg-dark" id="myTabContent">
+                        <div class="tab-pane fade show active text-white p-3" id="english-info" role="tabpanel" aria-labelledby="home-tab">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut rerum assumenda adipisci quod? Fugit a nemo
+                            doloremque dignissimos, repellendus voluptatem corporis quasi itaque ad mollitia iure doloribus, tempore
+                            labore nobis.
                         </div>
-                        <div class="tab-pane fade" id="japanese-info" role="tabpanel" aria-labelledby="profile-tab"
-                            tabindex="0">
-                            "成長して二足歩行ができるようになった、小型の恐竜の様な姿をした爬虫類型デジモン。まだ成長途中なので力は弱いが、性格はかなり獰猛で恐いもの知らず。両手足には硬く鋭い爪が生えており、戦闘においても威力を発揮する。力ある偉大なデジモンへの進化を予測させる存在でもある。必殺技は口から火炎の息を吐き敵を攻撃する『ベビーフレイム』。
-                            "
+                        <div class="tab-pane fade text-white p-3" id="japanese-info" role="tabpanel" aria-labelledby="profile-tab">
+                            成長して二足歩行ができるようになった、小型の恐竜の様な姿をした爬虫類型デジモン。まだ成長途中なので力は弱いが、性格はかなり獰猛で恐いもの知らず。両手足には硬く鋭い爪が生えており、戦闘においても威力を発揮する。力ある偉大なデジモンへの進化を予測させる存在でもある。必殺技は口から火炎の息を吐き敵を攻撃する『ベビーフレイム』。
                         </div>
                     </div>
                 </div>
+
                 <!-- HABILIDADES -->
                 <div class="mt-4 overflow-auto" style="max-height: 20rem;">
                     <table class="table table-sm table-dark">
@@ -118,7 +132,7 @@
                     </div>
                     <!-- Imagen de la carta -->
                     <div class="px-3" id="image-card">
-                        <img src="images/example-card.jpg" class="card-img-top" alt="example-card">
+                        <img src="images/example-card2.jpg" class="card-img-top" alt="example-card">
                     </div>
                     <!-- TABLA DE DATOS -->
                     <div class="text-center card-body pb-0">
@@ -168,6 +182,23 @@
         </div>
 
         <!-- CUERPO 2 -->
+
+
+        <div>
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Details</button>
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Nombre del Digimon</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p>Aca van los detalles de la evolucion...</p>
+                </div>
+            </div>
+        </div>
+
+
         <!-- PRE-EVOLUCIONES -->
         <div class="mt-5">
             <div>
@@ -176,6 +207,8 @@
             <div class="overflow-auto px-3 mb-5" style="max-height: 34rem;">
 
                 <div class="row row-cols-1 row-cols-md-6 g-4 text-center" id="pre-evoluciones">
+
+
                     <div class="col">
                         <div class="card" style="width: 9.8rem; height: 16rem;">
                             <img src="images/logo-tamers.png" class="card-img-top" alt="...">
@@ -186,6 +219,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col">
                         <div class="card" style="width: 9.8rem; height: 16rem;">
                             <img src="images/logo-tamers.png" class="card-img-top" alt="...">

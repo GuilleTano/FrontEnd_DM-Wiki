@@ -179,8 +179,6 @@ function evoImages(evoID){
     .catch(error => alert("Hubo un error en las fotos: " + error));
 }
 
-
-
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon() {
     //Cabecera carta
@@ -219,6 +217,39 @@ function mostrarDigimon() {
     //Evo
     document.getElementById("evoluciones").innerHTML = mostrarEvoluciones();
 }
+
+
+/*
+//Detalles de evoluciones
+function evoDetails(){
+
+}
+*/
+
+
+
+
+
+//REDIRECCION DE EVOLUCIONES - en construccion
+/*
+function redirecEvo(){
+
+    document.getElementById("btnPruebas").addEventListener("click", function(){
+
+        getJSONData(DIGIMON_URL + redireccion).then(resultObj => {
+            if (resultObj.status === "ok") {
+                digimonData = resultObj.data;
+                console.log(digimonData);
+                mostrarDigimon(digimonData);
+                mostrarHabilidades(digimonData);
+            }
+            else {
+                alert("Digi-error");
+            }
+        });       
+    });
+}
+*/
 
 
 document.getElementById("btnBuscar").addEventListener("click", function () {
