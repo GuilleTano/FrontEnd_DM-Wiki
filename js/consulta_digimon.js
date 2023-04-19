@@ -1,7 +1,62 @@
-let buscador = "";
+const GET_BD = "http://localhost:3000/get-digimon-from-BD/";
+const GET_AWS = "http://localhost:3000/images-from-AWS/";
+
+// ****************** METODOS DE SOLICITUD DE DATOS AL SERVIDOR ******************
+
+// Da formato a la busqueda ingresada
+function formatString(string) {
+    // convierte la primera letra de cada palabra en mayúscula
+    string = string.replace(/\b\w/g, function(txt){
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+    
+    // convierte los números romanos a mayúsculas
+    string = string.replace(/\b(?:(?:i{1,3}(?=[^a-z]|$))|(?:iv(?=[^a-z]|$))|(?:v(?=[^a-z]|$))|(?:vi{1,3}(?=[^a-z]|$))|(?:ix(?=[^a-z]|$))|(?:x{1,3}(?=[^a-z]|$)))\b/gi, function(txt) {
+      return txt.toUpperCase();
+    });
+  
+    return string;
+}
+  
+
+// Este metodo trae la imagen del Digimon de AWS
+async function getImgFromS3(nombre) {
+
+    let newName = formatString(nombre);
+    newName = newName.replace(/\s+/g, '_');
+
+    fetch(GET_AWS + newName)
+        .then(response => response.json())
+        .then(awsImage => {
+            console.log(awsImage);
+
+            const imagen = awsImage.url;
+            document.getElementById("image-card").innerHTML = `<img src=${imagen} class="card-img-top" alt="example-card">`;
+        }).catch(error => console.error(error));
+}
+
+// Este metodo deberia traer el resto de datos de MongoDB
+async function getDigimonFromMongo(nombre) {
+
+    let newName = formatString(nombre);
+
+    fetch(GET_BD + newName)
+        .then(response => response.json())
+        .then(digiMongo => {
+            if (digiMongo.message){
+                return console.log(digiMongo);
+            }
+            console.log(digiMongo);
+            mostrarDigimon(digiMongo); // Aqui deberia agregar cada atributo del digimon a su lugar en el html
+
+        }).catch(error => console.error(error));
+}
+
+
+// ****************** METODOS DE CARGA DE DATOS EN LA PAGINA ******************
 
 //ESTAS FUNCIONES MUESTRAN LOS DATOS EN LA CARTA
-function mostrarLevels() {
+function mostrarLevels(digimonData) {
     let arrayLevels = [];
     for (let i = 0; i < digimonData.levels.length; i++) {
         arrayLevels += `<div>${digimonData.levels[i].level}</div>`;
@@ -9,7 +64,7 @@ function mostrarLevels() {
     return arrayLevels;
 }
 
-function mostrarAtributos() {
+function mostrarAtributos(digimonData) {
     let arrayAtributos = [];
     for (let i = 0; i < digimonData.attributes.length; i++) {
         arrayAtributos += `<div>${digimonData.attributes[i].attribute}</div>`;
@@ -17,7 +72,7 @@ function mostrarAtributos() {
     return arrayAtributos;
 }
 
-function mostrarTipos() {
+function mostrarTipos(digimonData) {
     let arrayTipos = [];
     for (let i = 0; i < digimonData.types.length; i++) {
         arrayTipos += `<div>${digimonData.types[i].type}</div>`;
@@ -25,7 +80,7 @@ function mostrarTipos() {
     return arrayTipos;
 }
 
-function mostrarFields() {
+function mostrarFields(digimonData) {
     let fieldsID = [];
     for (let i = 0; i < digimonData.fields.length; i++) {
         let fieldID = 0;
@@ -57,7 +112,7 @@ function mostrarFields() {
 }
 
 //FILTRA LAS DESCRIPCIONES Y LAS MUESTRA SEGUN EL IDIOMA
-function mostrarDescripcion() {
+function mostrarDescripcion(digimonData) {
     let descriptionEn = "";
     let descriptionJp = "";
     for (let i = 0; i < digimonData.descriptions.length; i++) {
@@ -73,7 +128,7 @@ function mostrarDescripcion() {
 }
 
 //FUNCION PARA MOSTRAR LAS SKILLS
-function mostrarHabilidades() {
+function mostrarHabilidades(digimonData) {
     let habilidades = [];
     for (let i = 0; i < digimonData.skills.length; i++) {
         if (digimonData.skills[i].translation == "") {
@@ -97,20 +152,16 @@ function mostrarHabilidades() {
 }
 
 //FUNCIONES PARA MOSTRAR LA LINEA EVOLUTIVA
-function mostrarPreEvoluciones() {
+function mostrarPreEvoluciones(digimonData) {
     let arrayPreEvos = [];
     for (let i = 0; i < digimonData.priorEvolutions.length; i++) {
 
         if(digimonData.priorEvolutions[i].id != null){
-
-            //console.log(digimonData.priorEvolutions[i].id)
-            //console.log( priorEvoImages(digimonData.priorEvolutions[i].id) );
-
             arrayPreEvos += `
             <div class="col">
                 <div class="card" style="width: 10rem; height: 16rem;">
-                    <div id=${digimonData.priorEvolutions[i].id}>
-                        <img src="images/logo-tamers.png" class="card-img-top" alt=${digimonData.priorEvolutions[i].digimon}>
+                    <div id="${digimonData.priorEvolutions[i].digimon}">
+                        
                     </div>
                     <div class="card-body overflow-auto">
                         <p class="card-title lh-1 fs-5 fw-bold">${digimonData.priorEvolutions[i].digimon}</p>
@@ -118,12 +169,12 @@ function mostrarPreEvoluciones() {
                     </div>
                 </div>
             </div>`;
-            priorEvoImages(digimonData.priorEvolutions[i].id);
+            priorEvoImages(digimonData.priorEvolutions[i].digimon);
         }
     }
     return arrayPreEvos;
 }
-function mostrarEvoluciones() {
+function mostrarEvoluciones(digimonData) {
     let arrayEvos = [];
     for (let i = 0; i < digimonData.nextEvolutions.length; i++) {
 
@@ -132,7 +183,7 @@ function mostrarEvoluciones() {
             arrayEvos += `
             <div class="col">
                 <div class="card" style="width: 10rem; height: 16rem;">
-                    <div id=${digimonData.nextEvolutions[i].id}>
+                    <div id="${digimonData.nextEvolutions[i].digimon}">
                         <img src="images/logo-tamers.png" class="card-img-top" alt=${digimonData.nextEvolutions[i].digimon}>
                     </div>
                     <div class="card-body overflow-auto">
@@ -141,81 +192,75 @@ function mostrarEvoluciones() {
                     </div>
                 </div>
             </div>`;
-            evoImages(digimonData.nextEvolutions[i].id);
+            nextEvoImages(digimonData.nextEvolutions[i].digimon);
         }
     }
     return arrayEvos;
 }
 
 //Imagenes pre-evos
-function priorEvoImages(prioID){
-    let prioImg = "";
-    const digimonID = prioID;
+function priorEvoImages(nombre){
+    let newName = formatString(nombre);
+    newName = newName.replace(/\s+/g, '_');
 
-    return fetch(DIGIMON_URL + digimonID)
-    .then(respuesta => respuesta.json())
-    .then(digimon =>{
-
-        prioImg = digimon.images[0].href;
-
-        document.getElementById(prioID).innerHTML = `<img src=${prioImg} class="card-img-top" alt="...">`;
-    })
-    .catch(error => alert("Hubo un error en las fotos: " + error));
+    fetch(GET_AWS + newName)
+        .then(response => response.json())
+        .then(awsImage => {
+            const imagen = awsImage.url;
+            document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${newName}>`;
+        }).catch(error => console.error(error));
 }
 
 //Imagenes evos
-function evoImages(evoID){
-    let evoImg = "";
-    const digimonID = evoID;
+function nextEvoImages(nombre){
+    let newName = formatString(nombre);
+    newName = newName.replace(/\s+/g, '_');
 
-    return fetch(DIGIMON_URL + digimonID)
-    .then(respuesta => respuesta.json())
-    .then(digimon =>{
-
-        evoImg = digimon.images[0].href;
-
-        document.getElementById(evoID).innerHTML = `<img src=${evoImg} class="card-img-top" alt="...">`;
-    })
-    .catch(error => alert("Hubo un error en las fotos: " + error));
+    fetch(GET_AWS + newName)
+        .then(response => response.json())
+        .then(awsImage => {
+            const imagen = awsImage.url;
+            document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${newName}>`;
+        }).catch(error => console.error(error));
 }
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
-function mostrarDigimon() {
+function mostrarDigimon(digimonData) {
     //Cabecera carta
     let addHeadCard = `
     <div class="text-center card-body py-0"><small>${digimonData.id}</small></div>
     <h5 class="card-title my-0 py-0">${digimonData.name}</h5>`;
     document.getElementById("head-card").innerHTML = addHeadCard;
 
-    //Imagen carta
-    document.getElementById("image-card").innerHTML = `<img src=${digimonData.images[0].href} class="card-img-top" alt="example-card">`;
+    //document.getElementById("image-card").innerHTML = `<img src=${getImgFromS3(digimonData.name)} class="card-img-top" alt="example-card">`;
+
 
     //Tabla 1
     let attTable = `<tbody>
                         <tr>
-                            <td>${mostrarLevels()}</td>
-                            <td>${mostrarAtributos()}</td>
-                            <td>${mostrarTipos()}</td>
+                            <td>${mostrarLevels(digimonData)}</td>
+                            <td>${mostrarAtributos(digimonData)}</td>
+                            <td>${mostrarTipos(digimonData)}</td>
                         </tr>
                     </tbody>`;
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
     let fieldsTable =`<tbody>
-                        <tr>${mostrarFields()}</tr>
+                        <tr>${mostrarFields(digimonData)}</tr>
                     </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
 
     //xAntibody
     document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${digimonData.xAntibody}</p>`;
 
-    mostrarDescripcion();
-    mostrarHabilidades();
+    mostrarDescripcion(digimonData);
+    mostrarHabilidades(digimonData);
     //Pre Evo
-    document.getElementById("pre-evoluciones").innerHTML = mostrarPreEvoluciones();
+    document.getElementById("pre-evoluciones").innerHTML = mostrarPreEvoluciones(digimonData);
 
     //Evo
-    document.getElementById("evoluciones").innerHTML = mostrarEvoluciones();
+    document.getElementById("evoluciones").innerHTML = mostrarEvoluciones(digimonData);
 }
 
 
@@ -225,9 +270,6 @@ function evoDetails(){
 
 }
 */
-
-
-
 
 
 //REDIRECCION DE EVOLUCIONES - en construccion
@@ -254,6 +296,17 @@ function redirecEvo(){
 
 document.getElementById("btnBuscar").addEventListener("click", function () {
 
+    let buscador = document.getElementById("buscador").value
+
+    getImgFromS3(buscador);
+    getDigimonFromMongo(buscador);
+});
+
+
+
+// ANTIGUO BOTON BUSCAR
+/*document.getElementById("btnBuscar").addEventListener("click", function () {
+
     buscador = document.getElementById("buscador").value;
     getJSONData(DIGIMON_URL + buscador).then(resultObj => {
         if (resultObj.status === "ok") {
@@ -267,7 +320,7 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
         }
     });
 });
-
+*/
 
 
 
