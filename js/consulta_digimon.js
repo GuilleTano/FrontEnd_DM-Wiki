@@ -1,23 +1,52 @@
 const GET_BD = "http://localhost:3000/get-digimon-from-BD/";
 const GET_AWS = "http://localhost:3000/images-from-AWS/";
 
+
 // ****************** METODOS DE SOLICITUD DE DATOS AL SERVIDOR ******************
 
 // Da formato a la busqueda ingresada
 function formatString(string) {
     // convierte la primera letra de cada palabra en mayúscula
-    string = string.replace(/\b\w/g, function(txt){
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    string = string.replace(/\b\w/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
-    
+
     // convierte los números romanos a mayúsculas
-    string = string.replace(/\b(?:(?:i{1,3}(?=[^a-z]|$))|(?:iv(?=[^a-z]|$))|(?:v(?=[^a-z]|$))|(?:vi{1,3}(?=[^a-z]|$))|(?:ix(?=[^a-z]|$))|(?:x{1,3}(?=[^a-z]|$)))\b/gi, function(txt) {
-      return txt.toUpperCase();
+    string = string.replace(/\b(?:(?:i{1,3}(?=[^a-z]|$))|(?:iv(?=[^a-z]|$))|(?:v(?=[^a-z]|$))|(?:vi{1,3}(?=[^a-z]|$))|(?:ix(?=[^a-z]|$))|(?:x{1,3}(?=[^a-z]|$)))\b/gi, function (txt) {
+        return txt.toUpperCase();
     });
-  
+
     return string;
 }
-  
+
+// Funcion para buscador
+async function buscarDigimon(nombre) {
+
+    const nombreMin = nombre.toLowerCase();
+    //const listaNombres = JSON.parse(objectList.json);
+
+    await fetch('../JSON/objectList.json')
+    .then(response => response.json())
+    .then(data => {
+            // Aquí ya tienes los datos parseados en la variable 'data'
+            //console.log(data);
+            let listaNombres = JSON.parse(data);
+
+            for (digimon of listaNombres) {
+
+                if (nombreMin === digimon.nameLowercase) {
+                    return console.log("Busqueda para AWS: " + digimon.s3ImageName);
+                }
+        
+        
+                return console.log("No existe o no funciono");
+            }
+    })
+    .catch(error => console.error(error));
+}
+
+
+
 
 // Este metodo trae la imagen del Digimon de AWS
 async function getImgFromS3(nombre) {
@@ -43,7 +72,7 @@ async function getDigimonFromMongo(nombre) {
     fetch(GET_BD + newName)
         .then(response => response.json())
         .then(digiMongo => {
-            if (digiMongo.message){
+            if (digiMongo.message) {
                 return console.log(digiMongo);
             }
             console.log(digiMongo);
@@ -84,26 +113,26 @@ function mostrarFields(digimonData) {
     let fieldsID = [];
     for (let i = 0; i < digimonData.fields.length; i++) {
         let fieldID = 0;
-        switch(digimonData.fields[i].id){
-            case 1: fieldID ="images/NatureSpirits.png";
+        switch (digimonData.fields[i].id) {
+            case 1: fieldID = "images/NatureSpirits.png";
                 break;
-            case 2: fieldID ="images/VirusBusters.png";
+            case 2: fieldID = "images/VirusBusters.png";
                 break;
-            case 3: fieldID ="images/WindGuardians.png";
+            case 3: fieldID = "images/WindGuardians.png";
                 break;
-            case 4: fieldID ="images/Unknown.png";
+            case 4: fieldID = "images/Unknown.png";
                 break;
-            case 5: fieldID ="images/MetalEmpire.png";
+            case 5: fieldID = "images/MetalEmpire.png";
                 break;
-            case 6: fieldID ="images/DeepSavers.png";
+            case 6: fieldID = "images/DeepSavers.png";
                 break;
-            case 7: fieldID ="images/DarkArea.png";
+            case 7: fieldID = "images/DarkArea.png";
                 break;
-            case 8: fieldID ="images/NightmareSoldiers.png";
+            case 8: fieldID = "images/NightmareSoldiers.png";
                 break;
-            case 9: fieldID ="images/DragonsRoar.png";
+            case 9: fieldID = "images/DragonsRoar.png";
                 break;
-            case 10: fieldID ="images/JungleTroopers.png";
+            case 10: fieldID = "images/JungleTroopers.png";
                 break;
         }
         fieldsID += `<td><img src="${fieldID}" alt="${digimonData.fields[i].field}"></td>`;
@@ -119,7 +148,7 @@ function mostrarDescripcion(digimonData) {
         if (digimonData.descriptions[i].language == "en_us") {
             descriptionEn = `<p>${digimonData.descriptions[i].description}</p>`;
         }
-        else{
+        else {
             descriptionJp = `<p>${digimonData.descriptions[i].description}</p>`;
         }
     }
@@ -139,7 +168,7 @@ function mostrarHabilidades(digimonData) {
                 </tr>
             `;
         }
-        else{
+        else {
             habilidades += `
                 <tr>
                     <td>${digimonData.skills[i].skill} / ${digimonData.skills[i].translation}</td>
@@ -156,7 +185,7 @@ function mostrarPreEvoluciones(digimonData) {
     let arrayPreEvos = [];
     for (let i = 0; i < digimonData.priorEvolutions.length; i++) {
 
-        if(digimonData.priorEvolutions[i].id != null){
+        if (digimonData.priorEvolutions[i].id != null) {
             arrayPreEvos += `
             <div class="col">
                 <div class="card" style="width: 10rem; height: 16rem;">
@@ -178,7 +207,7 @@ function mostrarEvoluciones(digimonData) {
     let arrayEvos = [];
     for (let i = 0; i < digimonData.nextEvolutions.length; i++) {
 
-        if(digimonData.nextEvolutions[i].id != null){
+        if (digimonData.nextEvolutions[i].id != null) {
 
             arrayEvos += `
             <div class="col">
@@ -199,7 +228,7 @@ function mostrarEvoluciones(digimonData) {
 }
 
 //Imagenes pre-evos
-function priorEvoImages(nombre){
+function priorEvoImages(nombre) {
     let newName = formatString(nombre);
     newName = newName.replace(/\s+/g, '_');
 
@@ -212,7 +241,7 @@ function priorEvoImages(nombre){
 }
 
 //Imagenes evos
-function nextEvoImages(nombre){
+function nextEvoImages(nombre) {
     let newName = formatString(nombre);
     newName = newName.replace(/\s+/g, '_');
 
@@ -246,7 +275,7 @@ function mostrarDigimon(digimonData) {
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
-    let fieldsTable =`<tbody>
+    let fieldsTable = `<tbody>
                         <tr>${mostrarFields(digimonData)}</tr>
                     </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
@@ -264,8 +293,7 @@ function mostrarDigimon(digimonData) {
 }
 
 
-/*
-//Detalles de evoluciones
+/*Detalles de evoluciones
 function evoDetails(){
 
 }
@@ -300,33 +328,17 @@ document.getElementById("btnBuscar").addEventListener("click", function () {
 
     getImgFromS3(buscador);
     getDigimonFromMongo(buscador);
+
+    buscarDigimon(buscador);
 });
 
 
 
-// ANTIGUO BOTON BUSCAR
-/*document.getElementById("btnBuscar").addEventListener("click", function () {
-
-    buscador = document.getElementById("buscador").value;
-    getJSONData(DIGIMON_URL + buscador).then(resultObj => {
-        if (resultObj.status === "ok") {
-            digimonData = resultObj.data;
-            console.log(digimonData);
-            mostrarDigimon(digimonData);
-            //mostrarHabilidades(digimonData);
-        }
-        else {
-            alert("Digi-error");
-        }
-    });
-});
-*/
 
 
 
-
-//**************************** BOTONES DE PRUEBAS ****************************
-document.getElementById("btnPruebas").addEventListener("click", function(){
+/**************************** BOTON DE PRUEBA (ya no sirve) ****************************
+document.getElementById("btnPruebas").addEventListener("click", function () {
     getJSONData(DIGIMON_URL + "beelzebumon").then(resultObj => {
         if (resultObj.status === "ok") {
             digimonData = resultObj.data;
@@ -337,32 +349,38 @@ document.getElementById("btnPruebas").addEventListener("click", function(){
         else {
             alert("Digi-error");
         }
-    });       
-});
-document.getElementById("btnPruebas2").addEventListener("click", function(){
-    getJSONData(DIGIMON_URL + "tailmon").then(resultObj => {
-        if (resultObj.status === "ok") {
-            digimonData = resultObj.data;
-            console.log(digimonData);
-            mostrarDigimon(digimonData);
-            mostrarHabilidades(digimonData);
-        }
-        else {
-            alert("Digi-error");
-        }
-    });       
-});
-document.getElementById("btnPruebas3").addEventListener("click", function(){
-    getJSONData(DIGIMON_URL + "agumon").then(resultObj => {
-        if (resultObj.status === "ok") {
-            digimonData = resultObj.data;
-            console.log(digimonData);
-            mostrarDigimon(digimonData);
-            mostrarHabilidades(digimonData);
-        }
-        else {
-            alert("Digi-error");
-        }
     });
-
 });
+*/
+
+
+/**************************** PENDIENTES Y EN PROCESO ****************************
+
+
+
+*/
+
+// POSIBLE SISTEMA DE SUGERENCIAS DE BUSQUEDA?
+/*
+
+function searchSuggestions(search) {
+    const searchLowercase = search.toLowerCase();
+    const suggestions = [];
+    for (let i = 0; i < objectList.length; i++) {
+        const objectName = objectList[i].nameLowercase;
+        if (objectName.includes(searchLowercase)) {
+            // La cadena de búsqueda coincide parcialmente con el nombre en minúsculas del objeto
+            suggestions.push(objectList[i].mongoName);
+        } else {
+            // La cadena de búsqueda no coincide parcialmente con el nombre en minúsculas del objeto,
+            // pero podría haber sugerencias basadas en una comparación de cadenas más avanzada
+            // por ejemplo, utilizando técnicas de comparación de cadenas de texto como Levenshtein
+            // distance o Fuzzy matching.
+            // Aquí podrías añadir código para implementar esas técnicas.
+        }
+    }
+    return suggestions;
+}
+
+
+*/

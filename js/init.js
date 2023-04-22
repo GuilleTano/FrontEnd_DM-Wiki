@@ -1,3 +1,9 @@
+/*
+
+  HACER MI PROPIO INIT ????
+
+*/
+
 const DIGIMON_URL = "https://www.digi-api.com/api/v1/digimon/";
 //const FIELDS_URL = "https://www.digi-api.com/api/v1/field";
 
