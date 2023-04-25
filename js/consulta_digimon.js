@@ -4,60 +4,31 @@ const GET_AWS = "http://localhost:3000/images-from-AWS/";
 
 // ****************** METODOS DE SOLICITUD DE DATOS AL SERVIDOR ******************
 
-// Da formato a la busqueda ingresada
-function formatString(string) {
-    // convierte la primera letra de cada palabra en mayúscula
-    string = string.replace(/\b\w/g, function (txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
+// Funcion para dar formato a las busquedas en mongo y AWS
+async function buscarDigimon(buscador) {
+    let unDigimon = {};
+    const nombreMin = buscador.toLowerCase();
+    const digimonList = await JSON.parse(localStorage.getItem('digimonList'));
 
-    // convierte los números romanos a mayúsculas
-    string = string.replace(/\b(?:(?:i{1,3}(?=[^a-z]|$))|(?:iv(?=[^a-z]|$))|(?:v(?=[^a-z]|$))|(?:vi{1,3}(?=[^a-z]|$))|(?:ix(?=[^a-z]|$))|(?:x{1,3}(?=[^a-z]|$)))\b/gi, function (txt) {
-        return txt.toUpperCase();
-    });
+    for (i=0; i < digimonList.nombres.length; i++) {
+        if (digimonList.nombres[i].nameLowercase === nombreMin) {
 
-    return string;
+            unDigimon = digimonList.nombres[i];
+            return unDigimon;
+        }
+    }
+    return console.log("El digimon no existe");
 }
-
-// Funcion para buscador
-async function buscarDigimon(nombre) {
-
-    const nombreMin = nombre.toLowerCase();
-    //const listaNombres = JSON.parse(objectList.json);
-
-    await fetch('../JSON/objectList.json')
-    .then(response => response.json())
-    .then(data => {
-            // Aquí ya tienes los datos parseados en la variable 'data'
-            //console.log(data);
-            let listaNombres = JSON.parse(data);
-
-            for (digimon of listaNombres) {
-
-                if (nombreMin === digimon.nameLowercase) {
-                    return console.log("Busqueda para AWS: " + digimon.s3ImageName);
-                }
-        
-        
-                return console.log("No existe o no funciono");
-            }
-    })
-    .catch(error => console.error(error));
-}
-
-
 
 
 // Este metodo trae la imagen del Digimon de AWS
-async function getImgFromS3(nombre) {
+async function getImgFromS3(digimon) {
 
-    let newName = formatString(nombre);
-    newName = newName.replace(/\s+/g, '_');
+    let nombreAWS = digimon.s3ImageName;
 
-    fetch(GET_AWS + newName)
+    fetch(GET_AWS + nombreAWS)
         .then(response => response.json())
         .then(awsImage => {
-            console.log(awsImage);
 
             const imagen = awsImage.url;
             document.getElementById("image-card").innerHTML = `<img src=${imagen} class="card-img-top" alt="example-card">`;
@@ -65,19 +36,18 @@ async function getImgFromS3(nombre) {
 }
 
 // Este metodo deberia traer el resto de datos de MongoDB
-async function getDigimonFromMongo(nombre) {
+async function getDigimonFromMongo(digimon) {
 
-    let newName = formatString(nombre);
+    let nombreMongo = digimon.mongoName;
 
-    fetch(GET_BD + newName)
+    fetch(GET_BD + nombreMongo)
         .then(response => response.json())
         .then(digiMongo => {
             if (digiMongo.message) {
                 return console.log(digiMongo);
             }
-            console.log(digiMongo);
+            //console.log(digiMongo);
             mostrarDigimon(digiMongo); // Aqui deberia agregar cada atributo del digimon a su lugar en el html
-
         }).catch(error => console.error(error));
 }
 
@@ -229,27 +199,27 @@ function mostrarEvoluciones(digimonData) {
 
 //Imagenes pre-evos
 function priorEvoImages(nombre) {
-    let newName = formatString(nombre);
-    newName = newName.replace(/\s+/g, '_');
+    //let newName = formatString(nombre);
+    //newName = newName.replace(/\s+/g, '_');
 
-    fetch(GET_AWS + newName)
+    fetch(GET_AWS + nombre)
         .then(response => response.json())
         .then(awsImage => {
             const imagen = awsImage.url;
-            document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${newName}>`;
+            document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${nombre}>`;
         }).catch(error => console.error(error));
 }
 
 //Imagenes evos
 function nextEvoImages(nombre) {
-    let newName = formatString(nombre);
-    newName = newName.replace(/\s+/g, '_');
+    //let newName = formatString(nombre);
+    //newName = newName.replace(/\s+/g, '_');
 
-    fetch(GET_AWS + newName)
+    fetch(GET_AWS + nombre)
         .then(response => response.json())
         .then(awsImage => {
             const imagen = awsImage.url;
-            document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${newName}>`;
+            document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${nombre}>`;
         }).catch(error => console.error(error));
 }
 
@@ -286,50 +256,27 @@ function mostrarDigimon(digimonData) {
     mostrarDescripcion(digimonData);
     mostrarHabilidades(digimonData);
     //Pre Evo
-    document.getElementById("pre-evoluciones").innerHTML = mostrarPreEvoluciones(digimonData);
+    //document.getElementById("pre-evoluciones").innerHTML = mostrarPreEvoluciones(digimonData);
 
     //Evo
-    document.getElementById("evoluciones").innerHTML = mostrarEvoluciones(digimonData);
+    //document.getElementById("evoluciones").innerHTML = mostrarEvoluciones(digimonData);
 }
 
-
-/*Detalles de evoluciones
-function evoDetails(){
-
-}
-*/
-
-
-//REDIRECCION DE EVOLUCIONES - en construccion
-/*
-function redirecEvo(){
-
-    document.getElementById("btnPruebas").addEventListener("click", function(){
-
-        getJSONData(DIGIMON_URL + redireccion).then(resultObj => {
-            if (resultObj.status === "ok") {
-                digimonData = resultObj.data;
-                console.log(digimonData);
-                mostrarDigimon(digimonData);
-                mostrarHabilidades(digimonData);
-            }
-            else {
-                alert("Digi-error");
-            }
-        });       
-    });
-}
-*/
 
 
 document.getElementById("btnBuscar").addEventListener("click", function () {
 
     let buscador = document.getElementById("buscador").value
 
-    getImgFromS3(buscador);
-    getDigimonFromMongo(buscador);
+    buscarDigimon(buscador).then((digimon) =>{
+        console.log(digimon);
+        getImgFromS3(digimon);
+        getDigimonFromMongo(digimon);
+    });
+    
 
-    buscarDigimon(buscador);
+    // HAY QUE REHACER LA FORMA DE CARGAR LAS EVOLUCIONES
+
 });
 
 
@@ -356,31 +303,6 @@ document.getElementById("btnPruebas").addEventListener("click", function () {
 
 /**************************** PENDIENTES Y EN PROCESO ****************************
 
-
-
-*/
-
-// POSIBLE SISTEMA DE SUGERENCIAS DE BUSQUEDA?
-/*
-
-function searchSuggestions(search) {
-    const searchLowercase = search.toLowerCase();
-    const suggestions = [];
-    for (let i = 0; i < objectList.length; i++) {
-        const objectName = objectList[i].nameLowercase;
-        if (objectName.includes(searchLowercase)) {
-            // La cadena de búsqueda coincide parcialmente con el nombre en minúsculas del objeto
-            suggestions.push(objectList[i].mongoName);
-        } else {
-            // La cadena de búsqueda no coincide parcialmente con el nombre en minúsculas del objeto,
-            // pero podría haber sugerencias basadas en una comparación de cadenas más avanzada
-            // por ejemplo, utilizando técnicas de comparación de cadenas de texto como Levenshtein
-            // distance o Fuzzy matching.
-            // Aquí podrías añadir código para implementar esas técnicas.
-        }
-    }
-    return suggestions;
-}
 
 
 */
