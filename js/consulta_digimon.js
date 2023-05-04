@@ -110,6 +110,8 @@ function mostrarFields(digimonData) {
     return fieldsID;
 }
 
+
+
 //FILTRA LAS DESCRIPCIONES Y LAS MUESTRA SEGUN EL IDIOMA
 function mostrarDescripcion(digimonData) {
     let descriptionEn = "";
@@ -222,6 +224,10 @@ function nextEvoImages(nombre) {
             document.getElementById(nombre).innerHTML = `<img src=${imagen} class="card-img-top" alt=${nombre}>`;
         }).catch(error => console.error(error));
 }
+
+
+
+
 
 // FUNCION MOSTRAR - MUESTRA LA CARTA DEL DIGIMON Y LA DESCRIPCION
 function mostrarDigimon(digimonData) {

@@ -6,51 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Busca un Digimon!</title>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/indexStyle.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4999f9f3a4.js" crossorigin="anonymous"></script>
-    <style>
-        /* Agregar estilos personalizados para el modo oscuro */
-        body {
-          background-color: #222;
-        }
-        .nav-tabs .nav-link.active, .nav-tabs .nav-link:hover {
-          background-color: #555;
-          border-color: transparent;
-        }
-        .tab-pane {
-          background-color: #333;
-          color: #fff;
-        }
-    </style>
+
 </head>
 
 <body class="bg-primary">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid ms-4 my-1">
-
-            <img src="images/logo.png" alt="Logo" width="135" height="55" class="d-inline-block align-text-top">
-
-            <div class="d-flex me-3" id="navbarSupportedContent">
-                <ul class="navbar-nav me-3 mb-2 mb-lg-0">
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About</a>
-                    </li>
-                    <!-- DROPDOWN -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="Logo" width="135" height="55" class="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <div class="col-4 offset-md-3">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
+                            aria-describedby="btnBuscar" id="buscador">
+                        <button class="btn btn-primary" type="button" id="btnBuscar">Search</button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -59,41 +37,50 @@
         <div class="row my-5">
             <!-- CUERPO 1 -->
             <div class="col-8">
-                <!-- BUSCADOR -->
+                <!-- BUSCADOR (old) -->
+                <!--
                 <div class="col-6 offset-md-3">
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
                             aria-describedby="btnBuscar" id="buscador">
-                        <button class="btn btn btn-dark" type="button" id="btnBuscar">Button</button>
+                        <button class="btn btn-dark" type="button" id="btnBuscar">Button</button>
                     </div>
                 </div>
+                -->
                 <!-- DESCRPICION 2.0 -->
-                <div class="mt-4">
+                <div class="mt-0">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item bg-dark rounded-top" role="presentation">
-                            <button class="nav-link active text-white" id="home-tab" data-bs-toggle="tab" data-bs-target="#english-info"
-                                type="button" role="tab" aria-controls="english-info" aria-selected="true">
+                            <button class="nav-link active text-white" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#english-info" type="button" role="tab" aria-controls="english-info"
+                                aria-selected="true">
                                 English</button>
                         </li>
                         <li class="nav-item bg-dark rounded-top" role="presentation">
-                            <button class="nav-link text-white" id="profile-tab" data-bs-toggle="tab" data-bs-target="#japanese-info"
-                                type="button" role="tab" aria-controls="japanese-info" aria-selected="false">
+                            <button class="nav-link text-white" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#japanese-info" type="button" role="tab" aria-controls="japanese-info"
+                                aria-selected="false">
                                 Japanese</button>
                         </li>
                     </ul>
                     <div class="tab-content bg-dark" id="myTabContent">
-                        <div class="tab-pane fade show active text-white p-3" id="english-info" role="tabpanel" aria-labelledby="home-tab">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut rerum assumenda adipisci quod? Fugit a nemo
-                            doloremque dignissimos, repellendus voluptatem corporis quasi itaque ad mollitia iure doloribus, tempore
+                        <div class="tab-pane fade show active text-white p-3" id="english-info" role="tabpanel"
+                            aria-labelledby="home-tab">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut rerum assumenda adipisci quod?
+                            Fugit a nemo
+                            doloremque dignissimos, repellendus voluptatem corporis quasi itaque ad mollitia iure
+                            doloribus, tempore
                             labore nobis.
                         </div>
-                        <div class="tab-pane fade text-white p-3" id="japanese-info" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade text-white p-3" id="japanese-info" role="tabpanel"
+                            aria-labelledby="profile-tab">
                             成長して二足歩行ができるようになった、小型の恐竜の様な姿をした爬虫類型デジモン。まだ成長途中なので力は弱いが、性格はかなり獰猛で恐いもの知らず。両手足には硬く鋭い爪が生えており、戦闘においても威力を発揮する。力ある偉大なデジモンへの進化を予測させる存在でもある。必殺技は口から火炎の息を吐き敵を攻撃する『ベビーフレイム』。
                         </div>
                     </div>
                 </div>
 
-                <!-- HABILIDADES -->
+                <!-- HABILIDADES (old) -->
+                <!--
                 <div class="mt-4 overflow-auto" style="max-height: 20rem;">
                     <table class="table table-sm table-dark">
                         <thead class="text-center">
@@ -114,6 +101,61 @@
                         </tbody>
                     </table>
                 </div>
+                -->
+
+                <!-- Habilidades 2.0 -->
+                <div class="bg-dark rounded mt-4">
+                    <h4 class="fw-bold text-light text-center mb-0 p-1">Skills</h4>
+
+                    <div class="accordion accordion-dark" id="digimon-skills">
+                        <div class="accordion-item bg-dark">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseOne">
+                                    Habilidad 1
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                                aria-labelledby="panelsStayOpen-headingOne">
+                                <div class="accordion-body text-light p-2 desc-Skill">
+                                    Descripcion de habilidad
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-dark">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseTwo">
+                                    Habilidad 2
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="panelsStayOpen-headingTwo">
+                                <div class="accordion-body text-light p-2 desc-Skill">
+                                    Descripcion de habilidad
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-dark">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseThree">
+                                    Habilidad 3
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="panelsStayOpen-headingThree">
+                                <div class="accordion-body text-light p-2 desc-Skill">
+                                    Descripcion de habilidad
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- CARTA -->
             <div class="col-4 text-black">
@@ -176,11 +218,236 @@
 
         <!-- CUERPO 2 -->
 
+        <!-- Carrusel evos -->
+        <div class="row my-5">
+            <!-- PRIOR EVO-->
+            <div class="col">
+                <div class="bg-dark text-white p-3 mb-3 text-center">
+                    <h4>Evolves from</h4>
+                </div>
 
-        <div>
-            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Details</button>
+                <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
+                
+                    <!-- Miniatura del carrousel -->
+                    <div class="carousel-indicators carousel-indicators-mini" id="priorEvo-miniatures">
+                
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+                
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+                
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
 
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class="">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5" class="">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6" class="">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+                
+                    </div>
+                
+                    <!-- Imagen principal -->
+                    <div class="carousel-inner" id="prior-evolutions">
+                        <div class="carousel-item active">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- NEXT EVO -->
+            <div class="col">
+                <div class="bg-dark text-white p-3 mb-3 text-center">
+                    <h4>Evolves to</h4>
+                </div>
+
+                <div id="carouselExampleIndicators2" class="carousel carousel-dark slide" data-bs-ride="true">
+                
+                    <!-- Miniatura del carrousel -->
+                    <div class="carousel-indicators carousel-indicators-mini" id="nextEvo-miniatures">
+
+                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+                
+                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+                
+                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+
+                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="3" aria-label="Slide 4">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+
+                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="4" aria-label="Slide 5">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+
+                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="5" aria-label="Slide 6">
+                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
+                        </button>
+                
+                    </div>
+                
+                    <!-- Imagen principal -->
+                    <div class="carousel-inner" id="next-evolutions">
+                        <div class="carousel-item active">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+                
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+                
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+                
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card w-50 mx-auto">
+                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
+                                <div class="card-body p-2">
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+        <br>
+        <br>
+
+        <!-- Boton de detalles -->
+        <!--
+        <div class="mt-5">
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Details</button>
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Nombre del Digimon</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -190,218 +457,7 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- PRE-EVOLUCIONES -->
-        <div class="mt-5">
-            <div>
-                <h4>Evolves from</h4>
-            </div>
-            <div class="overflow-auto px-3 mb-5" style="max-height: 34rem;">
-
-                <div class="row row-cols-1 row-cols-md-6 g-4 text-center" id="pre-evoluciones">
-
-
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-            </div>
-        </div>
-
-        <!-- EVOLUCIONES -->
-        <div class="mt-5">
-            <div>
-                <h4>Evolves to</h4>
-            </div>
-            <div class="overflow-auto px-3 mb-5" style="max-height: 34rem;">
-                <div class="row row-cols-1 row-cols-md-6 g-4 text-center" id="evoluciones">
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 9.8rem; height: 16rem;">
-                            <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-subtitle text-muted fs-6 lh-1 fw-bold"><small>123</small></p>
-                                <p class="card-title lh-1 fs-5 fw-bold">Card title</p>
-                                <p class="card-text fs-6 lh-1">Descripcion</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+        -->
 
 
     </main>
@@ -439,6 +495,7 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/index.js"></script>
     <script src="js/buscar_digimon.js"></script>
+    <script src="js/miniaturasStyle.js"></script>
 </body>
 
 </html>

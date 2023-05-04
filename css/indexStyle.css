@@ -1,0 +1,55 @@
+body {
+    background-color: #222;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+    background-color: #555;
+    border-color: transparent;
+}
+
+.tab-pane {
+    background-color: #333;
+    color: #fff;
+}
+
+.desc-Skill {
+    background-color: #333;
+    color: #fff;
+}
+
+.carousel-indicators button {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+/*carousel-indicators-mini {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    transform: translateY(92px);
+    max-height: 200px; /* Altura máxima de la sección de miniaturas 
+    overflow: hidden !important; /* Oculta las miniaturas que sobrepasen la altura máxima 
+}
+*/
+
+
+.carousel-indicators-mini {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  transform: translateY(92px); /* Ajustar la posición vertical */
+}
+

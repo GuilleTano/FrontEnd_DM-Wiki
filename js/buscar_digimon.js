@@ -26,7 +26,7 @@ class DigimonModel {
 // ****************** METODOS PARA LA BUSQUEDA Y SOLICITUD DE DATOS ******************
 
 // Crea el objeto usado para las busquedas en mongo y AWS
-async function buscarDigimon(buscador) {
+async function formatSearch(buscador) {
     let unDigimon = {};
     const nombreMin = buscador.toLowerCase();
     const digimonList = await JSON.parse(localStorage.getItem('digimonList'));
@@ -38,7 +38,8 @@ async function buscarDigimon(buscador) {
             return unDigimon;
         }
     }
-    return console.log("El digimon no existe");
+
+    return console.log("El digimon " + nombreMin + " no existe");
 }
 
 // Este metodo trae los datos de MongoDB
@@ -77,26 +78,10 @@ async function getImgFromS3(digimon) {
 }
 
 
-// ****************** METODOS DE CARGA DE DATOS EN LA PAGINA ******************
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ****************** BOTON DE BUSQUEDA ******************
-document.getElementById("btnBuscar").addEventListener("click", async function () {
-
-    let buscador = document.getElementById("buscador").value
-
-    let digimon = await buscarDigimon(buscador);
+async function searchDigimon(){
+    let search = document.getElementById("buscador").value
+    let clearSearch = search.normalize('NFKD').replace(/[^\x20-\x7E]/g, ''); //Esta linea elimina caracteres invisibles
+    let digimon = await formatSearch(clearSearch);
     let digimonData = await getDigimonFromMongo(digimon);
     let digimonImage = await getImgFromS3(digimon);
 
@@ -116,9 +101,272 @@ document.getElementById("btnBuscar").addEventListener("click", async function ()
     );
     unDigimon.addImage = digimonImage;
 
-    console.log(unDigimon); // Aqui esta el Digimon de mi clase, con imagen incluida
+    return unDigimon
+}
 
-    // Tengo que usar el objeto unDigimon como parametro para cargar sus datos en la pagina
+// ****************** METODOS DE CARGA DE DATOS EN LA PAGINA ******************
+
+function showLevels(unDigimon) {
+    let levelsList = [];
+    for (let i = 0; i < unDigimon.levels.length; i++) {
+        levelsList += `<div>${unDigimon.levels[i].level}</div>`;
+    }
+    return levelsList;
+}
+
+function showAtributes(unDigimon) {
+    let atributesList = [];
+    for (let i = 0; i < unDigimon.attributes.length; i++) {
+        atributesList += `<div>${unDigimon.attributes[i].attribute}</div>`;
+    }
+    return atributesList;
+}
+
+function showTypes(unDigimon) {
+    let typesList = [];
+    for (let i = 0; i < unDigimon.types.length; i++) {
+        typesList += `<div>${unDigimon.types[i].type}</div>`;
+    }
+    return typesList;
+}
+
+function showFields(unDigimon) {
+    let fieldsList = [];
+    for (let i = 0; i < unDigimon.fields.length; i++) {
+        let fieldID = 0;
+        switch (unDigimon.fields[i].id) {
+            case 1: fieldID = "images/NatureSpirits.png";
+                break;
+            case 2: fieldID = "images/VirusBusters.png";
+                break;
+            case 3: fieldID = "images/WindGuardians.png";
+                break;
+            case 4: fieldID = "images/Unknown.png";
+                break;
+            case 5: fieldID = "images/MetalEmpire.png";
+                break;
+            case 6: fieldID = "images/DeepSavers.png";
+                break;
+            case 7: fieldID = "images/DarkArea.png";
+                break;
+            case 8: fieldID = "images/NightmareSoldiers.png";
+                break;
+            case 9: fieldID = "images/DragonsRoar.png";
+                break;
+            case 10: fieldID = "images/JungleTroopers.png";
+                break;
+        }
+        fieldsList += `<td><img src="${fieldID}" alt="${unDigimon.fields[i].field}"></td>`;
+    }
+    return fieldsList;
+}
+
+function showDescriptions(unDigimon) {
+    let descriptionEn = "";
+    let descriptionJp = "";
+    for (let i = 0; i < unDigimon.descriptions.length; i++) {
+        if (unDigimon.descriptions[i].language == "en_us") {
+            descriptionEn = `<p>${unDigimon.descriptions[i].description}</p>`;
+        }
+        else {
+            descriptionJp = `<p>${unDigimon.descriptions[i].description}</p>`;
+        }
+    }
+    document.getElementById("english-info").innerHTML = descriptionEn;
+    document.getElementById("japanese-info").innerHTML = descriptionJp;
+}
+
+function showSkills(unDigimon) {
+    let skillList = [];
+    for (let i = 0; i < unDigimon.skills.length; i++) {
+        if (unDigimon.skills[i].translation == "") {
+            skillList += `
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header" id="panelsStayOpen-heading${i}">
+                    <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapse${i}" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapse${i}">
+                        
+                        ${unDigimon.skills[i].skill}
+            
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapse${i}" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-heading${i}">
+                    <div class="accordion-body text-light p-2 desc-Skill">
+            
+                        ${unDigimon.skills[i].description}
+            
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+        else {
+            skillList += `
+            <div class="accordion-item bg-dark">
+                <h2 class="accordion-header" id="panelsStayOpen-heading${i}">
+                    <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapse${i}" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapse${i}">
+                    
+                        ${unDigimon.skills[i].skill} / ${unDigimon.skills[i].translation}
+
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapse${i}" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading${i}">
+                    <div class="accordion-body text-light p-2 desc-Skill">
+
+                        ${unDigimon.skills[i].description}
+
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+    }
+    document.getElementById("digimon-skills").innerHTML = skillList;
+}
+
+async function showPriorEvolutions(unDigimon) {
+    let priorEvoList = [];
+    let miniaturas = "";
+    let activeClass = "active";
+    let ariaCurrent = "true";
+    let e=0;
+    for (let i = 0; i < unDigimon.priorEvolutions.length; i++) {
+        if (unDigimon.priorEvolutions[i].id != null) {
+            let priorEvo = (unDigimon.priorEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
+            let img = await formatSearch(priorEvo)
+            .then((result) => getImgFromS3(result))
+            .catch((error) => console.log(error));
+
+            let isFirstItem = i === 0;
+            priorEvoList += `
+            <div class="carousel-item ${isFirstItem ? activeClass : ''}">
+                <div class="card w-50 mx-auto">
+                    <img src="${img}" class="card-img-top" alt="${unDigimon.priorEvolutions[i].digimon}">
+                    <div class="card-body p-2">
+  
+                    </div>
+                </div>
+            </div>`;
+
+            miniaturas += `
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${e}" class="${isFirstItem ? activeClass : ''}"
+            aria-current="${isFirstItem ? ariaCurrent : ''}" aria-label="${e++}">
+                <img src="${img}" class="d-block w-100" alt="${unDigimon.priorEvolutions[i].digimon}">
+            </button>
+            `
+        }
+    }
+
+    let returnObj={
+        priorEvoList,
+        miniaturas
+    }
+
+    return returnObj;
+}
+
+async function showNextEvolutions(unDigimon) {
+    let nextEvoList = [];
+    let miniaturas = "";
+    let activeClass = "active";
+    let ariaCurrent = "true";
+    let e=0;
+    for (let i = 0; i < unDigimon.nextEvolutions.length; i++) {
+        if (unDigimon.nextEvolutions[i].id != null) {
+            let nextEvo = (unDigimon.nextEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
+            let img = await formatSearch(nextEvo)
+            .then((result) => getImgFromS3(result))
+            .catch((error)=> console.log(error));
+
+            let isFirstItem = i === 0;
+            nextEvoList += `
+            <div class="carousel-item ${isFirstItem ? activeClass : ''}">
+                <div class="card w-50 mx-auto">
+                    <img src="${img}" class="card-img-top" alt="${unDigimon.nextEvolutions[i].digimon}">
+                    <div class="card-body p-2">
+
+                    </div>
+                </div>
+            </div>`;
+
+            miniaturas += `
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${e}" class="${isFirstItem ? activeClass : ''}"
+            aria-current="${isFirstItem ? ariaCurrent : ''}" aria-label="${e++}">
+                <img src="${img}" class="d-block w-100" alt="${unDigimon.nextEvolutions[i].digimon}">
+            </button>
+            `;
+        }
+    }
+
+    let returnObj={
+        nextEvoList,
+        miniaturas
+    }
+
+    return returnObj;
+}
+
+
+
+async function showDigimon(unDigimon) {
+    //Cabecera carta
+    let addHeadCard = `
+    <div class="text-center card-body py-0"><small>${unDigimon.id}</small></div>
+    <h5 class="card-title my-0 py-0">${unDigimon.name}</h5>`;
+    document.getElementById("head-card").innerHTML = addHeadCard;
+
+    document.getElementById("image-card").innerHTML = `<img src=${unDigimon.image} class="card-img-top" alt=${unDigimon.name}>`;
+
+    //Tabla 1
+    let attTable = `<tbody>
+                        <tr>
+                            <td>${showLevels(unDigimon)}</td>
+                            <td>${showAtributes(unDigimon)}</td>
+                            <td>${showTypes(unDigimon)}</td>
+                        </tr>
+                    </tbody>`;
+    document.getElementById("att-table").innerHTML = attTable;
+
+    //Tabla 2
+    let fieldsTable = `<tbody>
+                        <tr>${showFields(unDigimon)}</tr>
+                    </tbody>`;
+    document.getElementById("fields-table").innerHTML = fieldsTable;
+
+    //xAntibody
+    document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${unDigimon.xAntibody}</p>`;
+
+    showDescriptions(unDigimon);
+    showSkills(unDigimon);
+
+
+    showPriorEvolutions(unDigimon).then((resultado)=>{
+        document.getElementById("prior-evolutions").innerHTML = resultado.priorEvoList;
+        document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
+    });
+
+    showNextEvolutions(unDigimon).then((resultado)=>{
+        document.getElementById("next-evolutions").innerHTML = resultado.nextEvoList;
+        document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
+    });
+
+}
+
+
+
+
+
+
+// ****************** BOTON DE BUSQUEDA ******************
+document.getElementById("btnBuscar").addEventListener("click", async function () {
+
+    const unDigimon = await searchDigimon();
+    console.log(unDigimon);
+    showDigimon(unDigimon);
 
 });
-
