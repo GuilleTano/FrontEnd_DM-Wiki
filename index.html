@@ -37,16 +37,7 @@
         <div class="row my-5">
             <!-- CUERPO 1 -->
             <div class="col-8">
-                <!-- BUSCADOR (old) -->
-                <!--
-                <div class="col-6 offset-md-3">
-                    <div class="input-group">
-                        <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
-                            aria-describedby="btnBuscar" id="buscador">
-                        <button class="btn btn-dark" type="button" id="btnBuscar">Button</button>
-                    </div>
-                </div>
-                -->
+
                 <!-- DESCRPICION 2.0 -->
                 <div class="mt-0">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -78,30 +69,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- HABILIDADES (old) -->
-                <!--
-                <div class="mt-4 overflow-auto" style="max-height: 20rem;">
-                    <table class="table table-sm table-dark">
-                        <thead class="text-center">
-                            <tr>
-                                <th>Skill</th>
-                                <th>Effect</th>
-                            </tr>
-                        </thead>
-                        <tbody id="skill-digimon">
-                            <tr>
-                                <td>Habilidad 1</td>
-                                <td>Descripcion</td>
-                            </tr>
-                            <tr>
-                                <td>Habilidad 2</td>
-                                <td>Descripcion</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                -->
 
                 <!-- Habilidades 2.0 -->
                 <div class="bg-dark rounded mt-4">
@@ -218,8 +185,7 @@
 
         <!-- CUERPO 2 -->
 
-        <!-- Carrusel evos -->
-
+        <!-- EVOLUCIONES -->
         <div class="row my-5">
 
             <!-- PRIOR EVO-->
@@ -244,27 +210,26 @@
                     <div class="row my-4" id="priorEvo-miniatures">
     
                         <div class="col text-center">
-                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected" id="1" onclick="selectImg(this)">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected prioEv" id="1" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail" id="2" onclick="selectImg(this)">
+                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="2" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail" id="3" onclick="selectImg(this)">
+                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="3" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail" id="4" onclick="selectImg(this)">
+                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="4" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="5" onclick="selectImg(this)">
+                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="5" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="6" onclick="selectImg(this)">
+                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="6" onclick="selectImg(this)">
                         </div>
     
                     </div>
                 </div>
-
             </div>
 
             <!-- NEXT EVO -->
@@ -273,7 +238,6 @@
                     <h4>Evolves to</h4>
                 </div>
 
-                
                 <div id="myGalery2">
                     <div class="row">
                         <div class="col-2 d-grid gap-2 mx-auto">
@@ -290,53 +254,31 @@
                     <div class="row my-4" id="nextEvo-miniatures">
     
                         <div class="col text-center">
-                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected" id="7" onclick="selectImg2(this)">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected nextEv" id="7" onclick="selectImg2(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail" id="8" onclick="selectImg2(this)">
+                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="8" onclick="selectImg2(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail" id="9" onclick="selectImg2(this)">
+                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="9" onclick="selectImg2(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail" id="10" onclick="selectImg2(this)">
+                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="10" onclick="selectImg2(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="11" onclick="selectImg2(this)">
+                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="11" onclick="selectImg2(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="12" onclick="selectImg2(this)">
+                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="12" onclick="selectImg2(this)">
                         </div>
     
                     </div>
                 </div>
-                
-
             </div>
-
 
         </div>
         <br>
         <br>
-
-        <!-- Boton de detalles -->
-        <!--
-        <div class="mt-5">
-            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Details</button>
-
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-                aria-labelledby="offcanvasWithBothOptionsLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Nombre del Digimon</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <p>Aca van los detalles de la evolucion...</p>
-                </div>
-            </div>
-        </div>
-        -->
 
 
     </main>
@@ -374,7 +316,7 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/index.js"></script>
     <script src="js/buscar_digimon.js"></script>
-    <script src="js/galeriaStyle.js"></script>
+    <script src="js/galeriaEvos.js"></script>
 </body>
 
 </html>

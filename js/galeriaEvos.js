@@ -1,7 +1,7 @@
 // Script para la galeria de evoluciones
 
 function selectImg(img){
-  let listaMin = document.querySelectorAll('.selected');
+  let listaMin = document.querySelectorAll('.prioEv');
   listaMin.forEach(function(miniatura) {
     miniatura.classList.remove("selected");
   });
@@ -10,7 +10,7 @@ function selectImg(img){
 }
 
 function selectImg2(img){
-  let listaMin = document.querySelectorAll('.selected');
+  let listaMin = document.querySelectorAll('.nextEv');
   listaMin.forEach(function(miniatura) {
     miniatura.classList.remove("selected");
   });
@@ -19,8 +19,9 @@ function selectImg2(img){
 }
 
 // Prior Evo
+
 document.getElementById("nextBtnPriorEvo").addEventListener('click', () => {
-  let listaMin = document.querySelectorAll('.minImg');
+  let listaMin = document.querySelectorAll('.prioEv');
   for(i=0; i < listaMin.length; i++){
     if(listaMin[i].classList.contains("selected")){
       listaMin[i].classList.remove("selected");
@@ -39,7 +40,7 @@ document.getElementById("nextBtnPriorEvo").addEventListener('click', () => {
 });
 
 document.getElementById("prevBtnPriorEvo").addEventListener('click', () => {
-  let listaMin = document.querySelectorAll('.minImg');
+  let listaMin = document.querySelectorAll('.prioEv');
   for(i=0; i < listaMin.length; i++){
     if(listaMin[i].classList.contains("selected")){
       listaMin[i].classList.remove("selected");
@@ -59,9 +60,8 @@ document.getElementById("prevBtnPriorEvo").addEventListener('click', () => {
 
 // Next Evo
 
-/*
 document.getElementById("nextBtnNextEvo").addEventListener('click', () => {
-  let listaMin = document.querySelectorAll('.minImg');
+  let listaMin = document.querySelectorAll('.nextEv');
   for(i=0; i < listaMin.length; i++){
     if(listaMin[i].classList.contains("selected")){
       listaMin[i].classList.remove("selected");
@@ -80,7 +80,7 @@ document.getElementById("nextBtnNextEvo").addEventListener('click', () => {
 });
 
 document.getElementById("prevBtnNextEvo").addEventListener('click', () => {
-  let listaMin = document.querySelectorAll('.minImg');
+  let listaMin = document.querySelectorAll('.nextEv');
   for(i=0; i < listaMin.length; i++){
     if(listaMin[i].classList.contains("selected")){
       listaMin[i].classList.remove("selected");
@@ -97,5 +97,3 @@ document.getElementById("prevBtnNextEvo").addEventListener('click', () => {
     }
   }
 });
-
-*/

@@ -229,6 +229,7 @@ function showSkills(unDigimon) {
     document.getElementById("digimon-skills").innerHTML = skillList;
 }
 
+// ****************** METODOS PARA LA LINEA EVOLUTIVA ******************
 
 async function showPriorEvolutions(unDigimon) {
     let imagenPrincipal = "";
@@ -252,7 +253,7 @@ async function showPriorEvolutions(unDigimon) {
 
             miniaturas += `
             <div class="col text-center">
-                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail ${isFirstItem ? selectedClass : ''}" id="${unDigimon.priorEvolutions[i].id}" onclick="selectImg(this)">
+                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail prioEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.priorEvolutions[i].id}" onclick="selectImg(this)">
             </div>
             `;
         }
@@ -266,13 +267,11 @@ async function showPriorEvolutions(unDigimon) {
     return returnObj;
 }
 
-//Cambiar logica a next evo
 async function showNextEvolutions(unDigimon) {
-    let nextEvoList = [];
-    let miniaturas = "";
-    let activeClass = "active";
-    let ariaCurrent = "true";
-    let e=0;
+    let imagenPrincipal = "";
+    let miniaturas = [];
+    let selectedClass = "selected";
+
     for (let i = 0; i < unDigimon.nextEvolutions.length; i++) {
         if (unDigimon.nextEvolutions[i].id != null) {
             let nextEvo = (unDigimon.nextEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
@@ -281,27 +280,23 @@ async function showNextEvolutions(unDigimon) {
             .catch((error)=> console.log(error));
 
             let isFirstItem = i === 0;
-            nextEvoList += `
-            <div class="carousel-item ${isFirstItem ? activeClass : ''}">
-                <div class="card w-50 mx-auto">
-                    <img src="${img}" class="card-img-top" alt="${unDigimon.nextEvolutions[i].digimon}">
-                    <div class="card-body p-2">
 
-                    </div>
-                </div>
-            </div>`;
+            if(isFirstItem){
+                imagenPrincipal = `
+                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mainImg rounded" id="imagen_principal2">
+                `;
+            }
 
             miniaturas += `
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${e}" class="${isFirstItem ? activeClass : ''}"
-            aria-current="${isFirstItem ? ariaCurrent : ''}" aria-label="${e++}">
-                <img src="${img}" class="d-block w-100" alt="${unDigimon.nextEvolutions[i].digimon}">
-            </button>
+            <div class="col text-center">
+                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail nextEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.nextEvolutions[i].id}" onclick="selectImg2(this)">
+            </div>
             `;
         }
     }
 
     let returnObj={
-        nextEvoList,
+        imagenPrincipal,
         miniaturas
     }
 
@@ -309,18 +304,16 @@ async function showNextEvolutions(unDigimon) {
 }
 
 
-
 async function showDigimon(unDigimon) {
     //Cabecera carta
-    let addHeadCard = `
-    <div class="text-center card-body py-0"><small>${unDigimon.id}</small></div>
-    <h5 class="card-title my-0 py-0">${unDigimon.name}</h5>`;
+    let addHeadCard = ` <div class="text-center card-body py-0"><small>${unDigimon.id}</small></div>
+                        <h5 class="card-title my-0 py-0">${unDigimon.name}</h5>`;
     document.getElementById("head-card").innerHTML = addHeadCard;
 
     document.getElementById("image-card").innerHTML = `<img src=${unDigimon.image} class="card-img-top" alt=${unDigimon.name}>`;
 
     //Tabla 1
-    let attTable = `<tbody>
+    let attTable =` <tbody>
                         <tr>
                             <td>${showLevels(unDigimon)}</td>
                             <td>${showAtributes(unDigimon)}</td>
@@ -330,9 +323,9 @@ async function showDigimon(unDigimon) {
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
-    let fieldsTable = `<tbody>
-                        <tr>${showFields(unDigimon)}</tr>
-                    </tbody>`;
+    let fieldsTable =`  <tbody>
+                            <tr>${showFields(unDigimon)}</tr>
+                        </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
 
     //xAntibody
@@ -341,19 +334,15 @@ async function showDigimon(unDigimon) {
     showDescriptions(unDigimon);
     showSkills(unDigimon);
 
-
     showPriorEvolutions(unDigimon).then((resultado)=>{
         document.getElementById("galeria-priorEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
     });
 
-
-    /*
     showNextEvolutions(unDigimon).then((resultado)=>{
-        document.getElementById("next-evolutions").innerHTML = resultado.nextEvoList;
+        document.getElementById("galeria-nextEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
     });
-    */
 
 }
 

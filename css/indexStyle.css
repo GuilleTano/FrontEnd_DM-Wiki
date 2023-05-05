@@ -20,7 +20,6 @@ body {
 
 
 /* Clases para galeria */
-
 .mainImg {
     width: 350px;
 }
@@ -31,6 +30,14 @@ body {
 }
 
 #priorEvo-miniatures {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(auto-fit, auto);
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.3rem;
+}
+
+#nextEvo-miniatures {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(auto-fit, auto);
