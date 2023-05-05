@@ -219,111 +219,50 @@
         <!-- CUERPO 2 -->
 
         <!-- Carrusel evos -->
+
         <div class="row my-5">
+
             <!-- PRIOR EVO-->
             <div class="col">
                 <div class="bg-dark text-white p-3 mb-3 text-center">
                     <h4>Evolves from</h4>
                 </div>
 
-                <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
-                
-                    <!-- Miniatura del carrousel -->
-                    <div class="carousel-indicators carousel-indicators-mini" id="priorEvo-miniatures">
-                
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-                
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-                
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class="">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5" class="">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6" class="">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-                
+                <div id="myGalery">
+                    <div class="row">
+                        <div class="col-2 d-grid gap-2 mx-auto">
+                            <button type="button" class="btn btn-dark btnGalery" id="prevBtnPriorEvo"><i class="fa-solid fa-chevron-left fa-2xl"></i></button>
+                        </div>
+                        <div class="col-8 text-center" id="galeria-priorEvo">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="principal" class="mainImg rounded" id="imagen_principal">
+                        </div>
+                        <div class="col-2 d-grid gap-2 mx-auto">
+                            <button type="button" class="btn btn-dark btnGalery" id="nextBtnPriorEvo"><i class="fa-solid fa-chevron-right fa-2xl"></i></button>
+                        </div>
                     </div>
-                
-                    <!-- Imagen principal -->
-                    <div class="carousel-inner" id="prior-evolutions">
-                        <div class="carousel-item active">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-
-                                </div>
-                            </div>
+    
+                    <div class="row my-4" id="priorEvo-miniatures">
+    
+                        <div class="col text-center">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected" id="1" onclick="selectImg(this)">
                         </div>
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-
-                                </div>
-                            </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail" id="2" onclick="selectImg(this)">
                         </div>
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-
-                                </div>
-                            </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail" id="3" onclick="selectImg(this)">
                         </div>
-
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-
-                                </div>
-                            </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail" id="4" onclick="selectImg(this)">
                         </div>
-
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-
-                                </div>
-                            </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="5" onclick="selectImg(this)">
                         </div>
-
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-
-                                </div>
-                            </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="6" onclick="selectImg(this)">
                         </div>
-
+    
                     </div>
-                
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
 
             </div>
@@ -334,104 +273,44 @@
                     <h4>Evolves to</h4>
                 </div>
 
-                <div id="carouselExampleIndicators2" class="carousel carousel-dark slide" data-bs-ride="true">
                 
-                    <!-- Miniatura del carrousel -->
-                    <div class="carousel-indicators carousel-indicators-mini" id="nextEvo-miniatures">
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-                
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-                
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="3" aria-label="Slide 4">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="4" aria-label="Slide 5">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="5" aria-label="Slide 6">
-                            <img src="images/logo-tamers.png" class="d-block w-100" alt="...">
-                        </button>
-                
-                    </div>
-                
-                    <!-- Imagen principal -->
-                    <div class="carousel-inner" id="next-evolutions">
-                        <div class="carousel-item active">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-                
-                                </div>
-                            </div>
+                <div id="myGalery2">
+                    <div class="row">
+                        <div class="col-2 d-grid gap-2 mx-auto">
+                            <button type="button" class="btn btn-dark btnGalery" id="prevBtnNextEvo"><i class="fa-solid fa-chevron-left fa-2xl"></i></button>
                         </div>
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-                
-                                </div>
-                            </div>
+                        <div class="col-8 text-center" id="galeria-nextEvo">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="principal" class="mainImg rounded" id="imagen_principal2">
                         </div>
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-                
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-                
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-                
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="card w-50 mx-auto">
-                                <img src="images/logo-tamers.png" class="card-img-top" alt="...">
-                                <div class="card-body p-2">
-                
-                                </div>
-                            </div>
+                        <div class="col-2 d-grid gap-2 mx-auto">
+                            <button type="button" class="btn btn-dark btnGalery" id="nextBtnNextEvo"><i class="fa-solid fa-chevron-right fa-2xl"></i></button>
                         </div>
                     </div>
-                
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+    
+                    <div class="row my-4" id="nextEvo-miniatures">
+    
+                        <div class="col text-center">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected" id="7" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail" id="8" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail" id="9" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail" id="10" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="11" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail" id="12" onclick="selectImg2(this)">
+                        </div>
+    
+                    </div>
                 </div>
+                
 
             </div>
 
@@ -495,7 +374,7 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/index.js"></script>
     <script src="js/buscar_digimon.js"></script>
-    <script src="js/miniaturasStyle.js"></script>
+    <script src="js/galeriaStyle.js"></script>
 </body>
 
 </html>

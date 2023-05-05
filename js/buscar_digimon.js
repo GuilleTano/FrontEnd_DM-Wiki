@@ -229,12 +229,12 @@ function showSkills(unDigimon) {
     document.getElementById("digimon-skills").innerHTML = skillList;
 }
 
+
 async function showPriorEvolutions(unDigimon) {
-    let priorEvoList = [];
-    let miniaturas = "";
-    let activeClass = "active";
-    let ariaCurrent = "true";
-    let e=0;
+    let imagenPrincipal = "";
+    let miniaturas = [];
+    let selectedClass = "selected";
+
     for (let i = 0; i < unDigimon.priorEvolutions.length; i++) {
         if (unDigimon.priorEvolutions[i].id != null) {
             let priorEvo = (unDigimon.priorEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
@@ -243,33 +243,30 @@ async function showPriorEvolutions(unDigimon) {
             .catch((error) => console.log(error));
 
             let isFirstItem = i === 0;
-            priorEvoList += `
-            <div class="carousel-item ${isFirstItem ? activeClass : ''}">
-                <div class="card w-50 mx-auto">
-                    <img src="${img}" class="card-img-top" alt="${unDigimon.priorEvolutions[i].digimon}">
-                    <div class="card-body p-2">
-  
-                    </div>
-                </div>
-            </div>`;
+
+            if(isFirstItem){
+                imagenPrincipal = `
+                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mainImg rounded" id="imagen_principal">
+                `;
+            }
 
             miniaturas += `
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${e}" class="${isFirstItem ? activeClass : ''}"
-            aria-current="${isFirstItem ? ariaCurrent : ''}" aria-label="${e++}">
-                <img src="${img}" class="d-block w-100" alt="${unDigimon.priorEvolutions[i].digimon}">
-            </button>
-            `
+            <div class="col text-center">
+                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail ${isFirstItem ? selectedClass : ''}" id="${unDigimon.priorEvolutions[i].id}" onclick="selectImg(this)">
+            </div>
+            `;
         }
     }
 
     let returnObj={
-        priorEvoList,
+        imagenPrincipal,
         miniaturas
     }
 
     return returnObj;
 }
 
+//Cambiar logica a next evo
 async function showNextEvolutions(unDigimon) {
     let nextEvoList = [];
     let miniaturas = "";
@@ -346,14 +343,17 @@ async function showDigimon(unDigimon) {
 
 
     showPriorEvolutions(unDigimon).then((resultado)=>{
-        document.getElementById("prior-evolutions").innerHTML = resultado.priorEvoList;
+        document.getElementById("galeria-priorEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
     });
 
+
+    /*
     showNextEvolutions(unDigimon).then((resultado)=>{
         document.getElementById("next-evolutions").innerHTML = resultado.nextEvoList;
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
     });
+    */
 
 }
 

@@ -18,38 +18,27 @@ body {
     color: #fff;
 }
 
-.carousel-indicators button {
-    width: 80px !important;
-    height: 80px !important;
+
+/* Clases para galeria */
+
+.mainImg {
+    width: 350px;
 }
 
-/*carousel-indicators-mini {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    transform: translateY(92px);
-    max-height: 200px; /* Altura máxima de la sección de miniaturas 
-    overflow: hidden !important; /* Oculta las miniaturas que sobrepasen la altura máxima 
-}
-*/
-
-
-.carousel-indicators-mini {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  transform: translateY(92px); /* Ajustar la posición vertical */
+.btnGalery {
+    height: 70px;
+    transform: translateY(150px);
 }
 
+#priorEvo-miniatures {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(auto-fit, auto);
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.3rem;
+}
+
+.selected {
+    width: 100px;
+    transform: translateY(-10px);
+}
