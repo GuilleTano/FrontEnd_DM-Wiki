@@ -33,13 +33,11 @@ async function formatSearch(buscador) {
 
     for (i=0; i < digimonList.nombres.length; i++) {
         if (digimonList.nombres[i].nameLowercase === nombreMin) {
-
             unDigimon = digimonList.nombres[i];
             return unDigimon;
         }
     }
-
-    return console.log("El digimon " + nombreMin + " no existe");
+    return //console.log("El digimon " + nombreMin + " no existe");
 }
 
 // Este metodo trae los datos de MongoDB
@@ -77,11 +75,12 @@ async function getImgFromS3(digimon) {
     }).catch(error => console.error(error));
 }
 
-
+//Este metodo realiza la busqueda del Digimon y lo devuelve como objeto
 async function searchDigimon(){
     let search = document.getElementById("buscador").value
     let clearSearch = search.normalize('NFKD').replace(/[^\x20-\x7E]/g, ''); //Esta linea elimina caracteres invisibles
     let digimon = await formatSearch(clearSearch);
+    if(!digimon) return
     let digimonData = await getDigimonFromMongo(digimon);
     let digimonImage = await getImgFromS3(digimon);
 
@@ -305,11 +304,12 @@ async function showNextEvolutions(unDigimon) {
 
 
 async function showDigimon(unDigimon) {
-    //Cabecera carta
+    //Cabecera de la carta
     let addHeadCard = ` <div class="text-center card-body py-0"><small>${unDigimon.id}</small></div>
                         <h5 class="card-title my-0 py-0">${unDigimon.name}</h5>`;
     document.getElementById("head-card").innerHTML = addHeadCard;
 
+    //Imagen de la carta
     document.getElementById("image-card").innerHTML = `<img src=${unDigimon.image} class="card-img-top" alt=${unDigimon.name}>`;
 
     //Tabla 1
@@ -331,14 +331,15 @@ async function showDigimon(unDigimon) {
     //xAntibody
     document.getElementById("xAntibody").innerHTML = `<p>xAntibody: ${unDigimon.xAntibody}</p>`;
 
+    //Otros datos
     showDescriptions(unDigimon);
     showSkills(unDigimon);
 
+    //Linea Evolutiva
     showPriorEvolutions(unDigimon).then((resultado)=>{
         document.getElementById("galeria-priorEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
     });
-
     showNextEvolutions(unDigimon).then((resultado)=>{
         document.getElementById("galeria-nextEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
@@ -352,10 +353,48 @@ async function showDigimon(unDigimon) {
 
 
 // ****************** BOTON DE BUSQUEDA ******************
-document.getElementById("btnBuscar").addEventListener("click", async function () {
+function alertError() {
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    const alert = (message, type) => {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible fade show" role="alert" id="search-error">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join('')
+        alertPlaceholder.append(wrapper);
+    }
+    return alert('El Digimon no existe', 'danger');
+}
 
-    const unDigimon = await searchDigimon();
-    console.log(unDigimon);
-    showDigimon(unDigimon);
+function clearAlert(){
+    let alert = document.querySelector('#search-error');
+    if(alert) alert.remove();
+    location.reload;
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const input = document.getElementById("buscador");
+    const button = document.getElementById("btnBuscar");
+
+    input.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          button.click();
+        }
+    });
+
+    button.addEventListener("click", async function () {
+        clearAlert();
+        const unDigimon = await searchDigimon();
+        console.log(unDigimon);
+        if (!unDigimon) {
+            alertError();
+            return
+        }
+        showDigimon(unDigimon);
+    });
 });
+
