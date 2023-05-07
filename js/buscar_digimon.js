@@ -76,8 +76,8 @@ async function getImgFromS3(digimon) {
 }
 
 //Este metodo realiza la busqueda del Digimon y lo devuelve como objeto
-async function searchDigimon(){
-    let search = document.getElementById("buscador").value
+async function searchDigimon(search){
+    //let search = document.getElementById("buscador").value
     let clearSearch = search.normalize('NFKD').replace(/[^\x20-\x7E]/g, ''); //Esta linea elimina caracteres invisibles
     let digimon = await formatSearch(clearSearch);
     if(!digimon) return
@@ -232,6 +232,7 @@ function showSkills(unDigimon) {
 
 async function showPriorEvolutions(unDigimon) {
     let imagenPrincipal = "";
+    let digiName = "";
     let miniaturas = [];
     let selectedClass = "selected";
 
@@ -246,10 +247,13 @@ async function showPriorEvolutions(unDigimon) {
 
             if(isFirstItem){
                 imagenPrincipal = `
-                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mainImg rounded" id="imagen_principal">
+                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mainImg rounded-top" id="imagen_principal" 
+                onclick="redirectEvo(this.alt)">
+                `;
+                digiName = `
+                <p class="text-bg-light fw-bold rounded-bottom p-1" style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName">${unDigimon.priorEvolutions[i].digimon}</p>
                 `;
             }
-
             miniaturas += `
             <div class="col text-center">
                 <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail prioEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.priorEvolutions[i].id}" onclick="selectImg(this)">
@@ -257,17 +261,17 @@ async function showPriorEvolutions(unDigimon) {
             `;
         }
     }
-
     let returnObj={
         imagenPrincipal,
+        digiName,
         miniaturas
     }
-
     return returnObj;
 }
 
 async function showNextEvolutions(unDigimon) {
     let imagenPrincipal = "";
+    let digiName = "";
     let miniaturas = [];
     let selectedClass = "selected";
 
@@ -282,10 +286,13 @@ async function showNextEvolutions(unDigimon) {
 
             if(isFirstItem){
                 imagenPrincipal = `
-                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mainImg rounded" id="imagen_principal2">
+                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mainImg rounded-top" id="imagen_principal2"
+                onclick="redirectEvo(this.alt)">
+                `;
+                digiName = `
+                <p class="text-bg-light fw-bold rounded-bottom p-1" style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName2" >${unDigimon.nextEvolutions[i].digimon}</p>
                 `;
             }
-
             miniaturas += `
             <div class="col text-center">
                 <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail nextEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.nextEvolutions[i].id}" onclick="selectImg2(this)">
@@ -293,15 +300,15 @@ async function showNextEvolutions(unDigimon) {
             `;
         }
     }
-
     let returnObj={
         imagenPrincipal,
+        digiName,
         miniaturas
     }
-
     return returnObj;
 }
 
+// ****************** METODOS PARA EL AMRADO DE LA PAGINA ******************
 
 async function showDigimon(unDigimon) {
     //Cabecera de la carta
@@ -313,13 +320,16 @@ async function showDigimon(unDigimon) {
     document.getElementById("image-card").innerHTML = `<img src=${unDigimon.image} class="card-img-top" alt=${unDigimon.name}>`;
 
     //Tabla 1
-    let attTable =` <tbody>
-                        <tr>
-                            <td>${showLevels(unDigimon)}</td>
-                            <td>${showAtributes(unDigimon)}</td>
-                            <td>${showTypes(unDigimon)}</td>
-                        </tr>
-                    </tbody>`;
+    let attTable =`
+                    <div class="col-4">
+                        ${showLevels(unDigimon)}
+                    </div>
+                    <div class="col-4">
+                        ${showAtributes(unDigimon)}
+                    </div>
+                    <div class="col-4">
+                        ${showTypes(unDigimon)}
+                    </div>`;
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
@@ -338,10 +348,12 @@ async function showDigimon(unDigimon) {
     //Linea Evolutiva
     showPriorEvolutions(unDigimon).then((resultado)=>{
         document.getElementById("galeria-priorEvo").innerHTML = resultado.imagenPrincipal;
+        document.getElementById("galeria-priorEvo").innerHTML += resultado.digiName;
         document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
     });
     showNextEvolutions(unDigimon).then((resultado)=>{
         document.getElementById("galeria-nextEvo").innerHTML = resultado.imagenPrincipal;
+        document.getElementById("galeria-nextEvo").innerHTML += resultado.digiName;
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
     });
 
@@ -352,26 +364,33 @@ async function showDigimon(unDigimon) {
 
 
 
-// ****************** BOTON DE BUSQUEDA ******************
+// ****************** METODOS DE BUSQUEDA ******************
+
 function alertError() {
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     const alert = (message, type) => {
         const wrapper = document.createElement('div');
         wrapper.innerHTML = [
             `<div class="alert alert-${type} alert-dismissible fade show" role="alert" id="search-error">`,
-            `   <div>${message}</div>`,
+            `   <div class="text-center fw-bolder">${message}</div>`,
             '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
             '</div>'
         ].join('')
         alertPlaceholder.append(wrapper);
     }
-    return alert('El Digimon no existe', 'danger');
+    return alert('El Digimon buscado no existe', 'danger');
 }
 
 function clearAlert(){
     let alert = document.querySelector('#search-error');
     if(alert) alert.remove();
     location.reload;
+}
+
+async function redirectEvo(search){
+    console.log(search)
+    const unDigimon = await searchDigimon(search);
+    showDigimon(unDigimon);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -388,7 +407,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     button.addEventListener("click", async function () {
         clearAlert();
-        const unDigimon = await searchDigimon();
+
+        let search = document.getElementById("buscador").value
+
+        const unDigimon = await searchDigimon(search);
         console.log(unDigimon);
         if (!unDigimon) {
             alertError();

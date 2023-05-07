@@ -8,6 +8,7 @@ function selectImg(img){
   document.getElementById(img.id).classList.add('selected');
   document.getElementById('imagen_principal').src=img.src;
   document.getElementById('imagen_principal').alt=img.alt;
+  document.getElementById('digiName').innerHTML =img.alt;
 }
 
 function selectImg2(img){
@@ -18,6 +19,7 @@ function selectImg2(img){
   document.getElementById(img.id).classList.add('selected');
   document.getElementById('imagen_principal2').src=img.src;
   document.getElementById('imagen_principal2').alt=img.alt;
+  document.getElementById('digiName2').innerHTML =img.alt;
 }
 
 // Prior Evo
@@ -32,12 +34,14 @@ document.getElementById("nextBtnPriorEvo").addEventListener('click', () => {
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal').src=listaMin[i].src;
         document.getElementById('imagen_principal').alt=listaMin[i].alt;
+        document.getElementById('digiName').innerHTML=listaMin[i].alt;
       }
       else{
         i=0
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal').src=listaMin[i].src;
         document.getElementById('imagen_principal').alt=listaMin[i].alt;
+        document.getElementById('digiName').innerHTML=listaMin[i].alt;
       }
     }
   }
@@ -53,12 +57,14 @@ document.getElementById("prevBtnPriorEvo").addEventListener('click', () => {
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal').src=listaMin[i].src;
         document.getElementById('imagen_principal').alt=listaMin[i].alt;
+        document.getElementById('digiName').innerHTML=listaMin[i].alt;
       }
       else if(i==0){
         i=listaMin.length-1
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal').src=listaMin[i].src;
         document.getElementById('imagen_principal').alt=listaMin[i].alt;
+        document.getElementById('digiName').innerHTML=listaMin[i].alt;
       }
     }
   }
@@ -76,12 +82,14 @@ document.getElementById("nextBtnNextEvo").addEventListener('click', () => {
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal2').src=listaMin[i].src;
         document.getElementById('imagen_principal2').alt=listaMin[i].alt;
+        document.getElementById('digiName2').innerHTML=listaMin[i].alt;
       }
       else{
         i=0
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal2').src=listaMin[i].src;
         document.getElementById('imagen_principal2').alt=listaMin[i].alt;
+        document.getElementById('digiName2').innerHTML=listaMin[i].alt;
       }
     }
   }
@@ -97,12 +105,14 @@ document.getElementById("prevBtnNextEvo").addEventListener('click', () => {
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal2').src=listaMin[i].src;
         document.getElementById('imagen_principal2').alt=listaMin[i].alt;
+        document.getElementById('digiName2').innerHTML=listaMin[i].alt;
       }
       else if(i==0){
         i=listaMin.length-1
         listaMin[i].classList.add("selected");
         document.getElementById('imagen_principal2').src=listaMin[i].src;
         document.getElementById('imagen_principal2').alt=listaMin[i].alt;
+        document.getElementById('digiName2').innerHTML=listaMin[i].alt;
       }
     }
   }

@@ -14,7 +14,7 @@
 <body class="bg-primary">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" alt="Logo" width="135" height="55" class="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -26,7 +26,7 @@
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
                             aria-describedby="btnBuscar" id="buscador">
-                        <button class="btn btn-primary" type="button" id="btnBuscar">Search</button>
+                        <button class="btn btn-primary" type="button" id="btnBuscar"><i class="fa-sharp fa-solid fa-magnifying-glass fa-lg"></i></button>
                     </div>
                 </div>
             </div>
@@ -34,11 +34,13 @@
     </nav>
 
     <main class="container">
-        <div class="mt-3" id="liveAlertPlaceholder"></div>
-        <div class="row my-5">
+        <!-- ALERTA DE BUSQUEDA -->
+        <div class="row justify-content-center mt-3">
+            <div class="col-6" id="liveAlertPlaceholder"></div>
+        </div>
+        <div class="row my-3">
             <!-- CUERPO 1 -->
             <div class="col-8">
-
                 <!-- DESCRPICION 2.0 -->
                 <div class="mt-0">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -70,17 +72,16 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Habilidades 2.0 -->
-                <div class="bg-dark rounded mt-4">
+                <div class="bg-dark rounded my-4">
                     <h4 class="fw-bold text-light text-center mb-0 p-1">Skills</h4>
 
                     <div class="accordion accordion-dark" id="digimon-skills">
                         <div class="accordion-item bg-dark">
                             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-collapseOne">
+                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
                                     Habilidad 1
                                 </button>
                             </h2>
@@ -93,9 +94,9 @@
                         </div>
                         <div class="accordion-item bg-dark">
                             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-collapseTwo">
+                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
+                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                                     Habilidad 2
                                 </button>
                             </h2>
@@ -108,9 +109,9 @@
                         </div>
                         <div class="accordion-item bg-dark">
                             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                                    aria-controls="panelsStayOpen-collapseThree">
+                                <button class="accordion-button collapsed bg-dark text-light p-2" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree"
+                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                                     Habilidad 3
                                 </button>
                             </h2>
@@ -123,7 +124,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- CARTA -->
             <div class="col-4 text-black">
@@ -138,28 +138,32 @@
                         <img src="images/example-card2.jpg" class="card-img-top" alt="example-card">
                     </div>
                     <!-- TABLA DE DATOS -->
-                    <div class="text-center card-body pb-0">
-                        <table class="table table-borderless table-sm table-dark">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Level</th>
-                                    <th scope="col">Atribute</th>
-                                    <th scope="col">Type</th>
-                                </tr>
-                            </thead>
-                            <tbody id="att-table">
-                                <tr>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="text-center card-body pb-0 mb-3">
+                        <div class="row mb-1">
+                            <div class="col-4 fw-bold">
+                                Level
+                            </div>
+                            <div class="col-4 fw-bold">
+                                Atribute
+                            </div>
+                            <div class="col-4 fw-bold">
+                                Type
+                            </div>
+                        </div>
+                        <div class="row" id="att-table">
+                            <div class="col-4">
+                                <div>Un level</div>
+                            </div>
+                            <div class="col-4">
+                                <div>Un Atributo</div>
+                                <div>Un Atributo</div>
+                                <div>Un Atributo</div>
+                            </div>
+                            <div class="col-4">
+                                <div>Un Tipo</div>
+                                <div>Un Tipo</div>
+                            </div>
+                        </div>
                     </div>
                     <hr class="my-0">
                     <!-- FIELDS -->
@@ -186,101 +190,121 @@
 
         <!-- CUERPO 2 -->
 
-        <!-- EVOLUCIONES -->
-        <div class="row my-5">
-
+        <!-- EVOLUCIONES 2.0 -->
+        <div>
             <!-- PRIOR EVO-->
-            <div class="col">
+            <div class="row my-3" id="myGalery">
                 <div class="bg-dark text-white p-3 mb-3 text-center">
                     <h4>Evolves from</h4>
                 </div>
-
-                <div id="myGalery">
+                <!-- Imagen principal -->
+                <div class="col align-self-center">
                     <div class="row">
                         <div class="col-2 d-grid gap-2 mx-auto">
-                            <button type="button" class="btn btn-dark btnGalery" id="prevBtnPriorEvo"><i class="fa-solid fa-chevron-left fa-2xl"></i></button>
+                            <button type="button" class="btn btn-dark btnGalery" id="prevBtnPriorEvo"><i
+                                    class="fa-solid fa-chevron-left fa-2xl"></i></button>
                         </div>
-                        <div class="col-8 text-center" id="galeria-priorEvo">
-                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="principal" class="mainImg rounded" id="imagen_principal">
+                        <div class="col-8 text-center">
+                            <a href="#" class="link-dark text-decoration-none" id="galeria-priorEvo">
+                                <img src="pruebasImg/Algomon_(Baby_II).png" alt="principal" class="mainImg rounded-top" id="imagen_principal">
+                                <p class="text-bg-light fw-bold rounded-bottom p-1"
+                                style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName">Name</p>
+                            </a>
                         </div>
                         <div class="col-2 d-grid gap-2 mx-auto">
-                            <button type="button" class="btn btn-dark btnGalery" id="nextBtnPriorEvo"><i class="fa-solid fa-chevron-right fa-2xl"></i></button>
+                            <button type="button" class="btn btn-dark btnGalery" id="nextBtnPriorEvo"><i
+                                    class="fa-solid fa-chevron-right fa-2xl"></i></button>
                         </div>
                     </div>
-    
+                </div>
+                <!-- Miniaturas -->
+                <div class="col">
                     <div class="row my-4" id="priorEvo-miniatures">
-    
                         <div class="col text-center">
-                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected prioEv" id="1" onclick="selectImg(this)">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..."
+                                class="mx-auto minImg img-thumbnail selected prioEv" id="1" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="2" onclick="selectImg(this)">
+                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv"
+                                id="2" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="3" onclick="selectImg(this)">
+                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv"
+                                id="3" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="4" onclick="selectImg(this)">
+                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv"
+                                id="4" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="5" onclick="selectImg(this)">
+                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv"
+                                id="5" onclick="selectImg(this)">
                         </div>
                         <div class="col text-center">
-                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv" id="6" onclick="selectImg(this)">
+                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail prioEv"
+                                id="6" onclick="selectImg(this)">
                         </div>
-    
                     </div>
                 </div>
             </div>
-
             <!-- NEXT EVO -->
-            <div class="col">
+            <div class="row my-3" id="myGalery2">
                 <div class="bg-dark text-white p-3 mb-3 text-center">
                     <h4>Evolves to</h4>
                 </div>
-
-                <div id="myGalery2">
-                    <div class="row">
-                        <div class="col-2 d-grid gap-2 mx-auto">
-                            <button type="button" class="btn btn-dark btnGalery" id="prevBtnNextEvo"><i class="fa-solid fa-chevron-left fa-2xl"></i></button>
+                <!-- Miniaturas -->
+                <div class="col">
+                    <div class="row my-4" id="nextEvo-miniatures">
+                        <div class="col text-center">
+                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..."
+                                class="mx-auto minImg img-thumbnail selected nextEv" id="7" onclick="selectImg2(this)">
                         </div>
-                        <div class="col-8 text-center" id="galeria-nextEvo">
-                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="principal" class="mainImg rounded" id="imagen_principal2">
+                        <div class="col text-center">
+                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv"
+                                id="8" onclick="selectImg2(this)">
                         </div>
-                        <div class="col-2 d-grid gap-2 mx-auto">
-                            <button type="button" class="btn btn-dark btnGalery" id="nextBtnNextEvo"><i class="fa-solid fa-chevron-right fa-2xl"></i></button>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv"
+                                id="9" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv"
+                                id="10" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv"
+                                id="11" onclick="selectImg2(this)">
+                        </div>
+                        <div class="col text-center">
+                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv"
+                                id="12" onclick="selectImg2(this)">
                         </div>
                     </div>
-    
-                    <div class="row my-4" id="nextEvo-miniatures">
-    
-                        <div class="col text-center">
-                            <img src="pruebasImg/Algomon_(Baby_II).png" alt="..." class="mx-auto minImg img-thumbnail selected nextEv" id="7" onclick="selectImg2(this)">
+                </div>
+                <!-- Imagen principal -->
+                <div class="col align-self-center">
+                    <div class="row">
+                        <div class="col-2 d-grid gap-2 mx-auto">
+                            <button type="button" class="btn btn-dark btnGalery" id="prevBtnNextEvo"><i
+                                    class="fa-solid fa-chevron-left fa-2xl"></i></button>
                         </div>
-                        <div class="col text-center">
-                            <img src="pruebasImg/Gigimon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="8" onclick="selectImg2(this)">
+                        <div class="col-8 text-center">
+                            <a href="#" class="link-dark text-decoration-none" id="galeria-nextEvo">
+                                <img src="pruebasImg/Algomon_(Baby_II).png" alt="principal" class="mainImg rounded-top" id="imagen_principal2">
+                                <p class="text-bg-light fw-bold rounded-bottom p-1"
+                                style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName2">Name</p>
+                            </a>
                         </div>
-                        <div class="col text-center">
-                            <img src="pruebasImg/Nyaromon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="9" onclick="selectImg2(this)">
+                        <div class="col-2 d-grid gap-2 mx-auto">
+                            <button type="button" class="btn btn-dark btnGalery" id="nextBtnNextEvo"><i
+                                    class="fa-solid fa-chevron-right fa-2xl"></i></button>
                         </div>
-                        <div class="col text-center">
-                            <img src="pruebasImg/Shoutmon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="10" onclick="selectImg2(this)">
-                        </div>
-                        <div class="col text-center">
-                            <img src="pruebasImg/Upamon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="11" onclick="selectImg2(this)">
-                        </div>
-                        <div class="col text-center">
-                            <img src="pruebasImg/Wanyamon.png" alt="..." class="mx-auto minImg img-thumbnail nextEv" id="12" onclick="selectImg2(this)">
-                        </div>
-    
                     </div>
                 </div>
             </div>
-
         </div>
         <br>
         <br>
-
 
     </main>
 
