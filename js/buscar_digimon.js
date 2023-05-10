@@ -237,6 +237,7 @@ async function showPriorEvolutions(unDigimon) {
     let selectedClass = "selected";
 
     for (let i = 0; i < unDigimon.priorEvolutions.length; i++) {
+        
         if (unDigimon.priorEvolutions[i].id != null) {
             let priorEvo = (unDigimon.priorEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
             let img = await formatSearch(priorEvo)
@@ -244,7 +245,6 @@ async function showPriorEvolutions(unDigimon) {
             .catch((error) => console.log(error));
 
             let isFirstItem = i === 0;
-
             if(isFirstItem){
                 imagenPrincipal = `
                 <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mainImg rounded-top" id="imagen_principal" 
@@ -260,7 +260,24 @@ async function showPriorEvolutions(unDigimon) {
             </div>
             `;
         }
+
+        /*else if(unDigimon.priorEvolutions[i].digimon == "Digitama"){
+            console.log("caca")
+            imagenPrincipal = `
+            <img src="images/logo-tamers.png" alt="no data" class="mainImg rounded-top" id="imagen_principal">
+            `;
+            digiName = `
+            <p class="text-bg-light fw-bold rounded-bottom p-1" style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName">No data</p>
+            `;
+            miniaturas += `
+            <div class="col text-center">
+            </div>
+            `;
+        }
+        */
+
     }
+
     let returnObj={
         imagenPrincipal,
         digiName,
@@ -417,6 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return
         }
         showDigimon(unDigimon);
+        input.value ="";
     });
 });
 
