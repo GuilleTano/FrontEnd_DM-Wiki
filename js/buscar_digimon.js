@@ -410,7 +410,15 @@ async function redirectEvo(search){
     showDigimon(unDigimon);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+
+    if(localStorage.getItem("digiSearch")){
+        let search = localStorage.getItem("digiSearch");
+        const unDigimon = await searchDigimon(search);
+        //console.log(unDigimon);
+        showDigimon(unDigimon);
+        localStorage.removeItem("digiSearch");
+    }
 
     const input = document.getElementById("buscador");
     const button = document.getElementById("btnBuscar");
@@ -437,4 +445,3 @@ document.addEventListener("DOMContentLoaded", function () {
         input.value ="";
     });
 });
-

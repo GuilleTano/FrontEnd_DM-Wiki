@@ -1,33 +1,29 @@
-async function solicitarLista(){
-    let expiraEn = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas en milisegundos
-
-    await fetch("http://localhost:3000/digimon-list")
-    .then(response => response.json())
-    .then(data => {
-        console.log("Lista recibida");
-        let digimonList = JSON.stringify({ 
-            nombres: data, 
-            expiraEn: expiraEn 
-        })
-        localStorage.setItem("digimonList", digimonList);
-        console.log("Lista guardada");
-    })
-    .catch(error => console.error(error));
+function searchRedirection() {
+    window.location.href = "buscar_digimon.html";
 }
 
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (!localStorage.getItem('digimonList')) {
-        solicitarLista();
-    } 
-    else {
-        console.log("Ya existe la lista");
-        const digimonList = JSON.parse(localStorage.getItem('digimonList'));
-        
-        if (new Date().getTime() > digimonList.expiraEn) {
-            // Elimina los datos si la fecha de caducidad ha pasado
-            localStorage.removeItem('digimonList');
-            solicitarLista();
+    const input = document.getElementById("indexSearch");
+    const button = document.getElementById("btnIndexSearch");
+
+    input.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          button.click();
         }
-    }
+    });
+
+    button.addEventListener("click", async function () {
+        //clearAlert();     | Para habilitar nuevamente esto tengo que crear alertas para el index.html
+
+        let digiSearch = document.getElementById("indexSearch").value;
+
+        //guardar nombre del digimon el LS ??
+
+        localStorage.setItem("digiSearch", digiSearch);
+
+        searchRedirection();
+
+    });
 });
