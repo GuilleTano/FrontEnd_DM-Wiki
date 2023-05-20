@@ -38,13 +38,16 @@
     </nav>
 
     <main class="container my-5">
-
+        <!-- ALERTA DE BUSQUEDA -->
+        <div class="row justify-content-center mt-3">
+            <div class="col-6" id="liveAlertPlaceholder"></div>
+        </div>
+        <!-- Logo -->
         <div class="row justify-content-center mt-3">
             <div class="col-sm-6">
                 <img src="images/logo.png" alt="logo" class="mx-auto d-block w-75">
             </div>
         </div>
-
         <!-- Buscador -->
         <div class="row justify-content-center my-3">
             <div class="col-sm-4 m-3">
@@ -73,7 +76,6 @@
 
     </main>
 
-
     <footer class="bg-dark text-light fixed-bottom mt-3">
         <div class="container">
             <div class="row">
@@ -100,6 +102,15 @@
         </div>
     </footer>
 
+    <!-- Spinner -->
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/init.js"></script>

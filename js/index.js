@@ -3,7 +3,6 @@ function searchRedirection() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const input = document.getElementById("indexSearch");
     const button = document.getElementById("btnIndexSearch");
 
@@ -15,15 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     button.addEventListener("click", async function () {
-        //clearAlert();     | Para habilitar nuevamente esto tengo que crear alertas para el index.html
-
+        clearAlert();
         let digiSearch = document.getElementById("indexSearch").value;
-
-        //guardar nombre del digimon el LS ??
-
-        localStorage.setItem("digiSearch", digiSearch);
-
+        const unDigimon = await searchDigimon(digiSearch);
+        if (!unDigimon) {
+            alertError();
+            return
+        }
+        localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
         searchRedirection();
-
     });
 });
