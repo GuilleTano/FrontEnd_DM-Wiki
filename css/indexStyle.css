@@ -21,8 +21,9 @@ body {
 
 
 /* Clases para galeria */
-.mainImg {
-    width: 350px;
+.prioEv, .nextEv{
+    width: 65px;
+    height: 65px;
 }
 
 .btnGalery {

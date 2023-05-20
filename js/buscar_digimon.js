@@ -130,55 +130,59 @@ async function showPriorEvolutions(unDigimon) {
     let digiName = "";
     let miniaturas = [];
     let selectedClass = "selected";
+    let returnObj = {};
 
-    for (let i = 0; i < unDigimon.priorEvolutions.length; i++) {
-        
-        if (unDigimon.priorEvolutions[i].id != null) {
-            let priorEvo = (unDigimon.priorEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
-            let img = await formatSearch(priorEvo)
-            .then((result) => getImgFromS3(result))
-            .catch((error) => console.log(error));
-
-            let isFirstItem = i === 0;
-            if(isFirstItem){
-                imagenPrincipal = `
-                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mainImg rounded-top" id="imagen_principal" 
-                onclick="redirectEvo(this.alt)">
-                `;
-                digiName = `
-                <p class="text-bg-light fw-bold rounded-bottom p-1" style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName">${unDigimon.priorEvolutions[i].digimon}</p>
-                `;
-            }
-            miniaturas += `
-            <div class="col text-center">
-                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail prioEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.priorEvolutions[i].id}" onclick="selectImg(this)">
+    if(unDigimon.priorEvolutions.length == 0){
+        imagenPrincipal = `
+            <img src="images/logo-tamers.png" class="card-img-top" alt="No data" id="imagen_principal">
+        `;
+        digiName = `
+            <div class="card-body text-center p-2">
+                <p class="card-text fw-bold" id="digiName">No data</p>
             </div>
-            `;
-        }
-
-        /*else if(unDigimon.priorEvolutions[i].digimon == "Digitama"){
-            console.log("caca")
-            imagenPrincipal = `
-            <img src="images/logo-tamers.png" alt="no data" class="mainImg rounded-top" id="imagen_principal">
-            `;
-            digiName = `
-            <p class="text-bg-light fw-bold rounded-bottom p-1" style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName">No data</p>
-            `;
-            miniaturas += `
+        `;
+        miniaturas += `
             <div class="col text-center">
+                <img src="images/logo-tamers.png" alt="No data" class="mx-auto img-thumbnail selected prioEv" 
+                id="1" onclick="selectImg(this)">
             </div>
-            `;
+        `;
+        return returnObj = {
+            imagenPrincipal,
+            digiName,
+            miniaturas
         }
-        */
-
     }
 
-    let returnObj={
+    for (let i = 0; i < unDigimon.priorEvolutions.length; i++) {
+        let priorEvo = (unDigimon.priorEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
+        let img = await formatSearch(priorEvo)
+            .then((result) => getImgFromS3(result))
+            .catch((error) => console.log(error));
+        let isFirstItem = i === 0;
+        if (isFirstItem) {
+            imagenPrincipal = `
+                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="card-img-top" id="imagen_principal" 
+                onclick="redirectEvo(this.alt)">
+            `;
+            digiName = `
+                <div class="card-body text-center p-2">
+                    <p class="card-text fw-bold" id="digiName">${unDigimon.priorEvolutions[i].digimon}</p>
+                </div>
+            `;
+        }
+        miniaturas += `
+            <div class="col text-center">
+                <img src="${img}" alt="${unDigimon.priorEvolutions[i].digimon}" class="mx-auto img-thumbnail prioEv ${isFirstItem ? selectedClass : ''}" 
+                id="${unDigimon.priorEvolutions[i].id}" onclick="selectImg(this)">
+            </div>
+        `;
+    }
+    return returnObj = {
         imagenPrincipal,
         digiName,
         miniaturas
     }
-    return returnObj;
 }
 
 async function showNextEvolutions(unDigimon) {
@@ -186,38 +190,62 @@ async function showNextEvolutions(unDigimon) {
     let digiName = "";
     let miniaturas = [];
     let selectedClass = "selected";
+    let returnObj = {};
+
+    if(unDigimon.nextEvolutions.length == 0){
+        imagenPrincipal = `
+            <img src="images/logo-tamers.png" class="card-img-top" alt="No data" id="imagen_principal2">
+        `;
+        digiName = `
+            <div class="card-body text-center p-2">
+                <p class="card-text fw-bold" id="digiName2">No data</p>
+            </div>
+        `;
+        miniaturas += `
+            <div class="col text-center">
+                <img src="images/logo-tamers.png" alt="No data" class="mx-auto img-thumbnail selected nextEv" 
+                id="7" onclick="selectImg(this)">
+            </div>
+        `;
+        return returnObj = {
+            imagenPrincipal,
+            digiName,
+            miniaturas
+        }
+    }
 
     for (let i = 0; i < unDigimon.nextEvolutions.length; i++) {
         if (unDigimon.nextEvolutions[i].id != null) {
             let nextEvo = (unDigimon.nextEvolutions[i].digimon).normalize('NFKD').replace(/[^\x20-\x7E]/g, '');
             let img = await formatSearch(nextEvo)
-            .then((result) => getImgFromS3(result))
-            .catch((error)=> console.log(error));
+                .then((result) => getImgFromS3(result))
+                .catch((error) => console.log(error));
 
             let isFirstItem = i === 0;
 
-            if(isFirstItem){
+            if (isFirstItem) {
                 imagenPrincipal = `
-                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mainImg rounded-top" id="imagen_principal2"
+                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="card-img-top" id="imagen_principal2"
                 onclick="redirectEvo(this.alt)">
                 `;
                 digiName = `
-                <p class="text-bg-light fw-bold rounded-bottom p-1" style="margin-left: 0.2rem; margin-right: 0.15rem;" id="digiName2" >${unDigimon.nextEvolutions[i].digimon}</p>
+                <div class="card-body text-center p-2">
+                    <p class="card-text fw-bold" id="digiName2">${unDigimon.nextEvolutions[i].digimon}</p>
+                </div>
                 `;
             }
             miniaturas += `
             <div class="col text-center">
-                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mx-auto minImg img-thumbnail nextEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.nextEvolutions[i].id}" onclick="selectImg2(this)">
+                <img src="${img}" alt="${unDigimon.nextEvolutions[i].digimon}" class="mx-auto img-thumbnail nextEv ${isFirstItem ? selectedClass : ''}" id="${unDigimon.nextEvolutions[i].id}" onclick="selectImg2(this)">
             </div>
             `;
         }
     }
-    let returnObj={
+    return returnObj = {
         imagenPrincipal,
         digiName,
         miniaturas
     }
-    return returnObj;
 }
 
 // ****************** METODO PARA EL AMRADO DE LA PAGINA ******************
@@ -231,7 +259,7 @@ async function showDigimon(unDigimon) {
     document.getElementById("image-card").innerHTML = `<img src=${unDigimon.image} class="card-img-top" alt=${unDigimon.name}>`;
 
     //Tabla 1
-    let attTable =`
+    let attTable = `
                     <div class="col-4">
                         ${showLevels(unDigimon)}
                     </div>
@@ -244,7 +272,7 @@ async function showDigimon(unDigimon) {
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
-    let fieldsTable =`  <tbody>
+    let fieldsTable = `  <tbody>
                             <tr>${showFields(unDigimon)}</tr>
                         </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
@@ -257,23 +285,22 @@ async function showDigimon(unDigimon) {
     showSkills(unDigimon);
 
     //Linea Evolutiva
-    showPriorEvolutions(unDigimon).then((resultado)=>{
+    showPriorEvolutions(unDigimon).then((resultado) => {
         document.getElementById("galeria-priorEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("galeria-priorEvo").innerHTML += resultado.digiName;
         document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
     });
-    showNextEvolutions(unDigimon).then((resultado)=>{
+    showNextEvolutions(unDigimon).then((resultado) => {
         document.getElementById("galeria-nextEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("galeria-nextEvo").innerHTML += resultado.digiName;
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
     });
-
 }
 
 
 document.addEventListener("DOMContentLoaded", async function () {
 
-    if(localStorage.getItem("unDigimon")){
+    if (localStorage.getItem("unDigimon")) {
         const unDigimon = JSON.parse(localStorage.getItem("unDigimon"));
         showDigimon(unDigimon);
         localStorage.removeItem("unDigimon");
@@ -282,10 +309,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const input = document.getElementById("buscador");
     const button = document.getElementById("btnBuscar");
 
-    input.addEventListener("keyup", function(event) {
+    input.addEventListener("keyup", function (event) {
         if (event.key === "Enter") {
-          event.preventDefault();
-          button.click();
+            event.preventDefault();
+            button.click();
         }
     });
 
@@ -299,6 +326,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             return
         }
         showDigimon(unDigimon);
-        input.value ="";
+        input.value = "";
     });
 });
