@@ -16,12 +16,15 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", async function () {
         clearAlert();
         let digiSearch = document.getElementById("indexSearch").value;
+        showSpinner();
         const unDigimon = await searchDigimon(digiSearch);
         if (!unDigimon) {
+            hideSpinner();
             alertError();
             return
         }
         localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
+        hideSpinner();
         searchRedirection();
     });
 });

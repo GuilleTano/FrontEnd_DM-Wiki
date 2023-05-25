@@ -318,13 +318,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     button.addEventListener("click", async function () {
         clearAlert();
-        let search = document.getElementById("buscador").value
+        let search = document.getElementById("buscador").value;
+        showSpinner();
         const unDigimon = await searchDigimon(search);
         console.log(unDigimon);
         if (!unDigimon) {
+            hideSpinner();
             alertError();
             return
         }
+        hideSpinner();
         showDigimon(unDigimon);
         input.value = "";
     });

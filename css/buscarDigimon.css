@@ -1,36 +1,12 @@
-body {
-    background-color: #222;
-    height: auto;
-}
-
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link:hover {
-    background-color: #555;
-    border-color: transparent;
-}
-
-.tab-pane {
-    background-color: #333;
-    color: #fff;
-}
-
-.desc-Skill {
-    background-color: #333;
-    color: #fff;
-}
-
-
-/* Clases para galeria */
+/************* Clases para galeria *************/
 .prioEv, .nextEv{
     width: 65px;
     height: 65px;
 }
-
 .btnGalery {
     height: 70px;
     transform: translateY(150px);
 }
-
 #priorEvo-miniatures {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -39,7 +15,6 @@ body {
     grid-column-gap: 0.3rem;
     cursor: pointer;
 }
-
 #nextEvo-miniatures {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -48,11 +23,25 @@ body {
     grid-column-gap: 0.3rem;
     cursor: pointer;
 }
-
 .selected {
     width: 100px;
     transform: translateY(-7px);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
+/***********************************************/
 
-
+/* Clases para descripciones y skills */
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+    background-color: #555;
+    border-color: transparent;
+}
+.tab-pane {
+    background-color: #333;
+    color: #fff;
+}
+.desc-Skill {
+    background-color: #333;
+    color: #fff;
+}
+/**************************************/

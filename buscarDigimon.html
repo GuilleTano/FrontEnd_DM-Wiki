@@ -4,24 +4,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Busca un Digimon!</title>
+    <title>Digital Wiki</title>
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/indexStyle.css" rel="stylesheet">
+    <link href="css/buscarDigimon.css" rel="stylesheet">
+    <link href="css/generalStyles.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4999f9f3a4.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body class="bg-primary">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="Logo" width="135" height="55" class="">
+                <img src="images/logo.png" alt="Logo" width="auto" height="45" class="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
+                <!-- Buscador -->
                 <div class="col-4 offset-md-3">
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
@@ -30,6 +32,14 @@
                                 class="fa-sharp fa-solid fa-magnifying-glass fa-lg"></i></button>
                     </div>
                 </div>
+                <ul class="navbar-nav ms-auto me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item me-5">
+                        <a class="nav-link" href="about.html" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-title="About us">
+                            <i class="fa-solid fa-circle-info fa-xl"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -37,7 +47,7 @@
     <main class="container">
         <!-- ALERTA DE BUSQUEDA -->
         <div class="row justify-content-center mt-3">
-            <div class="col-6" id="liveAlertPlaceholder"></div>
+            <div class="position-fixed top-0 start-50 translate-middle-x mt-5 col-6" id="liveAlertPlaceholder"></div>
         </div>
         <div class="row my-3">
             <!-- CUERPO 1 -->
@@ -132,11 +142,11 @@
                     <!-- Cabecera de la carta -->
                     <div class="card-title text-center" id="head-card">
                         <div class="text-center card-body py-0">ID</div>
-                        <h5 class="card-title my-0 py-0">Card title</h5>
+                        <h5 class="card-title my-0 py-0">No Data</h5>
                     </div>
                     <!-- Imagen de la carta -->
                     <div class="px-3" id="image-card">
-                        <img src="images/example-card2.jpg" class="card-img-top" alt="example-card">
+                        <img src="images/example-card.jpg" class="card-img-top" alt="example-card">
                     </div>
                     <!-- TABLA DE DATOS -->
                     <div class="text-center card-body pb-0 mb-3">
@@ -153,16 +163,13 @@
                         </div>
                         <div class="row" id="att-table">
                             <div class="col-4">
-                                <div>Un level</div>
+                                <div>No Data</div>
                             </div>
                             <div class="col-4">
-                                <div>Un Atributo</div>
-                                <div>Un Atributo</div>
-                                <div>Un Atributo</div>
+                                <div>No Data</div>
                             </div>
                             <div class="col-4">
-                                <div>Un Tipo</div>
-                                <div>Un Tipo</div>
+                                <div>No Data</div>
                             </div>
                         </div>
                     </div>
@@ -173,9 +180,7 @@
                         <table class="table table-borderless table-sm table-dark">
                             <tbody id="fields-table">
                                 <tr>
-                                    <td>Field 1</td>
-                                    <td>Field 2</td>
-                                    <td>Field 3</td>
+                                    <td>No Data</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -183,7 +188,7 @@
                     <hr class="my-0">
                     <!-- XANTIBODY -->
                     <div class="card-body text-center pb-0">
-                        <p id="xAntibody">xAntibody:</p>
+                        <p id="xAntibody">xAntibody: No Data</p>
                     </div>
                 </div>
             </div>
@@ -277,19 +282,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-sm-12 pt-3 pb-0">
-                    <p class="">Digimon and other media relating to the franchise are registered trademarks of Akiyoshi
-                        Hongo, Bandai and Toei Animation.</p>
+                    <p class=""><i class="fa-regular fa-copyright"></i> Digimon and other media relating to the
+                        franchise are registered trademarks of Akiyoshi
+                        Hongo, BANDAI and Toei Animation.</p>
                 </div>
-
+                <!-- Redes Sociales -->
                 <div class="col-md-2 col-sm-12 py-2 text-end">
                     <section>
-                        <a class="btn btn-outline-light btn-floating" href="https://github.com/GuilleTano" role="button"
-                            target="_blank">
-                            <i class="fa-brands fa-github"></i>
+                        <a class="btn btn-outline-light btn-floating p-1" href="https://digimon.net/" role="button"
+                            target="_blank" data-bs-toggle="tooltip"
+                            data-bs-title="The official Digimon website, check it out!">
+                            <img src="images/icoCalu.png" alt="icon" class="icoDigi">
                         </a>
-
-                        <a class="btn btn-outline-light btn-floating" href="#!" role="button" target="_blank">
-                            <i class="fab fa-google"></i>
+                        <a class="btn btn-outline-light btn-floating px-2" href="https://github.com/GuilleTano"
+                            role="button" target="_blank" data-bs-toggle="tooltip"
+                            data-bs-title="My GitHub profile, go ahead">
+                            <i class="fa-brands fa-github fa-xl"></i>
                         </a>
                     </section>
                 </div>
@@ -309,7 +317,7 @@
 
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/buscar_digimon.js"></script>
+    <script src="js/buscarDigimon.js"></script>
     <script src="js/galeriaEvos.js"></script>
 </body>
 

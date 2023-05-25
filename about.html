@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Search a Digimon!</title>
+    <title>About Wiki</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/generalStyles.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4999f9f3a4.js" crossorigin="anonymous"></script>
@@ -24,9 +24,9 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav ms-auto me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item me-5">
-                        <a class="nav-link" href="about.html" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-title="About us">
-                            <i class="fa-solid fa-circle-info fa-xl"></i>
+                        <a class="nav-link" href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-title="Back">
+                            <i class="fa-solid fa-arrow-left fa-xl"></i>
                         </a>
                     </li>
                 </ul>
@@ -34,29 +34,38 @@
         </div>
     </nav>
 
-    <main class="container my-5">
-        <!-- ALERTA DE BUSQUEDA -->
-        <div class="row justify-content-center mt-3">
-            <div class="position-fixed top-0 start-50 translate-middle-x mt-5 col-6" id="liveAlertPlaceholder"></div>
-        </div>
+    <main class="container">
         <br>
-        <!-- Logo -->
-        <div class="row justify-content-center mt-3">
-            <div class="col-sm-6 rounded-pill bg-dark py-4 px-0 text-center border border-5 border-warning">
-                <img src="images/logo.png" alt="logo" class="w-75 img-fluid">
-            </div>
-        </div>
-        <!-- Buscador -->
-        <div class="row justify-content-center my-3">
-            <div class="col-sm-4 m-3">
-                <div class="input-group">
-                    <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
-                        aria-describedby="btnBuscar" id="indexSearch">
-                    <button class="btn btn-dark" type="button" id="btnIndexSearch">
-                        <i class="fa-sharp fa-solid fa-magnifying-glass fa-lg"></i>
-                    </button>
+        <br>
+        <br>
+        <div class="row justify-content-center text-light">
+
+            <div class="col-sm-8 bg-dark p-3 border border-5 border-warning rounded">
+
+                <div class="container">
+                    <p>
+                        Hi!<br>
+                        Thank you for visiting this website. Since you're here, I'll tell you a little bit about the site:<br>
+                        <br>
+
+                        This project was born with the purpose of serving as a practice for web development.<br>
+                        It started as just a FrontEnd project that consumed the <a href="https://digimon-api.com/" target="_blank">DAPI</a> API, 
+                        but for various reasons, it ended up scaling into something bigger.<br>
+                        <br>
+
+                        Currently, the site has its own BackEnd, consisting of a server developed in nodeJS, 
+                        which relies on a MongoDB database and an S3 bucket in AWS.
+                    </p>
+                    <br>
+                    <p>
+                        You can review the FrontEnd code <a href="https://github.com/GuilleTano/Proyecto_FrontEnd_D-Wiki" target="_blank">here.</a>
+                        <br>
+                        You can also view the BackEnd from <a href="https://github.com/GuilleTano/Proyecto_backend_DigiAPI" target="_blank">here.</a>
+                    </p>
                 </div>
+
             </div>
+
         </div>
 
     </main>
@@ -100,7 +109,7 @@
 
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/init.js"></script>
-    <script src="js/index.js"></script>
+
 
 </body>
 
