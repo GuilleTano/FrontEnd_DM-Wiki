@@ -1,5 +1,5 @@
 function searchRedirection() {
-    window.location.href = "buscar_digimon.html";
+    window.location.href = "buscarDigimon.html";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
