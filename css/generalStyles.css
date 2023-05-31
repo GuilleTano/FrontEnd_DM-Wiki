@@ -1,12 +1,14 @@
-body {
-    background-color: #222;
-    height: auto;
-}
-
 /* Icono Footer digimon.net */
 .icoDigi {
     width: 31px;
     height: 28px;
 }
 /****************************/
+
+body {
+    background-image: url('../images/fondo2.png');
+    background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+
+    /*background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
 
