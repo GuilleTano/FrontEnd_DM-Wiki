@@ -3,6 +3,7 @@
 
 const GET_BD = "https://digi-wiki-backend.up.railway.app/get-digimon-from-BD/";
 const GET_AWS = "https://digi-wiki-backend.up.railway.app/images-from-AWS/";
+const GET_LIST = "https://digi-wiki-backend.up.railway.app/digimon-list";
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
@@ -148,7 +149,7 @@ let hideSpinner = function () {
 async function solicitarLista() {
     let expiraEn = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas en milisegundos
 
-    await fetch("http://localhost:3000/digimon-list")
+    await fetch(GET_LIST)
         .then(response => response.json())
         .then(data => {
             console.log("Lista recibida");
