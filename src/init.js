@@ -1,9 +1,9 @@
 //const GET_BD = "http://localhost:3000/get-digimon-from-BD/";
 //const GET_AWS = "http://localhost:3000/images-from-AWS/";
 
-const GET_BD = "https://digi-wiki-backend.up.railway.app/get-digimon-from-BD/";
-const GET_AWS = "https://digi-wiki-backend.up.railway.app/images-from-AWS/";
-const GET_LIST = "https://digi-wiki-backend.up.railway.app/digimon-list";
+const GET_BD = process.env.GET_MONGODB;
+const GET_AWS = process.env.GET_AWS;
+const GET_LIST = process.env.GET_SERVERLIST;
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
