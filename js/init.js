@@ -1,9 +1,6 @@
-//const GET_BD = "http://localhost:3000/get-digimon-from-BD/";
-//const GET_AWS = "http://localhost:3000/images-from-AWS/";
-
-const GET_BD = "https://digi-wiki-backend.up.railway.app/get-digimon-from-BD/";
-const GET_AWS = "https://digi-wiki-backend.up.railway.app/images-from-AWS/";
-const GET_LIST = "https://digi-wiki-backend.up.railway.app/digimon-list";
+const GET_BD = "http://localhost:3000/get-digimon-from-BD/";
+const GET_AWS = "http://localhost:3000/images-from-AWS/";
+const GET_LIST = "http://localhost:3000/digimon-list";
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
