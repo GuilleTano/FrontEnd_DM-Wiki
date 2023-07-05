@@ -42,6 +42,17 @@ async function formatSearch(buscador) {
     return //console.log("El digimon " + nombreMin + " no existe");
 }
 
+// Metodo para busqueda aleatoria
+async function randomSearch() {
+    const digimonList = await JSON.parse(localStorage.getItem('digimonList'));
+
+    // Numero aleatorio entre 0 y 1443
+    const R = Math.floor((Math.random()) * (1443 - 0 + 1)) + 0;
+    const randomSearch = digimonList.nombres[R].nameLowercase;
+
+    return randomSearch
+}
+
 // Este metodo trae los datos de MongoDB
 async function getDigimonFromMongo(digimon) {
     let nombreMongo = digimon.mongoName;

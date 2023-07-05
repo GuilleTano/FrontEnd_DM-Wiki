@@ -25,7 +25,7 @@
                 <ul class="navbar-nav ms-auto me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item me-5">
                         <a class="nav-link" href="about.html" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-title="About us">
+                            data-bs-title="About us">
                             <i class="fa-solid fa-circle-info fa-xl"></i>
                         </a>
                     </li>
@@ -47,17 +47,29 @@
             </div>
         </div>
         <!-- Buscador -->
+
         <div class="row justify-content-center my-3">
-            <div class="col-sm-4 m-3">
-                <div class="input-group">
+            <div class="col-sm-4 m-3 d-flex">
+                <div class="input-group flex-grow-1">
                     <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
                         aria-describedby="btnBuscar" id="indexSearch">
                     <button class="btn btn-dark" type="button" id="btnIndexSearch">
                         <i class="fa-sharp fa-solid fa-magnifying-glass fa-lg"></i>
                     </button>
                 </div>
+
+                <button class="btn btn-warning ms-2 flex-shrink-0" type="button" id="randomBtn" data-bs-toggle="tooltip"
+                data-bs-title="Don't know what to look for? Try a random search!" data-bs-placement="right">
+                    <i class="fa-solid fa-dice fa-lg"></i>
+                </button>
             </div>
         </div>
+
+        <!-- Busqueda random 
+        <div class="d-grid gap-2 col-sm-4 mx-auto my-3">
+            <button class="btn btn-danger" type="button" id="randomBtn">Busqueda random</button>
+        </div>
+        -->
 
     </main>
 
