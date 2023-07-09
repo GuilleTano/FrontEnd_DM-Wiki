@@ -1,0 +1,12 @@
+.inputChat {
+    transform: translateY(-80px);
+}
+
+/* Color de fondo para todo el main */
+main {
+    background-color: #6c757d;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+    padding-bottom: 150px;
+}
