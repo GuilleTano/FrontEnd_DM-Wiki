@@ -73,32 +73,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-/* VERSION CLIENTE/OPENAI
-const apiKey = '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';
-const apiUrl = 'https://api.openai.com/v1/chat/completions';
-
-async function sendMessage(message) {
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: 'system', content: 'You are Culumon, a character from the Digimon franchise. Sometimes you should end your sentences with the catchphrase "culu" or "culu culu"' },
-        { role: 'user', content: message }
-      ],
-    }),
-  });
-
-  const data = await response.json();
-  const reply = data.choices[0].message.content;
-
-  // Manipula o muestra la respuesta en tu página web
-  // ...
-  return reply;
-}
-*/
