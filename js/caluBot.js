@@ -1,5 +1,5 @@
 const CALU_CHAT = "http://localhost:3000/preguntarCalubot";
-
+let chatID = 0;
 
 async function sendMessage(mensaje) {
 
@@ -23,13 +23,12 @@ async function sendMessage(mensaje) {
 
 }
 
-// Falta que la pantalla se fije en el nuevo mensaje cuando aparece
-
 
 function mostrarEnPantalla(src, text) {
 
+  chatID++
   const msj = `
-            <div class="row justify-content-center p-2 border-bottom border-2 border-light">
+            <div class="row justify-content-center p-2 border-bottom border-2 border-light" id=${chatID}>
               <div class="col-md-1">
                 <img src=${src} alt="userIco" class="rounded-circle" style="width:60px;">
               </div>
@@ -41,8 +40,12 @@ function mostrarEnPantalla(src, text) {
 
   document.getElementById("chatScreen").innerHTML += msj;
 
+  document.getElementById(chatID).scrollIntoView({ behavior: 'smooth' });
+
   return
 }
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
