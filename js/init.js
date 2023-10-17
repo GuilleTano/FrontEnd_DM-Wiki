@@ -1,6 +1,9 @@
-const GET_BD = "http://localhost:3000/get-digimon-from-BD/";
-const GET_AWS = "http://localhost:3000/images-from-AWS/";
-const GET_LIST = "http://localhost:3000/digimon-list";
+const AZURE = "https://dmwiki-backend.azurewebsites.net";
+const LOCAL = "http://localhost:3000";
+
+const GET_BD = AZURE + "/get-digimon-from-BD/";
+const GET_AWS = AZURE + "/images-from-AWS/";
+const GET_LIST = AZURE + "/digimon-list";
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
