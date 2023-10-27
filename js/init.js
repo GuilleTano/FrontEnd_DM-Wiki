@@ -150,12 +150,17 @@ function clearAlert() {
 
 let showSpinner = function () {
     console.log("spinnerOn");
-    //document.getElementById("spinner-wrapper").style.display = "block";
+    const modalSpinner = new bootstrap.Modal(document.getElementById("modalSpinner"), {
+        keyboard: false
+    });
+    modalSpinner.show();
 }
 
 let hideSpinner = function () {
     console.log("spinnerOff");
-    //document.getElementById("spinner-wrapper").style.display = "none";
+    const openModal = document.getElementById("modalSpinner");
+    const modalSpinner = bootstrap.Modal.getInstance(openModal);
+    modalSpinner.hide();
 }
 
 // ********************* Solicitud de lista al servidor *********************
