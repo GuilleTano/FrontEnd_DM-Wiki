@@ -121,7 +121,8 @@ async function searchDigimon(search) {
 //Metodo para redireccionar al seleccionar una evo
 async function redirectEvo(search) {
     const unDigimon = await searchDigimon(search);
-    showDigimon(unDigimon);
+    localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
+    await showDigimon(unDigimon);
 }
 
 // ****************** Metodos para alerta en busquedas y spinner ******************
@@ -148,11 +149,13 @@ function clearAlert() {
 }
 
 let showSpinner = function () {
-    document.getElementById("spinner-wrapper").style.display = "block";
+    console.log("spinnerOn");
+    //document.getElementById("spinner-wrapper").style.display = "block";
 }
 
 let hideSpinner = function () {
-    document.getElementById("spinner-wrapper").style.display = "none";
+    console.log("spinnerOff");
+    //document.getElementById("spinner-wrapper").style.display = "none";
 }
 
 // ********************* Solicitud de lista al servidor *********************

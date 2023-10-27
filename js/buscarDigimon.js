@@ -132,7 +132,7 @@ async function showPriorEvolutions(unDigimon) {
     let selectedClass = "selected";
     let returnObj = {};
 
-    if(unDigimon.priorEvolutions.length == 0){
+    if (unDigimon.priorEvolutions.length == 0) {
         imagenPrincipal = `
             <img src="images/logo-tamers.png" class="card-img-top" alt="No data" id="imagen_principal">
         `;
@@ -192,7 +192,7 @@ async function showNextEvolutions(unDigimon) {
     let selectedClass = "selected";
     let returnObj = {};
 
-    if(unDigimon.nextEvolutions.length == 0){
+    if (unDigimon.nextEvolutions.length == 0) {
         imagenPrincipal = `
             <img src="images/logo-tamers.png" class="card-img-top" alt="No data" id="imagen_principal2">
         `;
@@ -250,9 +250,11 @@ async function showNextEvolutions(unDigimon) {
 
 // ****************** METODO PARA EL AMRADO DE LA PAGINA ******************
 async function showDigimon(unDigimon) {
+    showSpinner();
     //Cabecera de la carta
-    let addHeadCard = ` <div class="text-center card-body py-0"><small>${unDigimon.id}</small></div>
-                        <h5 class="card-title my-0 py-0">${unDigimon.name}</h5>`;
+    let addHeadCard = ` 
+            <div class="text-center card-body py-0"><small>${unDigimon.id}</small></div>
+            <h5 class="card-title my-0 py-0">${unDigimon.name}</h5>`;
     document.getElementById("head-card").innerHTML = addHeadCard;
 
     //Imagen de la carta
@@ -260,21 +262,22 @@ async function showDigimon(unDigimon) {
 
     //Tabla 1
     let attTable = `
-                    <div class="col-4">
-                        ${showLevels(unDigimon)}
-                    </div>
-                    <div class="col-4">
-                        ${showAtributes(unDigimon)}
-                    </div>
-                    <div class="col-4">
-                        ${showTypes(unDigimon)}
-                    </div>`;
+            <div class="col-4">
+                ${showLevels(unDigimon)}
+            </div>
+            <div class="col-4">
+                ${showAtributes(unDigimon)}
+            </div>
+            <div class="col-4">
+                ${showTypes(unDigimon)}
+            </div>`;
     document.getElementById("att-table").innerHTML = attTable;
 
     //Tabla 2
-    let fieldsTable = `  <tbody>
-                            <tr>${showFields(unDigimon)}</tr>
-                        </tbody>`;
+    let fieldsTable = ` 
+            <tbody>
+                <tr>${showFields(unDigimon)}</tr>
+            </tbody>`;
     document.getElementById("fields-table").innerHTML = fieldsTable;
 
     //xAntibody
@@ -285,16 +288,18 @@ async function showDigimon(unDigimon) {
     showSkills(unDigimon);
 
     //Linea Evolutiva
-    showPriorEvolutions(unDigimon).then((resultado) => {
+    await showPriorEvolutions(unDigimon).then((resultado) => {
         document.getElementById("galeria-priorEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("galeria-priorEvo").innerHTML += resultado.digiName;
         document.getElementById("priorEvo-miniatures").innerHTML = resultado.miniaturas;
     });
-    showNextEvolutions(unDigimon).then((resultado) => {
+    await showNextEvolutions(unDigimon).then((resultado) => {
         document.getElementById("galeria-nextEvo").innerHTML = resultado.imagenPrincipal;
         document.getElementById("galeria-nextEvo").innerHTML += resultado.digiName;
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
     });
+
+    hideSpinner();
 }
 
 
@@ -302,8 +307,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (localStorage.getItem("unDigimon")) {
         const unDigimon = JSON.parse(localStorage.getItem("unDigimon"));
-        showDigimon(unDigimon);
-        localStorage.removeItem("unDigimon");
+        await showDigimon(unDigimon);
+        //localStorage.removeItem("unDigimon");
     }
 
     const input = document.getElementById("buscador");
@@ -319,16 +324,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     button.addEventListener("click", async function () {
         clearAlert();
         let search = document.getElementById("buscador").value;
-        showSpinner();
-        const unDigimon = await searchDigimon(search);
-        console.log(unDigimon);
-        if (!unDigimon) {
-            hideSpinner();
-            alertError();
-            return
+        try {
+            const unDigimon = await searchDigimon(search);
+            //console.log(unDigimon);
+            if (!unDigimon) {
+                alertError();
+                return;
+            }
+            localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
+            await showDigimon(unDigimon);
+            input.value = "";
+        } catch (error) {
+            // Manejo de errores si la solicitud falla
+            console.error("Error en la búsqueda: ", error);
         }
-        hideSpinner();
-        showDigimon(unDigimon);
-        input.value = "";
     });
+
 });
