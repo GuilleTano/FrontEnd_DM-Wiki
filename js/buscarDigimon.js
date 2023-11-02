@@ -308,6 +308,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (localStorage.getItem("unDigimon")) {
         const unDigimon = JSON.parse(localStorage.getItem("unDigimon"));
         await showDigimon(unDigimon);
+        setTimeout(hideSpinner(), 5000);
         //localStorage.removeItem("unDigimon");
     }
 

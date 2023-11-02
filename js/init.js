@@ -154,6 +154,7 @@ let showSpinner = function () {
         keyboard: false
     });
     modalSpinner.show();
+    // Earthdramon y otros Digimon con pocos datos cargan muy rapído y no se llega a ocultar el spinner - Solución?
 }
 
 let hideSpinner = function () {
