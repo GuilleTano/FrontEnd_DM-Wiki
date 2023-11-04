@@ -120,7 +120,7 @@ function showSkills(unDigimon) {
             `;
         }
     }
-    document.getElementById("digimon-skills").innerHTML = skillList;
+    return document.getElementById("digimon-skills").innerHTML = skillList;
 }
 
 // ****************** METODOS PARA LA LINEA EVOLUTIVA ******************
@@ -299,7 +299,7 @@ async function showDigimon(unDigimon) {
         document.getElementById("nextEvo-miniatures").innerHTML = resultado.miniaturas;
     });
 
-    hideSpinner();
+    setTimeout(hideSpinner, 1000);
 }
 
 
@@ -308,8 +308,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (localStorage.getItem("unDigimon")) {
         const unDigimon = JSON.parse(localStorage.getItem("unDigimon"));
         await showDigimon(unDigimon);
-        setTimeout(hideSpinner(), 5000);
-        //localStorage.removeItem("unDigimon");
     }
 
     const input = document.getElementById("buscador");
@@ -327,7 +325,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         let search = document.getElementById("buscador").value;
         try {
             const unDigimon = await searchDigimon(search);
-            //console.log(unDigimon);
             if (!unDigimon) {
                 alertError();
                 return;
