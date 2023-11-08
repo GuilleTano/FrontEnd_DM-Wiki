@@ -1,9 +1,15 @@
 const AZURE = "https://dmwiki-backend.azurewebsites.net";
 const LOCAL = "http://localhost:3000";
 
+const GET_BD = LOCAL + "/get-digimon-from-BD/";
+const GET_AWS = LOCAL + "/images-from-AWS/";
+const GET_LIST = LOCAL + "/digimon-list";
+
+/*
 const GET_BD = AZURE + "/get-digimon-from-BD/";
 const GET_AWS = AZURE + "/images-from-AWS/";
 const GET_LIST = AZURE + "/digimon-list";
+*/
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
@@ -146,6 +152,10 @@ function clearAlert() {
     let alert = document.querySelector('#search-error');
     if (alert) alert.remove();
     location.reload;
+}
+
+function errorRedirect(){
+    window.location.href = "searchError.html";
 }
 
 let showSpinner = function () {

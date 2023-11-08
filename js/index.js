@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Busqueda normal
     button.addEventListener("click", async function () {
-        clearAlert();
+        //clearAlert();
         let digiSearch = document.getElementById("indexSearch").value;
         try{
             const unDigimon = await searchDigimon(digiSearch);
             if (!unDigimon) {
-                alertError();
-                return
+                //alertError();
+                return errorRedirect();
             }
             localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
             searchRedirection();

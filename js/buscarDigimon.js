@@ -309,6 +309,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         const unDigimon = JSON.parse(localStorage.getItem("unDigimon"));
         await showDigimon(unDigimon);
     }
+    else {
+        window.location.href = "index.html";
+    }
 
     const input = document.getElementById("buscador");
     const button = document.getElementById("btnBuscar");
@@ -320,14 +323,15 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
+    // Busqueda normal
     button.addEventListener("click", async function () {
-        clearAlert();
+        //clearAlert();
         let search = document.getElementById("buscador").value;
         try {
             const unDigimon = await searchDigimon(search);
             if (!unDigimon) {
-                alertError();
-                return;
+                //alertError();
+                return errorRedirect();
             }
             localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
             await showDigimon(unDigimon);
@@ -338,4 +342,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
+    // Busqueda random
+    document.getElementById("randomBtn").addEventListener("click", async function () {
+        try {
+            const digiSearch = await randomSearch();
+            const unDigimon = await searchDigimon(digiSearch);
+    
+            localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
+            await showDigimon(unDigimon);
+        } catch(error) {
+            // Manejo de errores si la solicitud falla
+            console.error("Error en la búsqueda: ", error);
+        }
+    });
 });

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Digimon not found</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/generalStyles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4999f9f3a4.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" width="auto" height="45" class="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <!-- Buscador -->
+                <div class="col-4 offset-md-3 d-flex">
+                    <div class="input-group flex-grow-1">
+                        <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
+                            aria-describedby="btnBuscar" id="buscador">
+                        <button class="btn btn-primary" type="button" id="btnBuscar"><i
+                                class="fa-sharp fa-solid fa-magnifying-glass fa-lg"></i></button>
+                    </div>
+                    <button class="btn btn-warning ms-2 flex-shrink-0" type="button" id="randomBtn"
+                        data-bs-toggle="tooltip" data-bs-title="Don't know what to look for? Try a random search!"
+                        data-bs-placement="right" style="padding-left: 0.5rem; padding-right: 0.5rem;">
+                        <i class="fa-solid fa-dice fa-lg"></i>
+                    </button>
+                </div>
+                <ul class="navbar-nav ms-auto me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item me-5">
+                        <a class="nav-link" href="about.html" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-title="About us">
+                            <i class="fa-solid fa-circle-info fa-xl"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container my-5">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2 bg-dark pt-3 text-center rounded-pill border border-3 border-warning-subtle">
+
+                <img src="images/culumonSF.png" alt="culumonSad" class="img-fluid w-25">
+
+                <p class="m-3 fs-2 fw-bolder text-light">Error 404 - Digimon not found</p>
+            </div>
+        </div>
+<!--
+        <div class="row">
+
+            <div class="col-md-8 offset-md-2 text-bg-dark text-center pb-3">
+                <h1></h1>
+                <div>
+
+                </div>
+            </div>
+
+        </div>
+-->
+
+        <!--Busquedas relacionadas
+
+        <div class="row">
+            <div class="col-4 bg-dark border border-5 border-warning border-end-0 rounded-start">
+                <img src="images/hakaseSF.png" alt="hakase" class="img-fluid">
+            </div>
+            <div class="col-8 bg-dark border border-5 border-warning border-start-0 rounded-end p-4">
+                <h3 class="text-light bg-dark ">Quizás quisiste decir:</h3>
+
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary
+                        list group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple
+                        secondary list group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success
+                        list group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger
+                        list group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning
+                        list group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list
+                        group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list
+                        group item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list
+                        group item</a>
+                </div>
+            </div>
+        </div>
+        -->
+
+    </main>
+
+    <footer class="bg-dark text-light fixed-bottom mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-sm-12 pt-3 pb-0">
+                    <p class=""><i class="fa-regular fa-copyright"></i> Digimon and other media relating to the
+                        franchise are registered trademarks of Akiyoshi
+                        Hongo, BANDAI and Toei Animation.</p>
+                </div>
+                <!-- Redes Sociales -->
+                <div class="col-md-2 col-sm-12 py-2 text-end">
+                    <section>
+                        <a class="btn btn-outline-light btn-floating p-1" href="https://digimon.net/" role="button"
+                            target="_blank" data-bs-toggle="tooltip"
+                            data-bs-title="The official Digimon website, check it out!">
+                            <img src="images/icoCalu.png" alt="icon" class="icoDigi">
+                        </a>
+                        <a class="btn btn-outline-light btn-floating px-2" href="https://github.com/GuilleTano"
+                            role="button" target="_blank" data-bs-toggle="tooltip"
+                            data-bs-title="My GitHub profile, go ahead">
+                            <i class="fa-brands fa-github fa-xl"></i>
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Spinner -->
+
+
+    <script src="bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="js/init.js"></script>
+
+</body>
+
+
+
+</html>

@@ -24,13 +24,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <!-- Buscador -->
-                <div class="col-4 offset-md-3">
-                    <div class="input-group">
+                <div class="col-4 offset-md-3 d-flex">
+                    <div class="input-group flex-grow-1">
                         <input type="search" class="form-control" placeholder="Ej: Agumon" aria-label="Ej: Agumon"
                             aria-describedby="btnBuscar" id="buscador">
                         <button class="btn btn-primary" type="button" id="btnBuscar"><i
                                 class="fa-sharp fa-solid fa-magnifying-glass fa-lg"></i></button>
                     </div>
+                    <button class="btn btn-warning ms-2 flex-shrink-0" type="button" id="randomBtn" data-bs-toggle="tooltip"
+                    data-bs-title="Don't know what to look for? Try a random search!" data-bs-placement="right" 
+                    style="padding-left: 0.5rem; padding-right: 0.5rem;">
+                        <i class="fa-solid fa-dice fa-lg"></i>
+                    </button>
                 </div>
                 <ul class="navbar-nav ms-auto me-5 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item me-5">
