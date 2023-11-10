@@ -1,9 +1,10 @@
 const AZURE = "https://dmwiki-backend.azurewebsites.net";
+const VERCEL = "https://backend-dm-wiki.vercel.app";
 const LOCAL = "http://localhost:3000";
 
-const GET_BD = LOCAL + "/get-digimon-from-BD/";
-const GET_AWS = LOCAL + "/images-from-AWS/";
-const GET_LIST = LOCAL + "/digimon-list";
+const GET_BD = VERCEL + "/get-digimon-from-BD/";
+const GET_AWS = VERCEL + "/images-from-AWS/";
+const GET_LIST = VERCEL + "/digimon-list";
 
 /*
 const GET_BD = AZURE + "/get-digimon-from-BD/";
