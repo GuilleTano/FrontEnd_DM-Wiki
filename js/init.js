@@ -1,9 +1,10 @@
-const AZURE = "https://dmwiki-backend.azurewebsites.net";
 const LOCAL = "http://localhost:3000";
+const AZURE = "https://dmwiki-backend.azurewebsites.net";
+const RENDER = "https://backend-dm-wiki.onrender.com";
 
-const GET_BD = LOCAL + "/get-digimon-from-BD/";
-const GET_AWS = LOCAL + "/images-from-AWS/";
-const GET_LIST = LOCAL + "/digimon-list";
+const GET_BD = RENDER + "/get-digimon-from-BD/";
+const GET_AWS = RENDER + "/images-from-AWS/";
+const GET_LIST = RENDER + "/digimon-list";
 
 /*
 const GET_BD = AZURE + "/get-digimon-from-BD/";
