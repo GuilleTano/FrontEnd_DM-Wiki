@@ -1,16 +1,10 @@
 const LOCAL = "http://localhost:3000";
-const AZURE = "https://dmwiki-backend.azurewebsites.net";
 const RENDER = "https://backend-dm-wiki.onrender.com";
 
 const GET_BD = RENDER + "/get-digimon-from-BD/";
 const GET_AWS = RENDER + "/images-from-AWS/";
 const GET_LIST = RENDER + "/digimon-list";
 
-/*
-const GET_BD = AZURE + "/get-digimon-from-BD/";
-const GET_AWS = AZURE + "/images-from-AWS/";
-const GET_LIST = AZURE + "/digimon-list";
-*/
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
@@ -130,6 +124,11 @@ async function redirectEvo(search) {
     const unDigimon = await searchDigimon(search);
     localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
     await showDigimon(unDigimon);
+}
+
+// Redireccion al buscar
+function searchRedirection() {
+    window.location.href = "buscarDigimon.html";
 }
 
 // ****************** Metodos para alerta en busquedas y spinner ******************
