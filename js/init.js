@@ -128,7 +128,7 @@ async function redirectEvo(search) {
 
 // Redireccion al buscar
 function searchRedirection() {
-    window.location.href = "buscarDigimon.html";
+    window.location.href = "digimonProfile.html";
 }
 
 // ****************** Metodos para alerta en busquedas y spinner ******************
@@ -175,7 +175,7 @@ let hideSpinner = function () {
 
 // ********************* Solicitud de lista al servidor *********************
 
-async function solicitarLista() {
+async function getDigimonList() {
     let expiraEn = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas en milisegundos
 
     await fetch(GET_LIST)
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     /***********************************************************************************************************/
 
     if (!localStorage.getItem('digimonList')) {
-        solicitarLista();
+        getDigimonList();
     }
     else {
         console.log("Ya existe la lista");
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (new Date().getTime() > digimonList.expiraEn) {
             // Elimina los datos si la fecha de caducidad ha pasado
             localStorage.removeItem('digimonList');
-            solicitarLista();
+            getDigimonList();
         }
     }
 });
