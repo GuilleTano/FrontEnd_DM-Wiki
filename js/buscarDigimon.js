@@ -80,17 +80,13 @@ function showSkills(unDigimon) {
                     <button class="accordion-button collapsed bg-dark text-light p-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapse${i}" aria-expanded="false"
                         aria-controls="panelsStayOpen-collapse${i}">
-                        
                         ${unDigimon.skills[i].skill}
-            
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapse${i}" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-heading${i}">
                     <div class="accordion-body text-light p-2 desc-Skill">
-            
                         ${unDigimon.skills[i].description}
-            
                     </div>
                 </div>
             </div>
