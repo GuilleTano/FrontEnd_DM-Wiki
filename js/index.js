@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
     
     // Funcionalidad para hacer busuquedas con el boton "Enter"
@@ -14,16 +12,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Busqueda normal
     button.addEventListener("click", async function () {
-        //clearAlert();
         let digiSearch = document.getElementById("indexSearch").value;
         try{
             const unDigimon = await searchDigimon(digiSearch);
             if (!unDigimon) {
-                //alertError();
-                return errorRedirect();
+                // Se intenta crear una lista de resultados relacionados
+                const relacionadoList = relacionados(digiSearch);
+                // Si no hay ninguno, se redirecciona a vista de error
+                if(relacionadoList.length <1){
+                    return errorRedirect();
+                } 
+                // Si existe se mostraria la lista de relacionados
+                console.log(relacionadoList);
+                return
             }
-            localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
-            searchRedirection();
+            else {
+                //Si el Digimon existe se redirecciona a la vista del perfil
+                localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
+                return searchRedirection();
+            }
         } catch(error) {
             console.error("Error en la búsqueda: ", error);
         }

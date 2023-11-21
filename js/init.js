@@ -1,27 +1,27 @@
 const LOCAL = "http://localhost:3000";
 const RENDER = "https://backend-dm-wiki.onrender.com";
 
-const GET_BD = RENDER + "/get-digimon-from-BD/";
-const GET_AWS = RENDER + "/images-from-AWS/";
-const GET_LIST = RENDER + "/digimon-list";
+const GET_BD = LOCAL + "/get-digimon-from-BD/";
+const GET_AWS = LOCAL + "/images-from-AWS/";
+const GET_LIST = LOCAL + "/digimon-list";
 
 
 // ****************** CLASE PARA EL OBJETO DIGIMON ******************
 class DigimonModel {
     constructor(id, name, types, xAntibody, releaseDate, levels, fields, attributes, descriptions, skills, priorEvolutions, nextEvolutions) {
         this.name = name,
-            this.id = id,
-            this.types = types,
-            this.xAntibody = xAntibody,
-            this.releaseDate = releaseDate,
-            this.levels = levels,
-            this.fields = fields,
-            this.attributes = attributes,
-            this.descriptions = descriptions,
-            this.skills = skills,
-            this.priorEvolutions = priorEvolutions,
-            this.nextEvolutions = nextEvolutions,
-            this.image = ""
+        this.id = id,
+        this.types = types,
+        this.xAntibody = xAntibody,
+        this.releaseDate = releaseDate,
+        this.levels = levels,
+        this.fields = fields,
+        this.attributes = attributes,
+        this.descriptions = descriptions,
+        this.skills = skills,
+        this.priorEvolutions = priorEvolutions,
+        this.nextEvolutions = nextEvolutions,
+        this.image = ""
     }
 
     set addImage(imagen) {
@@ -50,8 +50,8 @@ async function formatSearch(buscador) {
 async function randomSearch() {
     const digimonList = await JSON.parse(localStorage.getItem('digimonList'));
 
-    // Numero aleatorio entre 0 y 1443
-    const R = Math.floor((Math.random()) * (1443 - 0 + 1)) + 0;
+    // Numero aleatorio entre 0 y 1444
+    const R = Math.floor((Math.random()) * (1444 - 0 + 1)) + 0;
     const randomSearch = digimonList.nombres[R].nameLowercase;
 
     return randomSearch
@@ -133,6 +133,7 @@ function searchRedirection() {
 
 // ****************** Metodos para alerta en busquedas y spinner ******************
 
+/*
 function alertError() {
     const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     const alert = (message, type) => {
@@ -153,6 +154,7 @@ function clearAlert() {
     if (alert) alert.remove();
     location.reload;
 }
+*/
 
 function errorRedirect(){
     window.location.href = "searchError.html";
@@ -171,6 +173,40 @@ let hideSpinner = function () {
     const modalSpinner = bootstrap.Modal.getInstance(openModal);
     modalSpinner.hide();
     console.log("spinnerOff");
+}
+
+// Funcion para lista de relacionados
+function relacionados(busqueda){
+    const digimonList = JSON.parse(localStorage.getItem('digimonList'));
+    let relacionadoList = [];
+    let busquedaLowCase = busqueda.toLowerCase();
+    const regular= /[\s()\-]+/;
+
+    // Verifica si el string de busqueda tiene más de una palabra
+    if(regular.test(busquedaLowCase)){
+        // Si lo tiene, lo trasnforma en un array
+        busquedaLowCase = busquedaLowCase.split(regular);
+        console.log(busquedaLowCase);
+
+        for (let digimon of digimonList.nombres){
+            // Para luego verificar si los elementos del array son parte del nombre de un Digimon
+            if(digimon.nameLowercase.includes(busquedaLowCase[0]) && digimon.nameLowercase.includes(busquedaLowCase[1])){
+                relacionadoList.push(digimon.nameLowercase);
+            }
+        }
+
+        return relacionadoList;
+    }
+
+    for (let digimon of digimonList.nombres){
+
+        if(digimon.nameLowercase.includes(busquedaLowCase)){
+
+            relacionadoList.push(digimon.nameLowercase);
+
+        }
+    }
+    return relacionadoList;
 }
 
 // ********************* Solicitud de lista al servidor *********************
