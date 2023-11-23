@@ -43,7 +43,7 @@ async function formatSearch(buscador) {
             return unDigimon;
         }
     }
-    return //console.log("El digimon " + nombreMin + " no existe");
+    return
 }
 
 // Metodo para busqueda aleatoria
@@ -182,28 +182,26 @@ function relacionados(busqueda){
     let busquedaLowCase = busqueda.toLowerCase();
     const regular= /[\s()\-]+/;
 
+    // Verifica que busqueda tenga al menos 4 letras
+    if((busquedaLowCase.split("")).length < 4) return relacionadoList;
+
     // Verifica si el string de busqueda tiene más de una palabra
-    if(regular.test(busquedaLowCase)){
+    if(regular.test(busquedaLowCase)) {
         // Si lo tiene, lo trasnforma en un array
         busquedaLowCase = busquedaLowCase.split(regular);
-        console.log(busquedaLowCase);
-
         for (let digimon of digimonList.nombres){
             // Para luego verificar si los elementos del array son parte del nombre de un Digimon
             if(digimon.nameLowercase.includes(busquedaLowCase[0]) && digimon.nameLowercase.includes(busquedaLowCase[1])){
                 relacionadoList.push(digimon.nameLowercase);
             }
         }
-
-        return relacionadoList;
     }
-
-    for (let digimon of digimonList.nombres){
-
-        if(digimon.nameLowercase.includes(busquedaLowCase)){
-
-            relacionadoList.push(digimon.nameLowercase);
-
+    //Si esta compuesto solo por una palabra, crea la lista en base a esa palabra
+    else {
+        for (let digimon of digimonList.nombres){
+            if(digimon.nameLowercase.includes(busquedaLowCase)){
+                relacionadoList.push(digimon.nameLowercase);
+            }
         }
     }
     return relacionadoList;

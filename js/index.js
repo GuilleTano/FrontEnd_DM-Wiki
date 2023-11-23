@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Si no hay ninguno, se redirecciona a vista de error
                 if(relacionadoList.length <1){
                     return errorRedirect();
-                } 
+                }
                 // Si existe se mostraria la lista de relacionados
                 console.log(relacionadoList);
                 return
@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return searchRedirection();
             }
         } catch(error) {
-            console.error("Error en la búsqueda: ", error);
+            //console.error("Error en la búsqueda: ", error);
+            console.log("Error en la búsqueda: ", error);
         }
     });
 
