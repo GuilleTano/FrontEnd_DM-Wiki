@@ -192,7 +192,7 @@ function relacionados(busqueda){
         for (let digimon of digimonList.nombres){
             // Para luego verificar si los elementos del array son parte del nombre de un Digimon
             if(digimon.nameLowercase.includes(busquedaLowCase[0]) && digimon.nameLowercase.includes(busquedaLowCase[1])){
-                relacionadoList.push(digimon.nameLowercase);
+                relacionadoList.push(digimon);
             }
         }
     }
@@ -200,7 +200,7 @@ function relacionados(busqueda){
     else {
         for (let digimon of digimonList.nombres){
             if(digimon.nameLowercase.includes(busquedaLowCase)){
-                relacionadoList.push(digimon.nameLowercase);
+                relacionadoList.push(digimon);
             }
         }
     }

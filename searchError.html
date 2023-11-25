@@ -50,56 +50,44 @@
     <main class="container my-5">
 
         <div class="row">
-            <div class="col-md-8 offset-md-2 bg-dark pt-3 text-center rounded-pill border border-3 border-warning-subtle">
-
+            <div
+                class="col-md-8 offset-md-2 bg-dark py-3 text-center rounded-pill border border-3 border-warning-subtle">
                 <img src="images/culumonSF.png" alt="culumonSad" class="img-fluid w-25">
+                <p class="m-3 fs-2 fw-bolder text-light">Digimon not found</p>
 
-                <p class="m-3 fs-2 fw-bolder text-light">Error 404 - Digimon not found</p>
-            </div>
-        </div>
-<!--
-        <div class="row">
-
-            <div class="col-md-8 offset-md-2 text-bg-dark text-center pb-3">
-                <h1></h1>
-                <div>
-
-                </div>
+                <!-- Busquedas relacionadas - Boton -->
+                <button class="btn btn-dark btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight" id="relBtn" hidden>
+                    See related results
+                </button>
             </div>
 
         </div>
--->
 
-        <!--Busquedas relacionadas
-
-        <div class="row">
-            <div class="col-4 bg-dark border border-5 border-warning border-end-0 rounded-start">
-                <img src="images/hakaseSF.png" alt="hakase" class="img-fluid">
+        <!-- Busquedas relacionadas - Offcanvas -->
+        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-light mx-4 mt-3" id="offcanvasRightLabel">Related List</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="col-8 bg-dark border border-5 border-warning border-start-0 rounded-end p-4">
-                <h3 class="text-light bg-dark ">Quizás quisiste decir:</h3>
 
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">A simple primary
-                        list group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">A simple
-                        secondary list group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-success">A simple success
-                        list group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">A simple danger
-                        list group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">A simple warning
-                        list group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">A simple info list
-                        group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">A simple light list
-                        group item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple dark list
-                        group item</a>
-                </div>
+            <div class="offcanvas-body">
+                <ul class="list-group px-4 text-center" id="relatedList">
+                    <li class="list-group-item bg-dark">
+                        <button type="button" class="btn btn-dark">Item 1</button>
+                    </li>
+                    <li class="list-group-item bg-dark text-light">
+                        <button type="button" class="btn btn-dark">Item 2</button>
+                    </li>
+                    <li class="list-group-item bg-dark text-light">
+                        <button type="button" class="btn btn-dark">Item 3</button>
+                    </li>
+                </ul>
             </div>
+
         </div>
-        -->
+
+
 
     </main>
 

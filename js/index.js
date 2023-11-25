@@ -16,15 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
         try{
             const unDigimon = await searchDigimon(digiSearch);
             if (!unDigimon) {
+
                 // Se intenta crear una lista de resultados relacionados
                 const relacionadoList = relacionados(digiSearch);
                 // Si no hay ninguno, se redirecciona a vista de error
                 if(relacionadoList.length <1){
                     return errorRedirect();
                 }
+
                 // Si existe se mostraria la lista de relacionados
-                console.log(relacionadoList);
-                return
+                //console.log(relacionadoList);
+                localStorage.setItem("relacionadoList", JSON.stringify(relacionadoList));
+                return errorRedirect();
             }
             else {
                 //Si el Digimon existe se redirecciona a la vista del perfil

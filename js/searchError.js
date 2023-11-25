@@ -1,7 +1,26 @@
+function relatedResult(){
+    const resultList = JSON.parse(localStorage.getItem("relacionadoList"));
+    localStorage.removeItem("relacionadoList");
+    let relatedList = "";
+
+    for(digimon of resultList){
+        relatedList +=`
+        <li class="list-group-item bg-dark">
+            <button type="button" class="btn btn-dark">${digimon.mongoName}</button>
+        </li>`;
+    }
+    return document.getElementById("relatedList").innerHTML = relatedList;
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+
+    if(localStorage.getItem("relacionadoList")){
+        const relButton = document.getElementById("relBtn");
+        relButton.hidden = false;
+        relatedResult();
+    }
+
     // Funcionalidad para hacer busuquedas con el boton "Enter"
     const input = document.getElementById("buscador");
     const button = document.getElementById("btnBuscar");
@@ -14,12 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Busqueda normal
     button.addEventListener("click", async function () {
-        //clearAlert();
         let digiSearch = document.getElementById("buscador").value;
         try{
             const unDigimon = await searchDigimon(digiSearch);
             if (!unDigimon) {
-                //alertError();
                 return errorRedirect();
             }
             localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
@@ -38,4 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("unDigimon", JSON.stringify(unDigimon));
         searchRedirection();
     });
+
 });
